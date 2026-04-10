@@ -1,5 +1,12 @@
 {
   "$schema": "https://v2-9-5.turborepo.dev/schema.json",
+  "globalEnv": [
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_ID",
+    "AUTH_GOOGLE_SECRET",
+    "NEXTAUTH_URL",
+    "DATABASE_URL"
+  ],
   "ui": "tui",
   "tasks": {
     "build": {
