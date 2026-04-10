@@ -7,12 +7,12 @@
 
 ## 현재 진도 (2026-04-10 기준)
 - 완료된 강의 노트:
-  - `lesson-01-variables-io.md`
-  - `lesson-02-condition-loop.md`
-  - `lesson-03-function-array.md`
-  - `lesson-04-pointers-strings.md` ✅ (오늘 추가)
-- 생성된 과제 파일:
-  - `lesson4_homework.c` ✅ (오늘 추가)
+  - `course/01-variables-io/README.md`
+  - `course/02-condition-loop/README.md`
+  - `course/03-function-array/README.md`
+  - `course/04-pointers-strings/README.md`
+- 생성된 과제/게임 파일:
+  - 각 강의별 `homework.c`, `homework2.c`, `game1.c` 생성 완료
 - 코드 리뷰 최신화:
   - `CODE_REVIEW.md` 업데이트 완료
 - 현재 코드 상태:
@@ -58,7 +58,15 @@
 1. `Helloworl.c`를 `hello_world.c`로 리네임
 2. `main()` → `main(void)` 수정
 3. `scanf` 실패 처리 코드 추가
-4. lesson4 과제(`lesson4_homework.c`)를 직접 확장:
+4. lesson4 과제(`course/04-pointers-strings/homework.c`)를 직접 확장:
    - 최소값 함수 추가
    - 정렬(오름차순) 기능 추가
    - 입력 재시도 로직(최대 3회) 추가
+
+## C 학습 완료 후 다음 단계
+- C 기본/중급(포인터, 메모리, 파일 I/O, 미니 프로젝트) 완료 시
+- 동일 흐름으로 C++ 과정으로 전환:
+  1) C++ 기초 문법(`iostream`, 클래스, STL)
+  2) 객체지향(캡슐화/상속/다형성)
+  3) 자료구조/알고리즘 실전
+  4) C 프로젝트를 C++로 리팩터링

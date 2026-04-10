@@ -41,14 +41,24 @@ int main(void) {
 1. 정수 배열 5개를 입력받아 포인터 순회로 합계 계산
 2. 이름 문자열을 입력받아 길이를 직접 계산(`strlen` 없이)
 
-## 과제
-- 파일명: `lesson4_homework.c`
+## 과제 1
+- 파일명: `homework.c`
 - 요구사항:
   1. `read_scores(int *arr, int n)` 함수로 점수 `n`개를 입력받기
   2. `sum_scores(const int *arr, int n)` 함수로 총합 계산
   3. `max_score(const int *arr, int n)` 함수로 최대값 계산
   4. 이름을 `fgets`로 입력받고 공백 포함 출력
   5. 잘못된 점수 입력 시 오류 메시지 출력 후 종료
+
+## 과제 2
+- 파일명: `homework2.c`
+- 요구사항:
+  - 문자열 입력 후 포인터 기반으로 역순 출력
+  - 개행 제거 처리
+
+## 게임 1
+- 파일명: `game1.c`
+- 내용: 문자열 맞추기(3번 기회)
 
 ## 체크리스트
 - [ ] `main` 함수는 `int main(void)` 형태인가?
