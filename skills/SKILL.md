@@ -514,9 +514,161 @@ EOF
 
 ---
 
+## Phase 7 — web-admin / web-partner 인증 흐름 적용
+
+### 개요
+
+web-main의 OAuth 인증 구조를 web-admin(관리자)과 web-partner(파트너)에 확장.
+각 앱은 **역할(Role) 기반 접근 제어**를 통해 해당 역할의 사용자만 로그인 허용.
+
+| 앱 | 포트 | 허용 역할 | 테마 색상 |
+|----|------|-----------|-----------|
+| web-main | 3000 | 전체 | Blue |
+| web-admin | 3001 | ADMIN | Indigo |
+| web-partner | 3002 | PARTNER | Emerald |
+
+### 패키지 설치
+
+```bash
+pnpm add next-auth@beta @auth/core @prisma/client@5 prisma@5 --filter web-admin
+pnpm add next-auth@beta @auth/core @prisma/client@5 prisma@5 --filter web-partner
+```
+
+### 생성된 파일 구조
+
+각 앱에 동일한 구조로 다음 파일 생성:
+
+```
+apps/web-admin/          (또는 web-partner/)
+├── auth.ts              # NextAuth 설정 (역할 체크 포함)
+├── middleware.ts         # 인증 미들웨어
+├── lib/
+│   └── prisma.ts        # Prisma 싱글톤 클라이언트
+├── prisma/
+│   └── schema.prisma    # DB 스키마 (web-main과 동일)
+├── app/
+│   ├── api/auth/[...nextauth]/
+│   │   └── route.ts     # NextAuth API 라우트
+│   └── login/
+│       └── page.tsx     # 역할별 로그인 페이지
+└── .env.local           # 환경 변수 (NEXTAUTH_URL 포트 구분)
+```
+
+### 인증 흐름 차이점
+
+**web-main** (고객용):
+- 모든 역할 로그인 가능
+- 신규 유저: `MEMBER` 역할로 자동 생성
+
+**web-admin** (관리자용):
+- `ADMIN` 역할만 로그인 허용
+- 미등록 유저: `ADMIN`으로 생성 (초기 세팅, 프로덕션에서 비활성화 필요)
+- 비관리자 로그인 시 → `/login?error=unauthorized` 리다이렉트
+
+**web-partner** (파트너용):
+- `PARTNER` 역할만 로그인 허용
+- 미등록 유저: `PARTNER`로 생성 (초기 세팅, 프로덕션에서 비활성화 필요)
+- 비파트너 로그인 시 → `/login?error=unauthorized` 리다이렉트
+
+### auth.ts 핵심 로직 (web-admin 예시)
+
+```typescript
+async signIn({ user, account }) {
+  const existingUser = await prisma.user.findUnique({
+    where: { email: user.email },
+  });
+
+  // 역할 체크: ADMIN이 아니면 거부
+  if (existingUser && existingUser.role !== "ADMIN") {
+    return "/login?error=unauthorized";
+  }
+  // ...
+}
+```
+
+### Session에 role 포함 (전체 앱 공통)
+
+```typescript
+// JWT에 role 저장
+async jwt({ token, account }) {
+  if (token.email) {
+    const dbUser = await prisma.user.findUnique({
+      where: { email: token.email },
+      select: { role: true },
+    });
+    token.role = dbUser?.role ?? undefined;
+  }
+  return token;
+},
+
+// Session에 role 전달
+async session({ session, token }) {
+  session.user.role = token.role;
+  return session;
+}
+```
+
+### Google Cloud Console 설정 (필수)
+
+Google OAuth 콜백 URI 3개 추가 등록 필요:
+
+```
+http://localhost:3000/api/auth/callback/google   ← web-main (기존)
+http://localhost:3001/api/auth/callback/google   ← web-admin (추가)
+http://localhost:3002/api/auth/callback/google   ← web-partner (추가)
+```
+
+### .env.local 포트 설정
+
+```env
+# web-admin/.env.local
+NEXTAUTH_URL=http://localhost:3001
+
+# web-partner/.env.local
+NEXTAUTH_URL=http://localhost:3002
+```
+
+### Prisma 클라이언트 생성
+
+```bash
+cd apps/web-admin && npx prisma generate
+cd apps/web-partner && npx prisma generate
+```
+
+### 빌드 확인
+
+```bash
+pnpm --filter web-admin build    # ✅ 성공
+pnpm --filter web-partner build  # ✅ 성공
+```
+
+---
+
+### ❌ Google OAuth redirect_uri_mismatch 오류
+
+**에러**
+```
+Error 400: redirect_uri_mismatch
+The redirect URI in the request does not match the ones authorized for the OAuth client.
+```
+
+**원인**
+Google Cloud Console의 OAuth 2.0 클라이언트에 web-admin (포트 3001),
+web-partner (포트 3002)의 콜백 URL이 등록되지 않은 경우.
+
+**해결**
+Google Cloud Console → API 및 서비스 → 사용자 인증 정보 → OAuth 2.0 클라이언트에서
+승인된 리디렉션 URI에 추가:
+```
+http://localhost:3001/api/auth/callback/google
+http://localhost:3002/api/auth/callback/google
+```
+
+---
+
 ## 다음 단계 (Roadmap)
 
-- [ ] web-admin / web-partner 인증 흐름 적용
+- [x] web-admin / web-partner 인증 흐름 적용
 - [ ] 유저 정보 조회 API Route Handler (Mock API)
 - [ ] GitHub Actions CI 파이프라인
 - [ ] kind 로컬 K8s 첫 배포
@@ -524,3 +676,4 @@ EOF
 - [ ] ArgoCD GitOps 연동
 - [ ] 멀티 테넌시 DB 전략
 - [ ] Kafka 이벤트 스트림 연동
+

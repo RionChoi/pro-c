@@ -20,6 +20,12 @@ importers:
 
   apps/web-admin:
     dependencies:
+      '@auth/core':
+        specifier: ^0.34.3
+        version: 0.34.3
+      '@prisma/client':
+        specifier: '5'
+        version: 5.22.0(prisma@5.22.0)
       '@repo/shared-types':
         specifier: workspace:^
         version: link:../../packages/shared-types
@@ -29,6 +35,12 @@ importers:
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next-auth:
+        specifier: 5.0.0-beta.30
+        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      prisma:
+        specifier: '5'
+        version: 5.22.0
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -115,6 +127,12 @@ importers:
 
   apps/web-partner:
     dependencies:
+      '@auth/core':
+        specifier: ^0.34.3
+        version: 0.34.3
+      '@prisma/client':
+        specifier: '5'
+        version: 5.22.0(prisma@5.22.0)
       '@repo/shared-types':
         specifier: workspace:^
         version: link:../../packages/shared-types
@@ -124,6 +142,12 @@ importers:
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next-auth:
+        specifier: 5.0.0-beta.30
+        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      prisma:
+        specifier: '5'
+        version: 5.22.0
       react:
         specifier: ^19.2.0
         version: 19.2.0

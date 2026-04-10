@@ -11,9 +11,13 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@auth/core": "^0.34.3",
+    "@prisma/client": "5",
     "@repo/shared-types": "workspace:^",
     "@repo/ui": "workspace:*",
     "next": "16.2.0",
+    "next-auth": "5.0.0-beta.30",
+    "prisma": "5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

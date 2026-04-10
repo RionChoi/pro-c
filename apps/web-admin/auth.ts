@@ -40,12 +40,20 @@ export const config: NextAuthConfig = {
           where: { email: user.email },
         });
 
+        // 관리자 앱: ADMIN 역할만 로그인 허용
+        if (existingUser && existingUser.role !== "ADMIN") {
+          console.warn(`[web-admin] 접근 거부: ${user.email} (role: ${existingUser.role})`);
+          return "/login?error=unauthorized";
+        }
+
         if (!existingUser) {
+          // 신규 유저는 ADMIN으로 자동 생성 (초기 세팅용, 프로덕션에서는 비활성화)
           await prisma.user.create({
             data: {
               email: user.email,
               name: user.name,
               image: user.image,
+              role: "ADMIN",
               accounts: {
                 create: {
                   provider: account!.provider,
@@ -61,7 +69,7 @@ export const config: NextAuthConfig = {
 
         return true;
       } catch (error) {
-        console.error("[web-main] DB 저장 오류:", error);
+        console.error("[web-admin] DB 오류:", error);
         return false;
       }
     },
@@ -87,6 +95,7 @@ export const config: NextAuthConfig = {
   },
   pages: {
     signIn: "/login",
+    error: "/login",
   },
 };
 
