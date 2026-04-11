@@ -1,3 +1,7 @@
+import type { UserRole } from "./auth";
+
+export type { UserRole };
+
 export interface User {
   id: string;
   email: string;
@@ -21,5 +25,4 @@ export interface Permission {
   action: "create" | "read" | "update" | "delete";
 }
 
-export type UserRole = "admin" | "member" | "partner" | "viewer";
 export type PlanType = "free" | "starter" | "pro" | "enterprise";
