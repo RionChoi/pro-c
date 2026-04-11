@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-main
+  namespace: default
+  labels:
+    app: web-main
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-main
+  template:
+    metadata:
+      labels:
+        app: web-main
+    spec:
+      containers:
+        - name: web-main
+          image: platform/web-main:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: NEXTAUTH_URL
+              value: "http://localhost:3000"
+            - name: AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: web-main-secret
+                  key: AUTH_SECRET
+            - name: AUTH_GOOGLE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: web-main-secret
+                  key: AUTH_GOOGLE_ID
+            - name: AUTH_GOOGLE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: web-main-secret
+                  key: AUTH_GOOGLE_SECRET
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: web-main-secret
+                  key: DATABASE_URL
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
