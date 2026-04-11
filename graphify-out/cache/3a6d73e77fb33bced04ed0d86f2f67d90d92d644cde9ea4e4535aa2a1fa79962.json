@@ -1,0 +1,1 @@
+{"nodes": [{"id": "route", "label": "route.ts", "file_type": "code", "source_file": "apps/web-main/app/api/auth/[...nextauth]/route.ts", "source_location": "L1"}], "edges": [{"source": "route", "target": "auth", "relation": "imports_from", "confidence": "EXTRACTED", "source_file": "apps/web-main/app/api/auth/[...nextauth]/route.ts", "source_location": "L1", "weight": 1.0}]}

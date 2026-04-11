@@ -1,0 +1,1 @@
+{"nodes": [{"id": "prisma", "label": "prisma.ts", "file_type": "code", "source_file": "apps/web-admin/lib/prisma.ts", "source_location": "L1"}], "edges": [{"source": "prisma", "target": "client", "relation": "imports_from", "confidence": "EXTRACTED", "source_file": "apps/web-admin/lib/prisma.ts", "source_location": "L1", "weight": 1.0}]}

@@ -1,0 +1,346 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "card.tsx",
+      "file_type": "code",
+      "source_file": "packages/ui/src/card.tsx",
+      "source_location": "L1",
+      "id": "card",
+      "community": 3
+    },
+    {
+      "label": "Card()",
+      "file_type": "code",
+      "source_file": "packages/ui/src/card.tsx",
+      "source_location": "L3",
+      "id": "card_card",
+      "community": 3
+    },
+    {
+      "label": "code.tsx",
+      "file_type": "code",
+      "source_file": "packages/ui/src/code.tsx",
+      "source_location": "L1",
+      "id": "code",
+      "community": 4
+    },
+    {
+      "label": "Code()",
+      "file_type": "code",
+      "source_file": "packages/ui/src/code.tsx",
+      "source_location": "L3",
+      "id": "code_code",
+      "community": 4
+    },
+    {
+      "label": "button.tsx",
+      "file_type": "code",
+      "source_file": "packages/ui/src/button.tsx",
+      "source_location": "L1",
+      "id": "button",
+      "community": 0
+    },
+    {
+      "label": "Button()",
+      "file_type": "code",
+      "source_file": "packages/ui/src/button.tsx",
+      "source_location": "L11",
+      "id": "button_button",
+      "community": 0
+    },
+    {
+      "label": "api.ts",
+      "file_type": "code",
+      "source_file": "packages/shared-types/src/api.ts",
+      "source_location": "L1",
+      "id": "api",
+      "community": 5
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "packages/shared-types/src/index.ts",
+      "source_location": "L1",
+      "id": "index",
+      "community": 6
+    },
+    {
+      "label": "user.ts",
+      "file_type": "code",
+      "source_file": "packages/shared-types/src/user.ts",
+      "source_location": "L1",
+      "id": "user",
+      "community": 7
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "apps/web-main/auth.ts",
+      "source_location": "L1",
+      "id": "auth",
+      "community": 1
+    },
+    {
+      "label": "next.js",
+      "file_type": "code",
+      "source_file": "packages/shared-config/next.js",
+      "source_location": "L1",
+      "id": "next",
+      "community": 2
+    },
+    {
+      "label": "react-internal.js",
+      "file_type": "code",
+      "source_file": "packages/shared-config/react-internal.js",
+      "source_location": "L1",
+      "id": "react_internal",
+      "community": 8
+    },
+    {
+      "label": "base.js",
+      "file_type": "code",
+      "source_file": "packages/shared-config/base.js",
+      "source_location": "L1",
+      "id": "base",
+      "community": 9
+    },
+    {
+      "label": "middleware.ts",
+      "file_type": "code",
+      "source_file": "apps/web-main/middleware.ts",
+      "source_location": "L1",
+      "id": "middleware",
+      "community": 1
+    },
+    {
+      "label": "next.config.js",
+      "file_type": "code",
+      "source_file": "apps/web-main/next.config.js",
+      "source_location": "L1",
+      "id": "next_config",
+      "community": 10
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "apps/web-main/next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d",
+      "community": 11
+    },
+    {
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "apps/web-main/eslint.config.js",
+      "source_location": "L1",
+      "id": "eslint_config",
+      "community": 12
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/layout.tsx",
+      "source_location": "L1",
+      "id": "layout",
+      "community": 2
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/layout.tsx",
+      "source_location": "L19",
+      "id": "layout_rootlayout",
+      "community": 2
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/login/page.tsx",
+      "source_location": "L1",
+      "id": "page",
+      "community": 0
+    },
+    {
+      "label": "ThemeImage()",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/page.tsx",
+      "source_location": "L10",
+      "id": "page_themeimage",
+      "community": 0
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/api/auth/[...nextauth]/route.ts",
+      "source_location": "L1",
+      "id": "route",
+      "community": 1
+    },
+    {
+      "label": "prisma.ts",
+      "file_type": "code",
+      "source_file": "apps/web-main/lib/prisma.ts",
+      "source_location": "L1",
+      "id": "prisma",
+      "community": 1
+    },
+    {
+      "label": "LoginPage()",
+      "file_type": "code",
+      "source_file": "apps/web-main/app/login/page.tsx",
+      "source_location": "L3",
+      "id": "page_loginpage",
+      "community": 0
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/ui/src/card.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "card",
+      "_tgt": "card_card",
+      "source": "card",
+      "target": "card_card",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/ui/src/code.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "code",
+      "_tgt": "code_code",
+      "source": "code",
+      "target": "code_code",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/ui/src/button.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "button",
+      "_tgt": "button_button",
+      "source": "button",
+      "target": "button_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "page",
+      "_tgt": "button",
+      "source": "button",
+      "target": "page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/middleware.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "middleware",
+      "_tgt": "auth",
+      "source": "auth",
+      "target": "middleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "auth",
+      "_tgt": "prisma",
+      "source": "auth",
+      "target": "prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/api/auth/[...nextauth]/route.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "route",
+      "_tgt": "auth",
+      "source": "auth",
+      "target": "route",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/login/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "page",
+      "_tgt": "auth",
+      "source": "auth",
+      "target": "page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/layout.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "layout",
+      "_tgt": "next",
+      "source": "next",
+      "target": "layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/layout.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "layout",
+      "_tgt": "layout_rootlayout",
+      "source": "layout",
+      "target": "layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "page",
+      "_tgt": "page_themeimage",
+      "source": "page",
+      "target": "page_themeimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web-main/app/login/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "page",
+      "_tgt": "page_loginpage",
+      "source": "page",
+      "target": "page_loginpage",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}

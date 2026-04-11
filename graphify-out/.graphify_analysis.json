@@ -1,0 +1,86 @@
+{
+  "communities": {
+    "0": [
+      "button",
+      "button_button",
+      "page",
+      "page_loginpage",
+      "page_themeimage"
+    ],
+    "1": [
+      "auth",
+      "middleware",
+      "prisma",
+      "route"
+    ],
+    "2": [
+      "layout",
+      "layout_rootlayout",
+      "next"
+    ],
+    "3": [
+      "card",
+      "card_card"
+    ],
+    "4": [
+      "code",
+      "code_code"
+    ],
+    "5": [
+      "api"
+    ],
+    "6": [
+      "index"
+    ],
+    "7": [
+      "user"
+    ],
+    "8": [
+      "react_internal"
+    ],
+    "9": [
+      "base"
+    ],
+    "10": [
+      "next_config"
+    ],
+    "11": [
+      "next_env_d"
+    ],
+    "12": [
+      "eslint_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.4,
+    "1": 0.5,
+    "2": 0.67,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [],
+  "surprises": [],
+  "labels": {
+    "0": "Community 0",
+    "1": "Community 1",
+    "2": "Community 2",
+    "3": "Community 3",
+    "4": "Community 4",
+    "5": "Community 5",
+    "6": "Community 6",
+    "7": "Community 7",
+    "8": "Community 8",
+    "9": "Community 9",
+    "10": "Community 10",
+    "11": "Community 11",
+    "12": "Community 12"
+  }
+}
