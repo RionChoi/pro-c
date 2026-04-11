@@ -1,24 +1,24 @@
 import { signIn } from "@/auth";
 
-export default function AdminLoginPage({
-  searchParams,
-}: {
-  searchParams: { error?: string };
-}) {
+interface Props {
+  searchParams: Promise<{ error?: string }>;
+}
+
+export default async function AdminLoginPage({ searchParams }: Props) {
+  const { error } = await searchParams;
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-950">
-      <div className="w-full max-w-sm space-y-4 p-8 rounded-xl bg-gray-900 border border-gray-800">
-        <div className="text-center space-y-2">
-          <h1 className="text-2xl font-bold text-white">관리자 로그인</h1>
-          <p className="text-sm text-gray-400">관리자 권한이 필요합니다</p>
-        </div>
-
-        {searchParams?.error === "unauthorized" && (
-          <div className="rounded-lg bg-red-900/30 border border-red-800 p-3 text-sm text-red-300 text-center">
-            ⛔ 관리자 권한이 없는 계정입니다.
-          </div>
+    <main className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-sm space-y-4 p-8">
+        <h1 className="text-2xl font-bold text-center">관리자 로그인</h1>
+        <p className="text-sm text-center text-gray-500">
+          ADMIN 권한 계정만 접근 가능합니다
+        </p>
+        {error && (
+          <p className="text-sm text-center text-red-500">
+            접근 권한이 없습니다. ADMIN 계정으로 로그인해주세요.
+          </p>
         )}
-
         <form
           action={async () => {
             "use server";
@@ -27,7 +27,7 @@ export default function AdminLoginPage({
         >
           <button
             type="submit"
-            className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-white font-medium hover:bg-indigo-700 transition-colors"
+            className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             Google로 로그인
           </button>
