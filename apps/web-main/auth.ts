@@ -1,9 +1,22 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import type { NextAuthConfig } from "next-auth";
+import type { NextAuthConfig, Session } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 import { prisma } from "@/lib/prisma";
-import { kafka, producer } from "@/lib/kafka";
+import { producer } from "@/lib/kafka";
 import { TOPICS } from "@/lib/kafka-topics";
+
+declare module "next-auth" {
+  interface Session {
+    accessToken?: string;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    accessToken?: string;
+  }
+}
 
 export const config: NextAuthConfig = {
   providers: [
@@ -38,7 +51,6 @@ export const config: NextAuthConfig = {
             },
           });
 
-          // Kafka 이벤트 발행
           try {
             await producer.connect();
             await producer.send({
@@ -68,12 +80,12 @@ export const config: NextAuthConfig = {
         return false;
       }
     },
-    async jwt({ token, account }) {
-      if (account) token.accessToken = account.access_token;
+    async jwt({ token, account }): Promise<JWT> {
+      if (account) token.accessToken = account.access_token ?? undefined;
       return token;
     },
-    async session({ session, token }) {
-      session.accessToken = token.accessToken as string;
+    async session({ session, token }): Promise<Session> {
+      session.accessToken = token.accessToken;
       return session;
     },
   },
