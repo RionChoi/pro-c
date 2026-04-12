@@ -1,0 +1,6 @@
+apiVersion: v2
+name: web-main
+description: SaaS Platform - web-main Helm Chart
+type: application
+version: 0.1.0
+appVersion: "latest"

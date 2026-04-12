@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: platform/web-main
+  tag: latest
+  pullPolicy: Never
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+env:
+  NODE_ENV: production
+  NEXTAUTH_URL: http://localhost:3000
+
+secret:
+  name: web-main-secret
