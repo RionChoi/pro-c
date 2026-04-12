@@ -2,27 +2,8 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import type { NextAuthConfig } from "next-auth";
 import { prisma } from "@/lib/prisma";
-import "next-auth/jwt";
-
-declare module "next-auth" {
-  interface Session {
-    accessToken?: string;
-    user: {
-      id?: string;
-      role?: string;
-      email?: string | null;
-      name?: string | null;
-      image?: string | null;
-    };
-  }
-}
-
-declare module "next-auth/jwt" {
-  interface JWT {
-    accessToken?: string;
-    role?: string;
-  }
-}
+import { kafka, producer } from "@/lib/kafka";
+import { TOPICS } from "@/lib/kafka-topics";
 
 export const config: NextAuthConfig = {
   providers: [
@@ -34,16 +15,15 @@ export const config: NextAuthConfig = {
   callbacks: {
     async signIn({ user, account }) {
       if (!user.email) return false;
-
       try {
-        const existingUser = await prisma.user.findUnique({
+        const existing = await prisma.user.findUnique({
           where: { email: user.email },
         });
 
-        if (!existingUser) {
-          await prisma.user.create({
+        if (!existing) {
+          const newUser = await prisma.user.create({
             data: {
-              email: user.email,
+              email: user.email!,
               name: user.name,
               image: user.image,
               accounts: {
@@ -57,37 +37,47 @@ export const config: NextAuthConfig = {
               },
             },
           });
+
+          // Kafka 이벤트 발행
+          try {
+            await producer.connect();
+            await producer.send({
+              topic: TOPICS.USER_CREATED,
+              messages: [
+                {
+                  key: newUser.id,
+                  value: JSON.stringify({
+                    id: newUser.id,
+                    email: newUser.email,
+                    name: newUser.name,
+                    role: newUser.role,
+                    createdAt: newUser.createdAt,
+                  }),
+                },
+              ],
+            });
+            await producer.disconnect();
+          } catch (kafkaError) {
+            console.error("Kafka 이벤트 발행 실패:", kafkaError);
+          }
         }
 
         return true;
-      } catch (error) {
-        console.error("[web-main] DB 저장 오류:", error);
+      } catch (e) {
+        console.error(e);
         return false;
       }
     },
     async jwt({ token, account }) {
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      // DB에서 최신 role 조회
-      if (token.email) {
-        const dbUser = await prisma.user.findUnique({
-          where: { email: token.email },
-          select: { role: true },
-        });
-        token.role = dbUser?.role ?? undefined;
-      }
+      if (account) token.accessToken = account.access_token;
       return token;
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken as string;
-      session.user.role = token.role;
       return session;
     },
   },
-  pages: {
-    signIn: "/login",
-  },
+  pages: { signIn: "/login" },
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
