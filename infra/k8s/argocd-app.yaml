@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-main
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RionChoi/platform.git
+    targetRevision: HEAD
+    path: infra/helm/web-main
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
