@@ -32,6 +32,8 @@
 │   ├── web-admin/     Next.js 16.2 — 어드민 포털
 │   └── web-partner/   Next.js 16.2 — 파트너 포털
 ├── packages/
+│   ├── db/            Prisma schema 중앙화, PrismaClient singleton (@repo/db)
+│   ├── auth/          NextAuth 공유 설정, createAuthConfig() 팩토리 (@repo/auth)
 │   ├── ui/            shadcn/ui 기반 공유 컴포넌트
 │   ├── shared-types/  공유 TypeScript 타입 (api.ts, auth.ts, user.ts)
 │   └── shared-config/ ESLint, TypeScript 설정 preset
@@ -48,12 +50,15 @@
 └── README.md
 ```
 
-### 2.1 패키지 로드맵 (미구현, 우선순위 순)
+### 2.1 패키지 현황
 
 | 패키지 | 상태 | 설명 |
 |---|---|---|
-| `packages/db` | 예정 | Prisma 중앙화 (현재 각 앱에 분산) |
-| `packages/auth` | 예정 | NextAuth 공유 설정 (현재 각 앱에 분산) |
+| `packages/db` | ✅ 완료 | Prisma schema + migrations 중앙화 (2026-04-18) |
+| `packages/auth` | ✅ 완료 | createAuthConfig() 팩토리, NextAuth 공유 (2026-04-18) |
+| `packages/ui` | 운영중 | shadcn/ui 기반 공유 컴포넌트 |
+| `packages/shared-types` | 운영중 | 공유 TypeScript 타입 |
+| `packages/shared-config` | 운영중 | ESLint, TypeScript preset |
 
 ---
 
@@ -67,7 +72,7 @@
 | Obsidian 도입 | ~/obsidian-vault/saas-platform-docs/ 4폴더 ADR 기록 | ADR-004 |
 | PostgreSQL | schema-per-tenant, pgvector Hybrid RAG는 Month 3+ | ADR-005 |
 | 3-앱 구조 | web-main / web-admin / web-partner 분리 (apps/api 불필요) | ADR-006 |
-| packages/db·auth 중앙화 | Prisma + NextAuth 공유 패키지 예정 (현재 각 앱 분산) | ADR-007 |
+| packages/db·auth 중앙화 | Prisma + NextAuth 공유 패키지 완료 (2026-04-18) | ADR-007 |
 
 ---
 
@@ -82,7 +87,7 @@
 ### 4.2 코딩 규칙
 - TypeScript strict mode. `any` 사용 금지.
 - `@repo/*` workspace import를 외부 패키지보다 우선.
-- Prisma Client는 `lib/prisma.ts` 싱글톤 패턴.
+- Prisma Client는 `@repo/db`에서 import. 앱 내 직접 인스턴스화 금지.
 - Server Component 기본, 필요 시만 `"use client"`.
 
 ### 4.3 환경변수 (turbo.json globalEnv 등록 필수)
@@ -135,3 +140,12 @@ KAFKA_BROKER
 - staging/prod 배포 실행
 - `graph.json` 수동 편집
 - `node_modules/` 직접 수정
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
