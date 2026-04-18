@@ -11,7 +11,7 @@ env:
 
 jobs:
   ci:
-    name: Build & Lint & Type Check
+    name: Lint · Type Check · Build
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma Client
-        run: pnpm --filter web-main exec prisma generate
+        run: pnpm --filter @repo/db run db:generate
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
@@ -50,4 +50,34 @@ jobs:
           AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
           AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NEXTAUTH_URL: http://localhost:3000
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          KAFKA_BROKER: ${{ secrets.KAFKA_BROKER }}
+
+  migrate:
+    name: DB Migrate (Staging)
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.0.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run migrations (staging)
+        run: pnpm --filter @repo/db run db:deploy
+        env:
+          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}

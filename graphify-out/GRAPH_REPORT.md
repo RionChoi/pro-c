@@ -1,12 +1,12 @@
 # Graph Report - /Users/choi/platform  (2026-04-18)
 
 ## Corpus Check
-- 46 files · ~18,127 words
+- 59 files · ~19,370 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 58 nodes · 19 edges · 41 communities detected
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.8)
+- 77 nodes · 26 edges · 54 communities detected
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -51,16 +51,33 @@
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `RootLayout()` - 3 edges
-2. `ThemeImage()` - 3 edges
-3. `createTenant()` - 3 edges
-4. `GET()` - 2 edges
+1. `GET()` - 4 edges
+2. `createTenant()` - 4 edges
+3. `RootLayout()` - 3 edges
+4. `createTenantAction()` - 3 edges
 5. `POST()` - 2 edges
 6. `createTenantSchema()` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `createTenantAction()` --calls--> `createTenant()`  [INFERRED]
+  /Users/choi/platform/apps/web-main/app/onboarding/actions.ts → /Users/choi/platform/apps/web-main/lib/tenant.ts
+- `createTenantAction()` --calls--> `GET()`  [INFERRED]
+  /Users/choi/platform/apps/web-main/app/onboarding/actions.ts → /Users/choi/platform/apps/web-main/app/api/users/route.ts
 - `POST()` --calls--> `createTenant()`  [INFERRED]
   /Users/choi/platform/apps/web-main/app/api/tenants/route.ts → /Users/choi/platform/apps/web-main/lib/tenant.ts
 
@@ -68,11 +85,11 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.5
-Nodes (2): GET(), POST()
+Nodes (3): POST(), createTenant(), createTenantSchema()
 
 ### Community 1 - "Community 1"
-Cohesion: 0.5
-Nodes (1): ThemeImage()
+Cohesion: 0.4
+Nodes (2): createTenantAction(), GET()
 
 ### Community 2 - "Community 2"
 Cohesion: 0.5
@@ -80,7 +97,7 @@ Nodes (1): RootLayout()
 
 ### Community 3 - "Community 3"
 Cohesion: 1.0
-Nodes (2): createTenant(), createTenantSchema()
+Nodes (0): 
 
 ### Community 4 - "Community 4"
 Cohesion: 1.0
@@ -230,86 +247,172 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
+### Community 41 - "Community 41"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 42 - "Community 42"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 43 - "Community 43"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 44 - "Community 44"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 45 - "Community 45"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 46 - "Community 46"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 47 - "Community 47"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 48 - "Community 48"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 49 - "Community 49"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 50 - "Community 50"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 51 - "Community 51"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 52 - "Community 52"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 53 - "Community 53"
+Cohesion: 1.0
+Nodes (0): 
+
 ## Knowledge Gaps
-- **Thin community `Community 4`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 3`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 5`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 4`** (2 nodes): `ThemeImage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 6`** (2 nodes): `Card()`, `card.tsx`
+- **Thin community `Community 5`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 7`** (2 nodes): `PATCH()`, `route.ts`
+- **Thin community `Community 6`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 8`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 7`** (2 nodes): `DashboardPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 9`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 8`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 10`** (1 nodes): `eslint.config.mjs`
+- **Thin community `Community 9`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 11`** (1 nodes): `api.ts`
+- **Thin community `Community 10`** (2 nodes): `async()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 12`** (1 nodes): `index.ts`
+- **Thin community `Community 11`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 13`** (1 nodes): `user.ts`
+- **Thin community `Community 12`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (1 nodes): `auth.ts`
+- **Thin community `Community 13`** (2 nodes): `PATCH()`, `route.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (1 nodes): `next.js`
+- **Thin community `Community 14`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (1 nodes): `react-internal.js`
+- **Thin community `Community 15`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (1 nodes): `base.js`
+- **Thin community `Community 16`** (1 nodes): `label.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (1 nodes): `index.ts`
+- **Thin community `Community 17`** (1 nodes): `dialog.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (1 nodes): `middleware.ts`
+- **Thin community `Community 18`** (1 nodes): `table.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (1 nodes): `next.config.js`
+- **Thin community `Community 19`** (1 nodes): `input.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 20`** (1 nodes): `api.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 21`** (1 nodes): `index.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 22`** (1 nodes): `user.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 23`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (1 nodes): `route.ts`
+- **Thin community `Community 24`** (1 nodes): `next.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (1 nodes): `page.tsx`
+- **Thin community `Community 25`** (1 nodes): `react-internal.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (1 nodes): `middleware.ts`
+- **Thin community `Community 26`** (1 nodes): `base.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (1 nodes): `next.config.js`
+- **Thin community `Community 27`** (1 nodes): `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 28`** (1 nodes): `middleware.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 29`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 29`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 30`** (1 nodes): `auth.ts`
+- **Thin community `Community 30`** (1 nodes): `next.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (1 nodes): `route.ts`
+- **Thin community `Community 31`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (1 nodes): `page.tsx`
+- **Thin community `Community 32`** (1 nodes): `eslint.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (1 nodes): `middleware.ts`
+- **Thin community `Community 33`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (1 nodes): `next.config.js`
+- **Thin community `Community 34`** (1 nodes): `route.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 35`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 36`** (1 nodes): `middleware.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (1 nodes): `auth.ts`
+- **Thin community `Community 37`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (1 nodes): `route.ts`
+- **Thin community `Community 38`** (1 nodes): `next.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `kafka-topics.ts`
+- **Thin community `Community 39`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (1 nodes): `kafka.ts`
+- **Thin community `Community 40`** (1 nodes): `eslint.config.js`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 41`** (1 nodes): `auth.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 42`** (1 nodes): `route.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 43`** (1 nodes): `page.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 44`** (1 nodes): `middleware.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 45`** (1 nodes): `postcss.config.mjs`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 46`** (1 nodes): `next.config.js`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 47`** (1 nodes): `next-env.d.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 48`** (1 nodes): `eslint.config.js`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 49`** (1 nodes): `auth.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 50`** (1 nodes): `route.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 51`** (1 nodes): `page.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 52`** (1 nodes): `kafka-topics.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 53`** (1 nodes): `kafka.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `POST()` connect `Community 0` to `Community 3`?**
+- **Why does `GET()` connect `Community 1` to `Community 0`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `createTenant()` connect `Community 3` to `Community 0`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `createTenantAction()` connect `Community 1` to `Community 0`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `createTenant()` connect `Community 0` to `Community 1`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Are the 2 inferred relationships involving `createTenant()` (e.g. with `POST()` and `createTenantAction()`) actually correct?**
+  _`createTenant()` has 2 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 2 inferred relationships involving `createTenantAction()` (e.g. with `GET()` and `createTenant()`) actually correct?**
+  _`createTenantAction()` has 2 INFERRED edges - model-reasoned connections that need verification._
