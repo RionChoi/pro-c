@@ -11,6 +11,9 @@
     "KAFKA_BROKER"
   ],
   "tasks": {
+    "db:generate": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],

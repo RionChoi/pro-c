@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@repo/db";
 import { auth } from "@/auth";
 
 type Role = "ADMIN" | "MEMBER" | "PARTNER" | "VIEWER";

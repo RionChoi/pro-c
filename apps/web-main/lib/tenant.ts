@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@repo/db";
 import { producer } from "@/lib/kafka";
 import { TOPICS } from "@/lib/kafka-topics";
 

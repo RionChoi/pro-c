@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@repo/db";
 import { createTenant } from "@/lib/tenant";
 import { auth } from "@/auth";
 

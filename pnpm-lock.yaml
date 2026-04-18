@@ -20,12 +20,12 @@ importers:
 
   apps/web-admin:
     dependencies:
-      '@auth/core':
-        specifier: ^0.34.3
-        version: 0.34.3
-      '@prisma/client':
-        specifier: '5'
-        version: 5.22.0(prisma@5.22.0)
+      '@repo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/shared-types':
         specifier: workspace:^
         version: link:../../packages/shared-types
@@ -35,12 +35,6 @@ importers:
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      next-auth:
-        specifier: 5.0.0-beta.30
-        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      prisma:
-        specifier: '5'
-        version: 5.22.0
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -72,12 +66,12 @@ importers:
 
   apps/web-main:
     dependencies:
-      '@auth/core':
-        specifier: ^0.34.3
-        version: 0.34.3
-      '@prisma/client':
-        specifier: '5'
-        version: 5.22.0(prisma@5.22.0)
+      '@repo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/shared-types':
         specifier: workspace:^
         version: link:../../packages/shared-types
@@ -90,15 +84,9 @@ importers:
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      next-auth:
-        specifier: 5.0.0-beta.30
-        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       pg:
         specifier: ^8.20.0
         version: 8.20.0
-      prisma:
-        specifier: '5'
-        version: 5.22.0
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -130,12 +118,12 @@ importers:
 
   apps/web-partner:
     dependencies:
-      '@auth/core':
-        specifier: ^0.34.3
-        version: 0.34.3
-      '@prisma/client':
-        specifier: '5'
-        version: 5.22.0(prisma@5.22.0)
+      '@repo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/shared-types':
         specifier: workspace:^
         version: link:../../packages/shared-types
@@ -145,12 +133,6 @@ importers:
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      next-auth:
-        specifier: 5.0.0-beta.30
-        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      prisma:
-        specifier: '5'
-        version: 5.22.0
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -176,6 +158,50 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.6.1)
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/auth:
+    dependencies:
+      '@auth/core':
+        specifier: ^0.34.3
+        version: 0.34.3
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../db
+      next-auth:
+        specifier: 5.0.0-beta.30
+        version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../shared-config/typescript-config
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.15.3
+      next:
+        specifier: 16.2.0
+        version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/db:
+    dependencies:
+      '@prisma/client':
+        specifier: '5'
+        version: 5.22.0(prisma@5.22.0)
+      prisma:
+        specifier: '5'
+        version: 5.22.0
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../shared-config/typescript-config
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.15.3
       typescript:
         specifier: 5.9.2
         version: 5.9.2
