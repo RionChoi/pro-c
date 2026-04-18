@@ -91,3 +91,12 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 - `git push --force` to main
 - staging/prod 환경변수 수정
 - `graphify-out/graph.json` 직접 편집
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)

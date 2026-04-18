@@ -1,7 +1,7 @@
 # Graph Report - /Users/choi/platform  (2026-04-18)
 
 ## Corpus Check
-- 46 files · ~18,083 words
+- 46 files · ~18,127 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -68,15 +68,15 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.5
-Nodes (1): ThemeImage()
+Nodes (2): GET(), POST()
 
 ### Community 1 - "Community 1"
 Cohesion: 0.5
-Nodes (1): RootLayout()
+Nodes (1): ThemeImage()
 
 ### Community 2 - "Community 2"
 Cohesion: 0.5
-Nodes (2): GET(), POST()
+Nodes (1): RootLayout()
 
 ### Community 3 - "Community 3"
 Cohesion: 1.0
@@ -231,17 +231,17 @@ Cohesion: 1.0
 Nodes (0): 
 
 ## Knowledge Gaps
-- **Thin community `Community 4`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 4`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 5`** (2 nodes): `PATCH()`, `route.ts`
+- **Thin community `Community 5`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 6`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 7`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 7`** (2 nodes): `PATCH()`, `route.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 8`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 8`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 9`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 9`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 10`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -309,7 +309,7 @@ Nodes (0):
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `POST()` connect `Community 2` to `Community 3`?**
+- **Why does `POST()` connect `Community 0` to `Community 3`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `createTenant()` connect `Community 3` to `Community 2`?**
+- **Why does `createTenant()` connect `Community 3` to `Community 0`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._

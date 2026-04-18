@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('version','?'\\), d.get\\('tool','?'\\)\\)\")",
+      "Read(//Users/choi/.npm/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(pip3 show *)",
+      "Bash(npm list *)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm exec *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('bin:', d.get\\('bin'\\)\\); print\\('main:', d.get\\('main'\\)\\)\")",
+      "Bash(pnpm remove *)",
+      "Bash(git rm *)"
+    ]
+  }
+}
