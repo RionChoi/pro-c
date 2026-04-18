@@ -61,14 +61,13 @@
 
 | 결정 | 내용 | ADR |
 |---|---|---|
-| Hermes SDLC | Claude Code(Brain) + Hermes(Hands) 역할 분담 | 예정 |
-| Harness 제거 | 과잉 복잡도. GitHub Actions + Vercel + Railway로 대체 | 예정 |
-| Graphify 도입 | 코드 구조 지식 그래프. graphify-out/ Git 포함 | 예정 |
-| Obsidian 도입 | ~/obsidian-vault/saas-platform-docs/ 4폴더 ADR 기록 | 예정 |
-| PostgreSQL | pgvector + Hybrid RAG는 Month 3+에 추가 | 예정 |
-| schema-per-tenant | 테넌트별 PostgreSQL 스키마 격리 | 예정 |
-| 3-앱 구조 | web-main / web-admin / web-partner 분리 (apps/api 불필요) | 예정 |
-| packages/db 중앙화 | Prisma 스키마를 단일 packages/db로 통합 예정 | 예정 |
+| Hermes SDLC | Claude Code(Brain) + Hermes(Hands) 역할 분담 | ADR-001 |
+| Harness 제거 | 과잉 복잡도. GitHub Actions + Vercel + Railway로 대체 | ADR-002 |
+| Graphify 도입 | 코드 구조 지식 그래프. graphify-out/ Git 포함 | ADR-003 |
+| Obsidian 도입 | ~/obsidian-vault/saas-platform-docs/ 4폴더 ADR 기록 | ADR-004 |
+| PostgreSQL | schema-per-tenant, pgvector Hybrid RAG는 Month 3+ | ADR-005 |
+| 3-앱 구조 | web-main / web-admin / web-partner 분리 (apps/api 불필요) | ADR-006 |
+| packages/db·auth 중앙화 | Prisma + NextAuth 공유 패키지 예정 (현재 각 앱 분산) | ADR-007 |
 
 ---
 
