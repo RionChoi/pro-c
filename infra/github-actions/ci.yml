@@ -58,6 +58,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: ci
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    env:
+      STAGING_DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
 
     steps:
       - name: Checkout
@@ -78,6 +80,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run migrations (staging)
+        if: ${{ env.STAGING_DATABASE_URL != '' }}
         run: pnpm --filter @repo/db run db:deploy
         env:
-          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+          DATABASE_URL: ${{ env.STAGING_DATABASE_URL }}
