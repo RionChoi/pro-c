@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install*)",
+      "Bash(pnpm run*)",
+      "Bash(pnpm build*)",
+      "Bash(pnpm lint*)",
+      "Bash(pnpm check-types*)",
+      "Bash(pnpm --filter*)",
+      "Bash(npx prisma generate*)",
+      "Bash(npx prisma migrate dev*)",
+      "Bash(npx graphify*)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(mkdir -p*)",
+      "Bash(ls*)",
+      "Bash(cat*)",
+      "Bash(find*)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(prisma migrate deploy*)",
+      "Bash(cat .env*)",
+      "Bash(cat *.env*)"
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+# AGENTS.md — Platform AI Context
+
+> 이 파일은 Claude Code, Hermes 등 모든 AI 행위자가 읽는 공유 컨텍스트다.
+> 변경 시 Claude Code가 업데이트하고 Git에 커밋한다.
+> 마지막 업데이트: 2026-04-18
+
+---
+
+## 1. Project Overview
+
+멀티테넌트 SaaS 플랫폼. 테넌트별 스키마 격리(schema-per-tenant) 방식 적용.
+단독 개발자: Ekko. AI 협업: Claude Code (Brain) + Hermes (Hands).
+
+**Tech Stack**
+- Runtime: Node.js 20 / TypeScript
+- Monorepo: Turborepo + pnpm
+- Frontend: Next.js 16.2 (App Router, Server Components)
+- Auth: NextAuth v5 (Google OAuth 2.0)
+- DB: PostgreSQL (local: Railway, schema-per-tenant)
+- ORM: Prisma 5
+- Message Queue: Kafka (Confluent, via Docker locally)
+- CI/CD: GitHub Actions → Vercel (frontend) + Railway (DB)
+
+---
+
+## 2. Project Structure
+
+```
+/Users/choi/platform/
+├── apps/
+│   ├── web-main/      Next.js 16.2 — 메인 서비스 포털 (port 3000)
+│   ├── web-admin/     Next.js 16.2 — 어드민 포털
+│   └── web-partner/   Next.js 16.2 — 파트너 포털
+├── packages/
+│   ├── ui/            shadcn/ui 기반 공유 컴포넌트
+│   ├── shared-types/  공유 TypeScript 타입 (api.ts, auth.ts, user.ts)
+│   └── shared-config/ ESLint, TypeScript 설정 preset
+├── infra/
+│   ├── github-actions/ CI 워크플로우
+│   ├── helm/           Helm chart (web-main)
+│   └── k8s/            ArgoCD, K8s manifest
+├── graphify-out/      Graphify 출력 (graph.json, GRAPH_REPORT.md) — Git 포함
+├── docker-compose.yml Kafka + Zookeeper + Kafka UI (local)
+├── turbo.json
+├── pnpm-workspace.yaml
+├── AGENTS.md          ← 이 파일
+├── CLAUDE.md          Claude Code 전용 규칙
+└── README.md
+```
+
+### 2.1 패키지 로드맵 (미구현, 우선순위 순)
+
+| 패키지 | 상태 | 설명 |
+|---|---|---|
+| `packages/db` | 예정 | Prisma 중앙화 (현재 각 앱에 분산) |
+| `packages/auth` | 예정 | NextAuth 공유 설정 (현재 각 앱에 분산) |
+
+---
+
+## 3. Key Architectural Decisions
+
+| 결정 | 내용 | ADR |
+|---|---|---|
+| Hermes SDLC | Claude Code(Brain) + Hermes(Hands) 역할 분담 | 예정 |
+| Harness 제거 | 과잉 복잡도. GitHub Actions + Vercel + Railway로 대체 | 예정 |
+| Graphify 도입 | 코드 구조 지식 그래프. graphify-out/ Git 포함 | 예정 |
+| Obsidian 도입 | ~/obsidian-vault/saas-platform-docs/ 4폴더 ADR 기록 | 예정 |
+| PostgreSQL | pgvector + Hybrid RAG는 Month 3+에 추가 | 예정 |
+| schema-per-tenant | 테넌트별 PostgreSQL 스키마 격리 | 예정 |
+| 3-앱 구조 | web-main / web-admin / web-partner 분리 (apps/api 불필요) | 예정 |
+| packages/db 중앙화 | Prisma 스키마를 단일 packages/db로 통합 예정 | 예정 |
+
+---
+
+## 4. Conventions
+
+### 4.1 파일 네이밍
+- 컴포넌트: PascalCase (`UserCard.tsx`)
+- 유틸/훅: camelCase (`useTenant.ts`)
+- 라우트 핸들러: `route.ts` (Next.js 규칙)
+- 환경변수: SCREAMING_SNAKE_CASE
+
+### 4.2 코딩 규칙
+- TypeScript strict mode. `any` 사용 금지.
+- `@repo/*` workspace import를 외부 패키지보다 우선.
+- Prisma Client는 `lib/prisma.ts` 싱글톤 패턴.
+- Server Component 기본, 필요 시만 `"use client"`.
+
+### 4.3 환경변수 (turbo.json globalEnv 등록 필수)
+```
+AUTH_SECRET, AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET
+DATABASE_URL
+NEXTAUTH_URL
+KAFKA_BROKER
+```
+
+---
+
+## 5. Graphify Management
+
+- **실행 주체**: Hermes (실행) / Claude Code (전략 판단)
+- **출력 경로**: `graphify-out/` — Git에 포함, 수동 편집 금지
+- **재빌드 트리거**: 매주 월요일 03:00 (cron), PR 머지 직후, packages/ 구조 변경
+- **파일 검색 전에 `graphify-out/graph.json` 먼저 참조할 것**
+- Full rebuild 하루 3회 이내
+
+---
+
+## 6. Obsidian Vault
+
+- **경로**: `~/obsidian-vault/saas-platform-docs/`
+- **구조**: `decisions/` · `postmortems/` · `knowledge/` · `prompts/`
+- ADR 작성: Claude Code 초안 → Ekko 확정 → Git commit
+- 모든 아키텍처 결정은 ADR로 기록 (구두 합의 금지)
+
+---
+
+## 7. CI/CD & Environments
+
+| 환경 | 배포 방법 | 승인자 |
+|---|---|---|
+| dev (preview) | GitHub Actions → Vercel 자동 | 자동 |
+| staging | 수동 | Ekko |
+| prod | 수동, 최종 | Ekko 전담 |
+
+**GitHub Actions** (`.github/workflows/ci.yml`): lint → type-check → build
+
+---
+
+## 8. Forbidden Actions (AI 공통)
+
+- `git push --force` to main
+- Secrets 조회/수정 (`.env*` 파일 읽기 포함)
+- Production 환경변수 변경
+- `prisma migrate deploy` to prod
+- staging/prod 배포 실행
+- `graph.json` 수동 편집
+- `node_modules/` 직접 수정
