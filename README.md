@@ -1,84 +1,98 @@
-# pro-c
+# pro-c — C / C++ 학습 프로젝트
 
-C 언어 학습 프로젝트입니다.
+C 언어 기초부터 고급까지 학습한 뒤, C++로 이어서 학습하는 프로젝트입니다.
+매일 아침 7시(KST) 자동으로 2세션씩 코딩하고 GitHub에 올립니다.
 
-## 오늘 학습 요약
+## 참조 강좌
+- **C**: [Bro Code — C Programming Full Course](https://youtube.com/watch?v=87SH2Cn0s9A)
+- **C++**: [Bro Code — C++ Full Course](https://youtube.com/watch?v=uhFpPlMsLzY)
 
-오늘은 기초부터 실습 중심으로 4개 과정을 정리했습니다.
+## 진행 현황
 
-1. 변수와 입출력
-- `int`, `double`, `const` 사용
-- `printf` 포맷(`%d`, `%.1f`) 이해
-- `scanf` 입력과 반환값 검사의 필요성
-- 과제 2 + 게임 1 추가 완료
+### Phase 1: C 언어 (`c-lang/`)
 
-2. 조건문과 반복문
-- `if / else if / else`
-- `for`, `while`
-- 메뉴 기반 반복 처리 패턴
+| 세션 | 주제 | 상태 |
+|------|------|------|
+| 01 | 변수와 입출력 | ✅ |
+| 02 | 조건문과 반복문 | ✅ |
+| 03 | 함수와 배열 | ✅ |
+| 04 | 포인터와 문자열 | ✅ |
+| 05 | 구조체 | ⬜ |
+| 06 | Enum & Typedef | ⬜ |
+| 07 | 동적 메모리 | ⬜ |
+| 08 | 파일 I/O | ⬜ |
+| 09 | 전처리기 & 헤더 | ⬜ |
+| 10 | 비트연산 & 고급 | ⬜ |
+| 11 | 연결 리스트 | ⬜ |
+| 12 | 정렬 & 탐색 | ⬜ |
+| 13 | 에러 처리 | ⬜ |
+| 14 | C 최종 프로젝트 | ⬜ |
 
-3. 함수와 배열
-- 함수 분리(평균/최대/학점 변환)
-- 배열 순회 및 통계 처리
-- 재사용 가능한 코드 구조
+### Phase 2: C++ (`cpp-lang/`)
 
-4. 포인터와 문자열(예정/확장)
-- 포인터 기초 개념
-- 문자열 입력/처리 기반 확장 과제 준비
+| 세션 | 주제 | 상태 |
+|------|------|------|
+| 01 | C++ 기초 & iostream | ⬜ |
+| 02 | 문자열 & 네임스페이스 | ⬜ |
+| 03 | 제어 흐름 | ⬜ |
+| 04 | 함수 & 오버로딩 | ⬜ |
+| 05 | 배열 & 벡터 | ⬜ |
+| 06 | 포인터 & 참조 | ⬜ |
+| 07 | OOP — 클래스 | ⬜ |
+| 08 | 생성자 & 소멸자 | ⬜ |
+| 09 | 상속 & 다형성 | ⬜ |
+| 10 | 템플릿 | ⬜ |
+| 11 | STL 컨테이너 | ⬜ |
+| 12 | 예외 처리 | ⬜ |
+| 13 | 파일 I/O & 스트림 | ⬜ |
+| 14 | C++ 최종 프로젝트 | ⬜ |
 
-## 오늘 추가 산출물
-- 각 강의 폴더에 `homework2.c`, `game1.c` 추가
-- 포인터/문자열 강의(04) 및 과제/게임 포함
-- 로드맵에 "C 완료 후 C++ 전환" 계획 반영
+## 세션별 파일 구성
 
-## 오늘 개선한 코드 품질 포인트
-
-- `main(void)` 형태 권장
-- `scanf` 반환값 검증으로 입력 안정성 강화
-- 0으로 나누기 같은 예외 처리 추가
-- 함수 분리로 가독성/유지보수성 개선
+| 파일 | 역할 |
+|------|------|
+| `README.md` | 학습 내용 요약 (한국어) |
+| `homework.c/.cpp` | 과제 1 |
+| `homework2.c/.cpp` | 과제 2 |
+| `game1.c/.cpp` | 미니 게임 |
 
 ## 프로젝트 구조
 
 ```text
 pro-c/
 ├── README.md
-├── Helloworl.c
+├── CLAUDE.md
 ├── docs/
 │   ├── LEARNING_ROADMAP.md
-│   └── CODE_REVIEW.md
-└── course/
-    ├── 01-variables-io/
-    │   ├── README.md
-    │   └── homework.c
-    ├── 02-condition-loop/
-    │   ├── README.md
-    │   └── homework.c
-    ├── 03-function-array/
-    │   ├── README.md
-    │   └── homework.c
-    └── 04-pointers-strings/
-        ├── README.md
-        └── homework.c
+│   ├── CODE_REVIEW.md
+│   └── SCHEDULE.md
+├── c-lang/
+│   ├── 01-variables-io/
+│   ├── 02-condition-loop/
+│   ├── 03-function-array/
+│   ├── 04-pointers-strings/
+│   ├── 05-structs/          ... (~ 14-final-project/)
+│   └── ...
+└── cpp-lang/
+    ├── 01-cpp-basics-iostream/
+    ├── 02-string-namespace/  ... (~ 14-final-project/)
+    └── ...
 ```
 
 ## 실행 방법
 
+### C 코드
 ```bash
-cc -Wall -Wextra -Wpedantic Helloworl.c -o hello
-./hello
-```
-
-과제 실행 예시:
-
-```bash
-cc -Wall -Wextra -Wpedantic course/01-variables-io/homework.c -o hw1
+cc -Wall -Wextra -Wpedantic c-lang/01-variables-io/homework.c -o hw1
 ./hw1
 ```
 
-## 다음 학습 권장
+### C++ 코드
+```bash
+g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework.cpp -o hw1
+./hw1
+```
 
-- 배열 + 포인터 연계 문제
-- 문자열 함수(`strlen`, `strcpy`, `strcmp`) 안전 사용
-- 파일 입출력(`fopen`, `fgets`, `fprintf`) 기초
-- 미니 CLI 프로젝트(메뉴형)
+## 자동화
+- **Hermes Agent** cron job으로 매일 아침 7시(KST) 자동 실행
+- 상세 설정: [`docs/SCHEDULE.md`](docs/SCHEDULE.md)

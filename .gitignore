@@ -9,5 +9,13 @@
 .idea
 .lh
 .vscode
-.Helloworl.dSYM/*
 Info.plist
+
+# Compiled binaries
+*.o
+*.out
+*.dSYM/
+Helloworl
+
+# macOS
+.DS_Store

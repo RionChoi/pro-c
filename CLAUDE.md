@@ -6,9 +6,11 @@ This file describes the structure, conventions, and development workflow for the
 
 ## Project Overview
 
-**pro-c** is a structured C language learning project. It progresses through four core topics in a curriculum-style format, with each lesson containing exercises and a practical mini-project. All code is written in C (C11 standard) with no external dependencies.
+**pro-c** is a structured C and C++ language learning project. It progresses through 28 sessions total: 14 sessions of C followed by 14 sessions of C++. Each session contains exercises and a practical mini-project. All C code uses C11 standard and all C++ code uses C++17 standard, with no external dependencies.
 
 The learner is **RionChoi**. Documentation is primarily written in Korean.
+
+**Reference Course**: Bro Code YouTube (C Programming Full Course + C++ Full Course)
 
 ---
 
@@ -16,34 +18,31 @@ The learner is **RionChoi**. Documentation is primarily written in Korean.
 
 ```
 pro-c/
-├── CLAUDE.md                       # This file
-├── README.md                       # Korean-language project summary
-├── Helloworl.c                     # Initial Hello World program (has a known typo in filename)
-├── Helloworl.dSYM/                 # macOS debug symbols (not tracked by git)
+├── CLAUDE.md                          # This file
+├── README.md                          # Korean-language project summary
+├── Helloworl.c                        # Initial Hello World program
 ├── docs/
-│   ├── LEARNING_ROADMAP.md         # Weekly learning plan and progress tracking
-│   └── CODE_REVIEW.md              # Code review standards and action items
-└── course/
-    ├── 01-variables-io/            # Lesson 1: Variables, printf, scanf
+│   ├── LEARNING_ROADMAP.md            # Full 28-session roadmap and progress
+│   ├── CODE_REVIEW.md                 # Code review standards
+│   └── SCHEDULE.md                    # Hermes Agent cron job configuration
+├── c-lang/                            # C language sessions (01-14)
+│   ├── 01-variables-io/
+│   │   ├── README.md
+│   │   ├── homework.c
+│   │   ├── homework2.c
+│   │   └── game1.c
+│   ├── 02-condition-loop/
+│   ├── 03-function-array/
+│   ├── 04-pointers-strings/
+│   ├── 05-structs/                    # Sessions 05-14: auto-generated
+│   └── ... (up to 14-final-project/)
+└── cpp-lang/                          # C++ sessions (01-14)
+    ├── 01-cpp-basics-iostream/
     │   ├── README.md
-    │   ├── homework.c              # Core assignment (two-integer arithmetic)
-    │   ├── homework2.c             # Extended assignment (temperature conversion)
-    │   └── game1.c                 # Mini-project (number guessing game)
-    ├── 02-condition-loop/          # Lesson 2: if/else, for, while
-    │   ├── README.md
-    │   ├── homework.c              # Menu-driven program (times table, sum, prime)
-    │   ├── homework2.c             # Star pyramid display
-    │   └── game1.c                 # Rock-Paper-Scissors vs computer
-    ├── 03-function-array/          # Lesson 3: Functions, arrays, statistics
-    │   ├── README.md
-    │   ├── homework.c              # Student grade analysis (avg/max/grade)
-    │   ├── homework2.c             # Pass/fail counting from 5 scores
-    │   └── game1.c                 # Dice simulation game
-    └── 04-pointers-strings/        # Lesson 4: Pointers, strings, fgets
-        ├── README.md
-        ├── homework.c              # Pointer-based score array processing
-        ├── homework2.c             # String reversal via pointer iteration
-        └── game1.c                 # String matching game (3 attempts)
+    │   ├── homework.cpp
+    │   ├── homework2.cpp
+    │   └── game1.cpp
+    └── ... (up to 14-final-project/)
 ```
 
 ---
@@ -52,38 +51,46 @@ pro-c/
 
 There is no Makefile or build system. All compilation is done manually.
 
-### Standard compilation (minimum)
+### C compilation
 ```bash
 cc -Wall -Wextra -Wpedantic <file.c> -o <output>
 ./<output>
 ```
 
-### Strict compilation (recommended for review)
+### C compilation (strict, recommended for review)
 ```bash
 clang -std=c11 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wformat=2 \
   -Wnull-dereference -Wdouble-promotion -Wstrict-prototypes <file.c> -o <output>
 ```
 
+### C++ compilation
+```bash
+g++ -std=c++17 -Wall -Wextra -Wpedantic <file.cpp> -o <output>
+./<output>
+```
+
+### C++ compilation (strict, recommended for review)
+```bash
+g++ -std=c++17 -Wall -Wextra -Wpedantic -Wshadow -Wconversion \
+  -Wnull-dereference -Wdouble-promotion <file.cpp> -o <output>
+```
+
 ### Examples
 ```bash
-# Compile and run the Hello World file
-cc -Wall -Wextra -Wpedantic Helloworl.c -o hello
-./hello
-
-# Compile and run a lesson homework
-cc -Wall -Wextra -Wpedantic course/01-variables-io/homework.c -o hw1
+# C example
+cc -Wall -Wextra -Wpedantic c-lang/01-variables-io/homework.c -o hw1
 ./hw1
 
-# Compile lesson 4 homework (uses string.h)
-cc -Wall -Wextra -Wpedantic course/04-pointers-strings/homework.c -o hw4
-./hw4
+# C++ example
+g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework.cpp -o hw1
+./hw1
 ```
 
 There are no tests to run, no linting tools to invoke, and no CI/CD pipeline. Verification is done by manually compiling and running each program.
 
 ---
 
-## Code Conventions
+## C Code Conventions
 
 ### Function signature
 Always use `int main(void)` — never `int main()`. The latter produces a `-Wstrict-prototypes` warning.
@@ -97,17 +104,13 @@ int main() { ... }
 ```
 
 ### Input validation
-Every `scanf()` call **must** check its return value. Failure to do so is the primary safety issue flagged in code reviews.
+Every `scanf()` call **must** check its return value.
 
 ```c
-// Correct
 if (scanf("%d", &num) != 1) {
     fprintf(stderr, "입력 오류\n");
     return 1;
 }
-
-// Wrong — do not omit the return value check
-scanf("%d", &num);
 ```
 
 ### String input
@@ -162,101 +165,172 @@ Use `const` for array pointer parameters that are read-only.
 ### Array bounds
 Always validate index bounds and user-supplied values before using them.
 
-```c
-if (score < 0 || score > 100) {
-    fprintf(stderr, "점수 범위 오류\n");
-    return 1;
-}
-```
-
-### Standard includes
-Use only standard C library headers:
+### Standard includes (C only)
 - `<stdio.h>` — printf, scanf, fgets, fprintf
-- `<stdlib.h>` — rand, srand, exit
+- `<stdlib.h>` — rand, srand, exit, malloc, free
 - `<string.h>` — strcmp, strcspn, strlen
 - `<time.h>` — time (for srand seeding)
 
 ---
 
+## C++ Code Conventions
+
+### Function signature
+Use `int main()` for C++ (no `void` parameter needed).
+
+```cpp
+int main() { ... }
+```
+
+### I/O
+Use `std::cout` / `std::cin` instead of `printf` / `scanf`.
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name;
+    std::cout << "이름을 입력하세요: ";
+    std::getline(std::cin, name);
+    std::cout << "안녕하세요, " << name << "님!\n";
+    return 0;
+}
+```
+
+### String input
+Use `std::getline(std::cin, str)` for full-line string input.
+
+### Naming conventions
+- **Classes**: PascalCase (`StudentRecord`, `BankAccount`)
+- **Functions/methods**: camelCase or snake_case consistently (`getScore()` or `get_score()`)
+- **Constants**: ALL_CAPS (`MAX_STUDENTS`, `BOARD_SIZE`)
+- **Variables**: camelCase or snake_case (`studentCount` or `student_count`)
+
+### Memory management
+- Prefer smart pointers (`std::unique_ptr`, `std::shared_ptr`) over raw `new`/`delete`
+- Use RAII pattern for resource management
+- Use `std::vector` instead of C-style arrays when possible
+
+### Parameter passing
+- Use `const &` for read-only objects larger than primitives
+- Use value for small types (int, double, char)
+- Use `&` for output parameters
+
+```cpp
+void printStudent(const Student& s);    // const reference
+void fillStudent(Student& s);           // reference (output)
+double calculate(int x, int y);         // value (small types)
+```
+
+### Standard includes (C++ only)
+- `<iostream>` — std::cout, std::cin
+- `<string>` — std::string, std::getline
+- `<vector>` — std::vector
+- `<algorithm>` — std::sort, std::find
+- `<memory>` — std::unique_ptr, std::shared_ptr
+- `<fstream>` — file I/O
+- `<cstdlib>` — rand, srand
+- `<ctime>` — time
+
+---
+
 ## Lesson File Pattern
 
-Every lesson follows the same three-file pattern:
-
+### C sessions (`c-lang/`)
 | File | Purpose |
 |---|---|
 | `homework.c` | Core assignment — primary exercise for the lesson topic |
 | `homework2.c` | Extended assignment — adds constraints or a related problem |
 | `game1.c` | Mini-project game — applies the lesson concepts interactively |
 
-When adding new lessons, follow this pattern.
+### C++ sessions (`cpp-lang/`)
+| File | Purpose |
+|---|---|
+| `homework.cpp` | Core assignment — primary exercise for the lesson topic |
+| `homework2.cpp` | Extended assignment — adds constraints or a related problem |
+| `game1.cpp` | Mini-project game — applies the lesson concepts interactively |
+
+When adding new sessions, follow this pattern.
 
 ---
 
-## Current Progress (as of 2026-04-10)
+## Current Progress (as of 2026-04-19)
 
-| Week | Topic | Status |
+| Phase | Sessions | Status |
 |---|---|---|
-| Week 1 | Variables, I/O, conditions, loops | In progress |
-| Week 2 | Functions, arrays, strings | In progress |
-| Week 3 | Pointers, memory | Started |
-| Week 4 | File I/O, mini CLI project | Planned |
+| C Language (c-lang/) | 01-04 completed, 05-14 pending | In progress |
+| C++ (cpp-lang/) | All pending | Not started |
 
-**Open action items (from CODE_REVIEW.md and LEARNING_ROADMAP.md):**
-- Rename `Helloworl.c` → `hello_world.c`
-- Fix `int main()` → `int main(void)` in `Helloworl.c`
-- Add `scanf` return value check to `Helloworl.c`
-- Extend `course/04-pointers-strings/homework.c` with:
-  - Minimum value function
-  - Ascending sort
-  - Input retry logic (up to 3 attempts)
+Total: 4/28 sessions completed.
+
+See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
 ---
 
 ## Development Workflow
 
-### Adding a new lesson
+### Automated daily sessions (Hermes Agent)
 
-1. Create `course/05-<topic>/` directory.
+The project runs on automatic schedule:
+1. Every day at 07:00 KST, Hermes Agent triggers the cron job.
+2. It reads `LEARNING_ROADMAP.md` to find the next incomplete sessions.
+3. It codes 2 sessions with all required files.
+4. It compiles and verifies each file.
+5. It updates the roadmap and commits/pushes to GitHub.
+
+### Adding a new session manually
+
+1. Create `c-lang/XX-<topic>/` or `cpp-lang/XX-<topic>/` directory.
 2. Add `README.md` — describe lesson goals, concepts, and assignment specs.
-3. Add `homework.c` — core exercise implementing the lesson topic.
-4. Add `homework2.c` — an extended variant or related exercise.
-5. Add `game1.c` — an interactive game that reinforces the lesson.
-6. Update `docs/LEARNING_ROADMAP.md` to reflect the new lesson.
+3. Add `homework.c/.cpp` — core exercise.
+4. Add `homework2.c/.cpp` — an extended variant.
+5. Add `game1.c/.cpp` — an interactive game.
+6. Update `docs/LEARNING_ROADMAP.md` to reflect the new session.
 7. Update the root `README.md` summary.
 
 ### Modifying existing code
 
-- Read the relevant `course/*/README.md` first to understand the assignment intent.
+- Read the relevant `README.md` first to understand the assignment intent.
 - Compile with strict flags after every change to catch warnings.
-- Do not introduce external libraries — standard C library only.
-- Preserve the existing error handling style (`fprintf(stderr, ...)` + `return 1`).
+- Do not introduce external libraries — standard library only.
+- Preserve the existing error handling style.
 
 ### Git conventions
 
-The repository uses descriptive commit messages in English. Recent examples:
-- `"add homework2 and game1 for each lesson, update roadmap and README"`
-- `"reorganize lessons by course folders and add daily README summary"`
-- `"add C lessons, homework templates, and code review"`
+The repository uses descriptive commit messages in English. Write commits in the imperative mood.
 
-Write commits in the imperative mood, describing what changed and why.
+Examples:
+- `"add session 05-structs with homework, game, and summary"`
+- `"complete C phase, begin C++ sessions"`
 
 ---
 
 ## Things to Avoid
 
-- Do not add a Makefile, CMake, or other build system unless explicitly requested — manual compilation is intentional for the learning context.
+- Do not add a Makefile, CMake, or other build system unless explicitly requested.
 - Do not add external libraries or package managers.
 - Do not create CI/CD configuration unless requested.
-- Do not use `int main()` — always `int main(void)`.
-- Do not call `scanf()` without checking the return value.
-- Do not use `scanf("%s", ...)` for string input — use `fgets()`.
-- Do not write to `stdout` for error messages — use `fprintf(stderr, ...)`.
+- **C**: Do not use `int main()` — always `int main(void)`.
+- **C**: Do not call `scanf()` without checking the return value.
+- **C**: Do not use `scanf("%s", ...)` for string input — use `fgets()`.
+- Do not write to `stdout` for error messages — use `fprintf(stderr, ...)` (C) or `std::cerr` (C++).
 - Do not commit compiled binaries (`*.o`, `*.dSYM`, executables without extension).
+
+---
+
+## Scheduling
+
+The project uses **Hermes Agent** for automatic daily execution.
+See `docs/SCHEDULE.md` for cron job configuration details.
+
+- Schedule: `0 22 * * *` (UTC) = 07:00 KST
+- Job name: `pro-c-daily-learning`
+- Completion: auto-removes cron job when all 28 sessions are done.
 
 ---
 
 ## Branch Information
 
 - Default branch: `main`
-- Active development branch: `claude/add-claude-documentation-ZrxKD`
 - Remote: `http://local_proxy@127.0.0.1:19695/git/RionChoi/pro-c`
