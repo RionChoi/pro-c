@@ -6,7 +6,7 @@ This file describes the structure, conventions, and development workflow for the
 
 ## Project Overview
 
-**pro-c** is a structured C and C++ language learning project. It progresses through 28 sessions total: 14 sessions of C followed by 14 sessions of C++. Each session contains exercises and a practical mini-project. All C code uses C11 standard and all C++ code uses C++17 standard, with no external dependencies.
+**pro-c** is a structured C and C++ language learning project. It progresses through 40 sessions total: 20 sessions of C followed by 20 sessions of C++. Each session contains exercises and a practical mini-project. All C code uses C11 standard and all C++ code uses C++17 standard, with no external dependencies.
 
 The learner is **RionChoi**. Documentation is primarily written in Korean.
 
@@ -25,7 +25,7 @@ pro-c/
 │   ├── LEARNING_ROADMAP.md            # Full 28-session roadmap and progress
 │   ├── CODE_REVIEW.md                 # Code review standards
 │   └── SCHEDULE.md                    # Hermes Agent cron job configuration
-├── c-lang/                            # C language sessions (01-14)
+├── c-lang/                            # C language sessions (01-20)
 │   ├── 01-variables-io/
 │   │   ├── README.md
 │   │   ├── homework.c
@@ -34,15 +34,17 @@ pro-c/
 │   ├── 02-condition-loop/
 │   ├── 03-function-array/
 │   ├── 04-pointers-strings/
-│   ├── 05-structs/                    # Sessions 05-14: auto-generated
-│   └── ... (up to 14-final-project/)
-└── cpp-lang/                          # C++ sessions (01-14)
+│   ├── 05-structs/
+│   ├── 06-enum-typedef/
+│   ├── 07-memory-allocation/          # Sessions 07-20: auto-generated
+│   └── ... (up to 20-final-project/)
+└── cpp-lang/                          # C++ sessions (01-20)
     ├── 01-cpp-basics-iostream/
     │   ├── README.md
     │   ├── homework.cpp
     │   ├── homework2.cpp
     │   └── game1.cpp
-    └── ... (up to 14-final-project/)
+    └── ... (up to 20-final-project/)
 ```
 
 ---
@@ -259,10 +261,10 @@ When adding new sessions, follow this pattern.
 
 | Phase | Sessions | Status |
 |---|---|---|
-| C Language (c-lang/) | 01-04 completed, 05-14 pending | In progress |
+| C Language (c-lang/) | 01-06 completed, 07-20 pending | In progress |
 | C++ (cpp-lang/) | All pending | Not started |
 
-Total: 4/28 sessions completed.
+Total: 6/40 sessions completed.
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
@@ -326,7 +328,7 @@ See `docs/SCHEDULE.md` for cron job configuration details.
 
 - Schedule: `0 22 * * *` (UTC) = 07:00 KST
 - Job name: `pro-c-daily-learning`
-- Completion: auto-removes cron job when all 28 sessions are done.
+- Completion: auto-removes cron job when all 40 sessions are done.
 
 ---
 

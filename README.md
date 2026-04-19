@@ -9,7 +9,7 @@ C 언어 기초부터 고급까지 학습한 뒤, C++로 이어서 학습하는 
 
 ## 진행 현황
 
-### Phase 1: C 언어 (`c-lang/`)
+### Phase 1: C 언어 (`c-lang/`) — 20세션
 
 | 세션 | 주제 | 상태 |
 |------|------|------|
@@ -17,8 +17,8 @@ C 언어 기초부터 고급까지 학습한 뒤, C++로 이어서 학습하는 
 | 02 | 조건문과 반복문 | ✅ |
 | 03 | 함수와 배열 | ✅ |
 | 04 | 포인터와 문자열 | ✅ |
-| 05 | 구조체 | ⬜ |
-| 06 | Enum & Typedef | ⬜ |
+| 05 | 구조체 | ✅ |
+| 06 | Enum & Typedef | ✅ |
 | 07 | 동적 메모리 | ⬜ |
 | 08 | 파일 I/O | ⬜ |
 | 09 | 전처리기 & 헤더 | ⬜ |
@@ -26,9 +26,15 @@ C 언어 기초부터 고급까지 학습한 뒤, C++로 이어서 학습하는 
 | 11 | 연결 리스트 | ⬜ |
 | 12 | 정렬 & 탐색 | ⬜ |
 | 13 | 에러 처리 | ⬜ |
-| 14 | C 최종 프로젝트 | ⬜ |
+| 14 | 스택 & 큐 | ⬜ |
+| 15 | 재귀 | ⬜ |
+| 16 | 함수 포인터 & 콜백 | ⬜ |
+| 17 | 멀티파일 프로젝트 | ⬜ |
+| 18 | 커맨드라인 인자 | ⬜ |
+| 19 | 해시 테이블 | ⬜ |
+| 20 | C 최종 프로젝트 | ⬜ |
 
-### Phase 2: C++ (`cpp-lang/`)
+### Phase 2: C++ (`cpp-lang/`) — 20세션
 
 | 세션 | 주제 | 상태 |
 |------|------|------|
@@ -41,11 +47,17 @@ C 언어 기초부터 고급까지 학습한 뒤, C++로 이어서 학습하는 
 | 07 | OOP — 클래스 | ⬜ |
 | 08 | 생성자 & 소멸자 | ⬜ |
 | 09 | 상속 & 다형성 | ⬜ |
-| 10 | 템플릿 | ⬜ |
-| 11 | STL 컨테이너 | ⬜ |
-| 12 | 예외 처리 | ⬜ |
-| 13 | 파일 I/O & 스트림 | ⬜ |
-| 14 | C++ 최종 프로젝트 | ⬜ |
+| 10 | 연산자 오버로딩 | ⬜ |
+| 11 | 템플릿 | ⬜ |
+| 12 | STL 컨테이너 | ⬜ |
+| 13 | STL 알고리즘 | ⬜ |
+| 14 | 예외 처리 | ⬜ |
+| 15 | 파일 I/O & 스트림 | ⬜ |
+| 16 | 람다 & 함수 객체 | ⬜ |
+| 17 | 스마트 포인터 & 이동 시맨틱 | ⬜ |
+| 18 | 멀티스레딩 기초 | ⬜ |
+| 19 | 디자인 패턴 | ⬜ |
+| 20 | C++ 최종 프로젝트 | ⬜ |
 
 ## 세션별 파일 구성
 
@@ -66,33 +78,31 @@ pro-c/
 │   ├── LEARNING_ROADMAP.md
 │   ├── CODE_REVIEW.md
 │   └── SCHEDULE.md
-├── c-lang/
+├── c-lang/                  # C 20세션
 │   ├── 01-variables-io/
-│   ├── 02-condition-loop/
-│   ├── 03-function-array/
-│   ├── 04-pointers-strings/
-│   ├── 05-structs/          ... (~ 14-final-project/)
-│   └── ...
-└── cpp-lang/
+│   ├── ...
+│   └── 20-final-project/
+└── cpp-lang/                # C++ 20세션
     ├── 01-cpp-basics-iostream/
-    ├── 02-string-namespace/  ... (~ 14-final-project/)
-    └── ...
+    ├── ...
+    └── 20-final-project/
 ```
 
 ## 실행 방법
 
 ### C 코드
 ```bash
-cc -Wall -Wextra -Wpedantic c-lang/01-variables-io/homework.c -o hw1
-./hw1
+cc -Wall -Wextra -Wpedantic c-lang/05-structs/homework.c -o hw
+./hw
 ```
 
 ### C++ 코드
 ```bash
-g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework.cpp -o hw1
-./hw1
+g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework.cpp -o hw
+./hw
 ```
 
 ## 자동화
 - **Hermes Agent** cron job으로 매일 아침 7시(KST) 자동 실행
+- 총 40세션, 약 17일 소요 예상
 - 상세 설정: [`docs/SCHEDULE.md`](docs/SCHEDULE.md)

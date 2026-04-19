@@ -38,7 +38,7 @@ pro-c C/C++ 자동 학습 세션을 실행합니다.
    - C++: int main(), std::cout/cin, RAII 패턴, const 참조 전달
 6. docs/LEARNING_ROADMAP.md를 업데이트합니다 (완료된 세션 ✅ 표시).
 7. git add, commit (영어 커밋 메시지), push를 실행합니다.
-8. 28세션 전부 완료 시:
+8. 40세션 전부 완료 시:
    - README.md에 프로젝트 완료 표시
    - 최종 커밋 후 cron job 자체를 제거합니다.
 ```
