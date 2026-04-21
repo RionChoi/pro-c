@@ -1,21 +1,43 @@
-# 07 Dynamic Memory
+# 세션 07 — 동적 메모리 (Dynamic Memory)
 
-## 과제 1 (`homework.c`)
-- 사용자로부터 배열 크기를 입력받아 `malloc` 으로 동적 할당하고, 1부터 N까지의 합을 계산합니다.
-- 모든 오류는 `fprintf(stderr, ...)` 로 출력하고, 성공 시 `Sum = <value>` 를 출력합니다.
+## 학습 목표
+- `malloc`, `calloc`, `realloc`, `free`의 사용 시점을 익힌다.
+- 사용자 입력 크기에 맞춰 메모리를 동적으로 관리한다.
+- 할당 실패, 입력 오류, 범위 오류를 안전하게 처리한다.
 
-## 과제 2 (`homework2.c`)
-- 초기 크기 5인 배열을 `malloc` 으로 할당하고, 사용자가 원하는 만큼 `realloc` 으로 크기를 늘립니다.
-- 새로 추가된 요소에 값을 입력받아 배열에 저장하고, 최종 배열의 모든 요소를 출력합니다.
-- 끝난 뒤 `free` 로 메모리를 해제합니다.
+## 핵심 개념
 
-## 미니 게임 (`game1.c`)
-- 숫자 맞추기 게임을 구현합니다. 프로그램이 1~100 사이의 난수를 생성하고, 사용자는 `fgets` 로 추측을 입력합니다.
-- 각 시도마다 `printf` 로 힌트를 주고, 성공하면 `malloc` 로 힌트 로그를 저장한 뒤 전체 로그를 출력합니다.
-- 게임 종료 시 `free` 로 메모리를 해제합니다.
+### 1) `malloc` / `free`
+```c
+int *arr = (int *)malloc(sizeof(int) * n);
+if (arr == NULL) {
+    fprintf(stderr, "메모리 할당 실패\n");
+    return 1;
+}
+free(arr);
+```
 
-### 코드 컨벤션
-- `int main(void)` 사용
-- `scanf` 반환값 검증
+### 2) `realloc`
+```c
+int *tmp = (int *)realloc(arr, sizeof(int) * new_size);
+if (tmp == NULL) {
+    free(arr);
+    return 1;
+}
+arr = tmp;
+```
+
+### 3) 입력 검증
+- 모든 `scanf`의 반환값 검사
 - 문자열 입력은 `fgets` 사용
-- 오류는 `fprintf(stderr, ...)` 로 출력
+- 오류 메시지는 `stderr`로 출력
+
+## 과제
+1. **homework.c** — 동적 배열 점수 분석기
+2. **homework2.c** — `realloc` 기반 확장 가계부
+
+## 게임
+- **game1.c** — 동적 맵 보물 탐험 게임
+
+## 참조
+- Bro Code C Full Course — Dynamic Memory 파트

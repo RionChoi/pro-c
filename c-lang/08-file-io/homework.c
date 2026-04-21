@@ -1,40 +1,58 @@
+/*
+ * 세션 08 — 과제 1: 텍스트 파일 정수 합계 계산기
+ *
+ * 기능:
+ *   - 파일명을 입력받아 파일을 연다
+ *   - 파일 내 모든 정수를 읽어 합계/개수 출력
+ *   - 파일이 없거나 정수가 없으면 오류 처리
+ */
+
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
+
+#define NAME_SIZE 256
 
 int main(void) {
-    int n;
-    printf("Enter number of elements: ");
-    if (scanf("%d", &n) != 1) {
+    char filename[NAME_SIZE];
+
+    printf("읽을 파일명을 입력하세요: ");
+    if (fgets(filename, sizeof(filename), stdin) == NULL) {
         fprintf(stderr, "입력 오류\n");
         return 1;
     }
-    if (n <= 0) {
-        fprintf(stderr, "양수만 허용\n");
+
+    filename[strcspn(filename, "\n")] = '\0';
+
+    if (filename[0] == '\0') {
+        fprintf(stderr, "파일명이 비어 있습니다.\n");
         return 1;
     }
-    // Open file for writing
-    FILE *fp = fopen("data.txt", "w");
-    if (!fp) {
-        fprintf(stderr, "파일 열기 실패\n");
+
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        fprintf(stderr, "파일을 열 수 없습니다: %s\n", filename);
         return 1;
     }
-    // Write numbers 1..n to file
-    for (int i = 1; i <= n; ++i) {
-        fprintf(fp, "%d\n", i);
-    }
-    fclose(fp);
-    // Open file for reading
-    fp = fopen("data.txt", "r");
-    if (!fp) {
-        fprintf(stderr, "파일 읽기 실패\n");
-        return 1;
-    }
-    long sum = 0;
+
+    long long sum = 0;
+    int count = 0;
     int value;
+
     while (fscanf(fp, "%d", &value) == 1) {
-        sum += value;
+        sum += (long long)value;
+        count++;
     }
+
     fclose(fp);
-    printf("Sum = %ld\n", sum);
+
+    if (count == 0) {
+        fprintf(stderr, "파일에 정수 데이터가 없습니다.\n");
+        return 1;
+    }
+
+    printf("파일: %s\n", filename);
+    printf("정수 개수: %d\n", count);
+    printf("합계: %lld\n", sum);
+
     return 0;
 }
