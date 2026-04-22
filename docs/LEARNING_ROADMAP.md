@@ -38,13 +38,13 @@
 | 06 | Enum & Typedef | ✅ 완료 |
 | 07 | 동적 메모리 (Dynamic Memory) | ✅ 완료 |
 | 08 | 파일 I/O (File I/O) | ✅ 완료 |
+| 09 | 전처리기 & 헤더 (Preprocessor & Headers) | ✅ 완료 |
+| 10 | 비트연산 & 고급 (Bitwise & Advanced) | ✅ 완료 |
 
 ### 남은 세션
 
 | 세션 | 주제 | 상태 |
 |------|------|------|
-| 09 | 전처리기 & 헤더 (Preprocessor & Headers) | ⬜ 대기 |
-| 10 | 비트연산 & 고급 (Bitwise & Advanced) | ⬜ 대기 |
 | 11 | 연결 리스트 (Linked List) | ⬜ 대기 |
 | 12 | 정렬 & 탐색 (Sorting & Searching) | ⬜ 대기 |
 | 13 | 에러 처리 (Error Handling) | ⬜ 대기 |
@@ -104,4 +104,5 @@
 | 2026-04-10 | C-01 ~ C-04 | 초기 세션 완료 |
 | 2026-04-19 | C-05, C-06 | 구조체, Enum & Typedef |
 | 2026-04-21 | C-07, C-08 | 동적 메모리, 파일 I/O |
+| 2026-04-22 | C-09, C-10 | 전처리기/헤더, 비트연산 |
 | — | — | 자동 스케줄 진행 중 |
