@@ -281,10 +281,17 @@ importers:
   packages/shared-config/typescript-config: {}
 
   packages/shared-types:
+    dependencies:
+      zod:
+        specifier: '3'
+        version: 3.25.76
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../shared-config/typescript-config
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.15.3
       typescript:
         specifier: ^5
         version: 5.9.2
@@ -2353,6 +2360,9 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
 snapshots:
 
@@ -4445,3 +4455,5 @@ snapshots:
   xtend@4.0.2: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.25.76: {}
