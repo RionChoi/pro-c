@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Data Flow — Clean Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #020617;
+      min-height: 100vh;
+      padding: 2rem;
+      color: white;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    .header { margin-bottom: 1.5rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot {
+      width: 12px; height: 12px; background: #22d3ee;
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+
+    .diagram-container {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 1rem;
+      border: 1px solid #1e293b;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+    svg { width: 100%; min-width: 1100px; display: block; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 0.75rem;
+      border: 1px solid #1e293b;
+      padding: 1.25rem;
+    }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; }
+    .card-dot.emerald { background: #34d399; }
+    .card-dot.violet { background: #a78bfa; }
+    .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; }
+    .card-dot.orange { background: #fb923c; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+
+    .footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #475569;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-row">
+      <div class="pulse-dot"></div>
+      <h1>Platform Data Flow & API Architecture</h1>
+    </div>
+    <p class="subtitle">Request → Auth → API → Kafka → DB (Multi-Tenant)</p>
+  </div>
+
+  <!-- DIAGRAM -->
+  <div class="diagram-container">
+    <svg viewBox="0 0 1100 720">
+
+      <defs>
+        <!-- Arrowhead -->
+        <marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+        </marker>
+        <marker id="ah-cyan" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#22d3ee"/>
+        </marker>
+        <marker id="ah-emerald" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#34d399"/>
+        </marker>
+        <marker id="ah-violet" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#a78bfa"/>
+        </marker>
+        <marker id="ah-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#fb923c"/>
+        </marker>
+        <marker id="ah-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#fbbf24"/>
+        </marker>
+        <!-- Grid -->
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+
+      <!-- ═══════════════════════════════════════════════════════════════
+           LANE LABELS (left side, vertical)
+           ═══════════════════════════════════════════════════════════════ -->
+      <text x="12" y="90" fill="#475569" font-size="8" transform="rotate(-90,12,90)">EXTERNAL</text>
+      <text x="12" y="215" fill="#475569" font-size="8" transform="rotate(-90,12,215)">FRONTEND</text>
+      <text x="12" y="330" fill="#475569" font-size="8" transform="rotate(-90,12,330)">MIDDLEWARE</text>
+      <text x="12" y="450" fill="#475569" font-size="8" transform="rotate(-90,12,450)">API + BUS</text>
+      <text x="12" y="575" fill="#475569" font-size="8" transform="rotate(-90,12,575)">DATA</text>
+
+      <!-- ═══════════════════════════════════════════════════════════════
+           LANE SEPARATORS (horizontal dashed lines)
+           ═══════════════════════════════════════════════════════════════ -->
+      <!-- Lane 1-2 separator -->
+      <line x1="20" y1="150" x2="1080" y2="150" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6"/>
+      <!-- Lane 2-3 separator -->
+      <line x1="20" y1="270" x2="1080" y2="270" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6"/>
+      <!-- Lane 3-4 separator -->
+      <line x1="20" y1="390" x2="1080" y2="390" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6"/>
+      <!-- Lane 4-5 separator -->
+      <line x1="20" y1="510" x2="1080" y2="510" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6"/>
+
+      <!-- ═══════════════════════════════════════════════════════════════
+           ARROWS (drawn FIRST so they appear BEHIND boxes)
+           All arrows use orthogonal paths (horizontal + vertical only)
+           ═══════════════════════════════════════════════════════════════ -->
+
+      <!-- Row 1→2: Users → Frontend (HTTPS) -->
+      <path d="M 175 125 L 175 160 L 265 160 L 265 168" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+      <path d="M 175 135 L 175 160 L 415 160 L 415 168" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+      <path d="M 175 125 L 175 155 L 565 155 L 565 168" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+
+      <!-- Row 1→2b: Google OAuth flow (curved up from users) -->
+      <path d="M 115 110 L 115 50 L 700 50 L 700 88" stroke="#fb7185" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#ah)"/>
+      <text x="380" y="44" fill="#fb7185" font-size="8">OAuth 2.0 / OpenID Connect</text>
+
+      <!-- Row 2→3: Frontend → Middleware -->
+      <path d="M 265 192 L 265 220 L 820 220 L 820 232" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+      <path d="M 415 192 L 415 220 L 820 225 L 820 232" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+      <path d="M 565 192 L 565 220 L 820 230 L 820 232" stroke="#22d3ee" stroke-width="1.5" fill="none" marker-end="url(#ah-cyan)"/>
+
+      <!-- Row 3→4: Middleware → API Routes -->
+      <path d="M 900 256 L 900 285 L 175 285 L 175 302" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#ah-emerald)"/>
+      <path d="M 900 262 L 900 285 L 370 285 L 370 302" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#ah-emerald)"/>
+      <path d="M 900 268 L 900 285 L 565 285 L 565 302" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#ah-emerald)"/>
+      <path d="M 900 274 L 900 285 L 760 285 L 760 302" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#ah-emerald)"/>
+
+      <!-- Row 4→5: API → DB (vertical down) -->
+      <path d="M 175 332 L 175 375 L 175 450 L 175 462" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#ah-violet)"/>
+      <path d="M 370 332 L 370 375 L 370 450 L 370 462" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#ah-violet)"/>
+      <path d="M 565 332 L 565 375 L 565 450 L 565 462" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#ah-violet)"/>
+      <path d="M 760 332 L 760 375 L 760 450 L 760 462" stroke="#a78bfa" stroke-width="1.5" fill="none" marker-end="url(#ah-violet)"/>
+
+      <!-- Kafka bus horizontal spine -->
+      <line x1="175" y1="418" x2="955" y2="418" stroke="#fb923c" stroke-width="2" stroke-dasharray="6,3"/>
+      <!-- Kafka verticals up from API routes -->
+      <path d="M 265 332 L 265 418" stroke="#fb923c" stroke-width="1.5" fill="none" marker-end="url(#ah-orange)"/>
+      <path d="M 460 332 L 460 418" stroke="#fb923c" stroke-width="1.5" fill="none" marker-end="url(#ah-orange)"/>
+      <path d="M 655 332 L 655 418" stroke="#fb923c" stroke-width="1.5" fill="none" marker-end="url(#ah-orange)"/>
+      <path d="M 850 332 L 850 418" stroke="#fb923c" stroke-width="1.5" fill="none" marker-end="url(#ah-orange)"/>
+      <path d="M 955 418 L 955 462" stroke="#fb923c" stroke-width="1.5" fill="none" marker-end="url(#ah-orange)"/>
+
+      <!-- Infra: GitHub Actions → Vercel → Railway (bottom) -->
+      <path d="M 80 640 L 300 640 L 300 622" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#ah-amber)"/>
+      <path d="M 300 598 L 300 565 L 175 565 L 175 548" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#ah-amber)"/>
+      <path d="M 300 598 L 300 565 L 565 565 L 565 548" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#ah-amber)"/>
+      <path d="M 300 598 L 300 565 L 760 565 L 760 548" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#ah-amber)"/>
+
+      <!-- ═══════════════════════════════════════════════════════════════
+           BOXES (drawn LAST so they appear IN FRONT of arrows)
+           ═══════════════════════════════════════════════════════════════ -->
+
+      <!-- ── ROW 1: EXTERNAL ── -->
+
+      <!-- Users: Browser -->
+      <rect x="40" y="95" width="135" height="50" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+      <rect x="40" y="95" width="135" height="50" rx="6" fill="rgba(30,41,59,0.5)"/>
+      <text x="107" y="115" fill="white" font-size="11" font-weight="600" text-anchor="middle">Users</text>
+      <text x="107" y="131" fill="#94a3b8" font-size="9" text-anchor="middle">Browser / Mobile</text>
+
+      <!-- Google OAuth -->
+      <rect x="640" y="95" width="120" height="50" rx="6" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+      <rect x="640" y="95" width="120" height="50" rx="6" fill="rgba(136,19,55,0.4)"/>
+      <text x="700" y="115" fill="white" font-size="11" font-weight="600" text-anchor="middle">Google OAuth</text>
+      <text x="700" y="131" fill="#fb7185" font-size="9" text-anchor="middle">Auth Provider</text>
+
+
+      <!-- ── ROW 2: FRONTEND APPS ── -->
+
+      <!-- web-main -->
+      <rect x="200" y="170" width="130" height="50" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+      <rect x="200" y="170" width="130" height="50" rx="6" fill="rgba(8,51,68,0.4)"/>
+      <text x="265" y="190" fill="white" font-size="11" font-weight="600" text-anchor="middle">web-main</text>
+      <text x="265" y="206" fill="#22d3ee" font-size="9" text-anchor="middle">Main Portal · Next.js</text>
+
+      <!-- web-admin -->
+      <rect x="350" y="170" width="130" height="50" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+      <rect x="350" y="170" width="130" height="50" rx="6" fill="rgba(8,51,68,0.4)"/>
+      <text x="415" y="190" fill="white" font-size="11" font-weight="600" text-anchor="middle">web-admin</text>
+      <text x="415" y="206" fill="#22d3ee" font-size="9" text-anchor="middle">Admin Portal · Next.js</text>
+
+      <!-- web-partner -->
+      <rect x="500" y="170" width="130" height="50" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+      <rect x="500" y="170" width="130" height="50" rx="6" fill="rgba(8,51,68,0.4)"/>
+      <text x="565" y="190" fill="white" font-size="11" font-weight="600" text-anchor="middle">web-partner</text>
+      <text x="565" y="206" fill="#22d3ee" font-size="9" text-anchor="middle">Partner Portal · Next.js</text>
+
+
+      <!-- ── ROW 3: MIDDLEWARE ── -->
+
+      <!-- Next.js Middleware -->
+      <rect x="760" y="235" width="140" height="50" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+      <rect x="760" y="235" width="140" height="50" rx="6" fill="rgba(120,53,15,0.3)"/>
+      <text x="830" y="255" fill="white" font-size="11" font-weight="600" text-anchor="middle">Next.js Middleware</text>
+      <text x="830" y="271" fill="#fbbf24" font-size="9" text-anchor="middle">JWT + Tenant Routing</text>
+
+
+      <!-- ── ROW 4: API ROUTES ── -->
+
+      <!-- /api/users -->
+      <rect x="110" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="110" y="305" width="130" height="50" rx="6" fill="rgba(6,78,59,0.4)"/>
+      <text x="175" y="325" fill="white" font-size="11" font-weight="600" text-anchor="middle">/api/users</text>
+      <text x="175" y="341" fill="#34d399" font-size="9" text-anchor="middle">Zod + Prisma Query</text>
+
+      <!-- /api/tenants -->
+      <rect x="305" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="305" y="305" width="130" height="50" rx="6" fill="rgba(6,78,59,0.4)"/>
+      <text x="370" y="325" fill="white" font-size="11" font-weight="600" text-anchor="middle">/api/tenants</text>
+      <text x="370" y="341" fill="#34d399" font-size="9" text-anchor="middle">Zod + Prisma Query</text>
+
+      <!-- /api/auth -->
+      <rect x="500" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="500" y="305" width="130" height="50" rx="6" fill="rgba(6,78,59,0.4)"/>
+      <text x="565" y="325" fill="white" font-size="11" font-weight="600" text-anchor="middle">/api/auth</text>
+      <text x="565" y="341" fill="#34d399" font-size="9" text-anchor="middle">NextAuth v5 + Google</text>
+
+      <!-- KafkaJS -->
+      <rect x="695" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/>
+      <rect x="695" y="305" width="130" height="50" rx="6" fill="rgba(251,146,60,0.2)"/>
+      <text x="760" y="325" fill="white" font-size="11" font-weight="600" text-anchor="middle">KafkaJS</text>
+      <text x="760" y="341" fill="#fb923c" font-size="9" text-anchor="middle">publishEvent() · Events</text>
+
+
+      <!-- ── KAFKA BUS (in the gap between Row 4 and Row 5) ── -->
+
+      <!-- Kafka label -->
+      <rect x="910" y="395" width="140" height="50" rx="6" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/>
+      <rect x="910" y="395" width="140" height="50" rx="6" fill="rgba(251,146,60,0.2)"/>
+      <text x="980" y="415" fill="white" font-size="11" font-weight="600" text-anchor="middle">Confluent Cloud</text>
+      <text x="980" y="431" fill="#fb923c" font-size="9" text-anchor="middle">Kafka Cluster · Events</text>
+
+      <!-- Local Kafka (docker-compose) -->
+      <rect x="910" y="455" width="140" height="50" rx="6" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/>
+      <rect x="910" y="455" width="140" height="50" rx="6" fill="rgba(251,146,60,0.2)"/>
+      <text x="980" y="475" fill="white" font-size="11" font-weight="600" text-anchor="middle">docker-compose</text>
+      <text x="980" y="491" fill="#fb923c" font-size="9" text-anchor="middle">Kafka + Zookeeper + UI</text>
+
+
+      <!-- ── ROW 5: DATA ── -->
+
+      <!-- Railway PostgreSQL (single box) -->
+      <rect x="40" y="465" width="1060" height="50" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="40" y="465" width="1060" height="50" rx="8" fill="rgba(76,29,149,0.3)"/>
+      <text x="570" y="485" fill="white" font-size="12" font-weight="600" text-anchor="middle">Railway PostgreSQL — Schema-per-Tenant</text>
+      <text x="570" y="501" fill="#a78bfa" font-size="9" text-anchor="middle">
+        tenant_ekko: User | Account | Session | Role | Plan  ·  tenant_beta: ...  ·  tenant_gamma: ...
+      </text>
+
+      <!-- @repo/db label inside DB lane -->
+      <rect x="960" y="465" width="130" height="50" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="960" y="465" width="130" height="50" rx="6" fill="rgba(76,29,149,0.4)"/>
+      <text x="1025" y="485" fill="white" font-size="10" font-weight="600" text-anchor="middle">@repo/db</text>
+      <text x="1025" y="499" fill="#a78bfa" font-size="8" text-anchor="middle">Prisma Client</text>
+
+
+      <!-- ── INFRA ROW (bottom) ── -->
+
+      <!-- GitHub Actions -->
+      <rect x="30" y="625" width="100" height="35" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+      <rect x="30" y="625" width="100" height="35" rx="6" fill="rgba(120,53,15,0.3)"/>
+      <text x="80" y="647" fill="white" font-size="10" font-weight="600" text-anchor="middle">GitHub Actions</text>
+
+      <!-- Vercel -->
+      <rect x="240" y="580" width="120" height="40" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+      <rect x="240" y="580" width="120" height="40" rx="6" fill="rgba(120,53,15,0.3)"/>
+      <text x="300" y="600" fill="white" font-size="10" font-weight="600" text-anchor="middle">Vercel</text>
+      <text x="300" y="614" fill="#fbbf24" font-size="9" text-anchor="middle">Frontend Deploy</text>
+
+      <!-- Railway (in infra) -->
+      <rect x="930" y="565" width="140" height="40" rx="6" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="930" y="565" width="140" height="40" rx="6" fill="rgba(76,29,149,0.3)"/>
+      <text x="1000" y="585" fill="white" font-size="10" font-weight="600" text-anchor="middle">Railway</text>
+      <text x="1000" y="599" fill="#a78bfa" font-size="9" text-anchor="middle">Managed PostgreSQL</text>
+
+
+      <!-- ── LEGEND (bottom right, outside all content) ── -->
+      <rect x="390" y="628" width="240" height="108" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="402" y="646" fill="white" font-size="9" font-weight="600">Legend</text>
+
+      <rect x="402" y="654" width="14" height="9" rx="2" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+      <text x="422" y="662" fill="#94a3b8" font-size="8">Frontend (Next.js)</text>
+
+      <rect x="402" y="668" width="14" height="9" rx="2" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+      <text x="422" y="676" fill="#94a3b8" font-size="8">Backend (API Routes)</text>
+
+      <rect x="402" y="682" width="14" height="9" rx="2" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="422" y="690" fill="#94a3b8" font-size="8">Middleware / Cloud</text>
+
+      <rect x="402" y="696" width="14" height="9" rx="2" fill="rgba(76,29,149,0.3)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="422" y="704" fill="#94a3b8" font-size="8">Database (PostgreSQL)</text>
+
+      <rect x="402" y="710" width="14" height="9" rx="2" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1"/>
+      <text x="422" y="718" fill="#94a3b8" font-size="8">Auth / Security</text>
+
+      <line x1="520" y1="657" x2="534" y2="657" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="540" y="661" fill="#94a3b8" font-size="8">Kafka Event Bus</text>
+
+      <line x1="520" y1="671" x2="534" y2="671" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ah-cyan)"/>
+      <text x="540" y="675" fill="#94a3b8" font-size="8">HTTPS / Request</text>
+
+      <line x1="520" y1="685" x2="534" y2="685" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="540" y="689" fill="#94a3b8" font-size="8">OAuth Flow</text>
+
+    </svg>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"><div class="card-dot cyan"></div><h3>Request Flow</h3></div>
+      <ul>
+        <li>• User → Next.js App (HTTPS)</li>
+        <li>• Middleware: JWT verify + Tenant routing</li>
+        <li>• API Route: Zod validation → Prisma</li>
+        <li>• Response: JSON + Set-Cookie</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot rose"></div><h3>Auth Flow</h3></div>
+      <ul>
+        <li>• Login → Google OAuth 2.0</li>
+        <li>• Callback → Account + Session created</li>
+        <li>• JWT issued → HttpOnly Cookie</li>
+        <li>• NextAuth v5 · @repo/auth shared</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot violet"></div><h3>Multi-Tenant DB</h3></div>
+      <ul>
+        <li>• Schema-per-tenant (search_path)</li>
+        <li>• Railway managed PostgreSQL</li>
+        <li>• @repo/db singleton via Prisma</li>
+        <li>• Tenant isolation: strongest</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot orange"></div><h3>Kafka Events</h3></div>
+      <ul>
+        <li>• Domain events → publishEvent()</li>
+        <li>• Confluent Cloud (prod)</li>
+        <li>• docker-compose Kafka (local)</li>
+        <li>• KafkaJS in web-main/lib</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot amber"></div><h3>CI/CD Pipeline</h3></div>
+      <ul>
+        <li>• GitHub Actions: lint → type-check → build</li>
+        <li>• Vercel: auto-deploy on main</li>
+        <li>• Railway: DB migrations on deploy</li>
+        <li>• Prisma migrate: never on prod directly</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot emerald"></div><h3>Shared Packages</h3></div>
+      <ul>
+        <li>• @repo/db — Prisma singleton</li>
+        <li>• @repo/auth — NextAuth factory</li>
+        <li>• @repo/shared-types — Zod + events</li>
+        <li>• @repo/ui — shadcn/ui components</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer">Platform Architecture · Monorepo: pnpm + Turborepo · 2026-04-22</p>
+</div>
+</body>
+</html>

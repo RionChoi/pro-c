@@ -1,7 +1,7 @@
-# Graph Report - /Users/choi/platform  (2026-04-22)
+# Graph Report - /Users/choi/platform  (2026-04-25)
 
 ## Corpus Check
-- 63 files · ~23,519 words
+- 63 files · ~30,444 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
