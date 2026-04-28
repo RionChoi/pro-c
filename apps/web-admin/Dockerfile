@@ -21,10 +21,11 @@ RUN apk add --no-cache openssl
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/web-admin/node_modules ./apps/web-admin/node_modules
+COPY --from=deps /app/packages/db/node_modules ./packages/db/node_modules
 COPY . .
 
 RUN npm install -g pnpm@9.0.0
-RUN pnpm exec prisma generate --schema=packages/db/prisma/schema.prisma
+RUN ./packages/db/node_modules/.bin/prisma generate --schema=packages/db/prisma/schema.prisma
 RUN pnpm --filter web-admin build
 
 FROM base AS runner
