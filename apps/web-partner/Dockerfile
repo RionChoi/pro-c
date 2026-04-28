@@ -23,7 +23,7 @@ COPY --from=deps /app/apps/web-partner/node_modules ./apps/web-partner/node_modu
 COPY . .
 
 RUN npm install -g pnpm@9.0.0
-RUN node_modules/.bin/prisma generate --schema=packages/db/prisma/schema.prisma
+RUN pnpm exec prisma generate --schema=packages/db/prisma/schema.prisma
 RUN pnpm --filter web-partner build
 
 FROM base AS runner
