@@ -1,15 +1,12 @@
 replicaCount: 1
-
 image:
-  tag: staging
-
+  tag: sha-e363d53
 ingress:
   enabled: true
   host: admin.staging.example.com
   tls:
     enabled: true
     clusterIssuer: letsencrypt-staging
-
 env:
   NODE_ENV: production
   NEXTAUTH_URL: https://admin.staging.example.com
