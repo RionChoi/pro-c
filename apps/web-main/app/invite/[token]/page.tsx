@@ -1,5 +1,4 @@
 import { auth } from "@/auth";
-import { redirect } from "next/navigation";
 import { prisma } from "@repo/db";
 import { acceptInviteAction } from "./actions";
 
