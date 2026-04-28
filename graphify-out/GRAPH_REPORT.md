@@ -1,8 +1,7 @@
-# Graph Report - /Users/choi/platform  (2026-04-28)
+# Graph Report - .  (2026-04-28)
 
 ## Corpus Check
-- 225 files · ~294,172 words
-- Verdict: corpus is large enough that graph structure adds value.
+- cluster-only mode — file stats not available
 
 ## Summary
 - 6272 nodes · 21971 edges · 299 communities detected
@@ -2084,16 +2083,16 @@ Nodes (0):
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `NotebookLMClient` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 8`, `Community 9`, `Community 12`, `Community 13`, `Community 17`, `Community 18`?**
-  _High betweenness centrality (0.155) - this node is a cross-community bridge._
+  _High betweenness centrality (0.184) - this node is a cross-community bridge._
 - **Why does `AuthTokens` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 13`, `Community 14`, `Community 15`, `Community 17`, `Community 18`?**
-  _High betweenness centrality (0.149) - this node is a cross-community bridge._
+  _High betweenness centrality (0.146) - this node is a cross-community bridge._
 - **Why does `ValidationError` connect `Community 6` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`?**
-  _High betweenness centrality (0.109) - this node is a cross-community bridge._
+  _High betweenness centrality (0.103) - this node is a cross-community bridge._
 - **Are the 737 inferred relationships involving `ValidationError` (e.g. with `TestNewEnums` and `TestConfigureChat`) actually correct?**
   _`ValidationError` has 737 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 682 inferred relationships involving `AuthTokens` (e.g. with `TestAuthTokens` and `TestExtractCookies`) actually correct?**
+- **Are the 682 inferred relationships involving `AuthTokens` (e.g. with `E2E test fixtures and configuration.` and `TestAuthTokens`) actually correct?**
   _`AuthTokens` has 682 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 638 inferred relationships involving `NotebookLMClient` (e.g. with `TestNotebookLMClientInit` and `TestClientContextManager`) actually correct?**
+- **Are the 638 inferred relationships involving `NotebookLMClient` (e.g. with `mock_client()` and `client()`) actually correct?**
   _`NotebookLMClient` has 638 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 396 inferred relationships involving `GenerationStatus` (e.g. with `TestPollStatusNotFound` and `TestPollStatusErrorExtraction`) actually correct?**
   _`GenerationStatus` has 396 INFERRED edges - model-reasoned connections that need verification._
