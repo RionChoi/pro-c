@@ -105,12 +105,19 @@ jobs:
           done
 
       - name: Create PR
+        id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: chore/helm-staging-${{ steps.sha.outputs.short }}
-          commit-message: "chore(helm): update staging image tag to sha-${{ steps.sha.outputs.short }}"
+          commit-message: "chore(helm): update staging image tag to sha-${{ steps.sha.outputs.short }} [skip ci]"
           title: "chore(helm): update staging image tag to sha-${{ steps.sha.outputs.short }}"
           body: "Automated helm values update by CD pipeline."
           labels: automated,helm
           delete-branch: true
+
+      - name: Auto-merge PR
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: gh pr merge --auto --squash ${{ steps.cpr.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
