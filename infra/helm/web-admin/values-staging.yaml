@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: sha-3abb760
+  tag: sha-88fe5eb
 ingress:
   enabled: true
   host: admin.staging.example.com
