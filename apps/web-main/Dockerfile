@@ -23,7 +23,7 @@ COPY --from=deps /app/apps/web-main/node_modules ./apps/web-main/node_modules
 COPY . .
 
 RUN npm install -g pnpm@9.0.0
-RUN pnpm --filter @repo/db run db:generate
+RUN node_modules/.bin/prisma generate --schema=packages/db/prisma/schema.prisma
 RUN pnpm --filter web-main build
 
 FROM base AS runner
