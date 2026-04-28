@@ -8,7 +8,7 @@
     "AUTH_GOOGLE_SECRET",
     "DATABASE_URL",
     "NEXTAUTH_URL",
-    "KAFKA_BROKER"
+    "KAFKA_BROKERS"
   ],
   "tasks": {
     "db:generate": {

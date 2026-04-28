@@ -1,0 +1,6 @@
+apiVersion: v2
+name: web-admin
+description: SaaS Platform - web-admin Helm Chart
+type: application
+version: 0.1.0
+appVersion: "latest"

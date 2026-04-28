@@ -10,6 +10,8 @@ COPY packages/ui/package.json ./packages/ui/
 COPY packages/shared-types/package.json ./packages/shared-types/
 COPY packages/shared-config/package.json ./packages/shared-config/
 COPY packages/shared-config/typescript-config/package.json ./packages/shared-config/typescript-config/
+COPY packages/db/package.json ./packages/db/
+COPY packages/auth/package.json ./packages/auth/
 
 RUN npm install -g pnpm@9.0.0
 RUN pnpm install --frozen-lockfile
@@ -21,7 +23,7 @@ COPY --from=deps /app/apps/web-main/node_modules ./apps/web-main/node_modules
 COPY . .
 
 RUN npm install -g pnpm@9.0.0
-RUN pnpm --filter web-main exec prisma generate
+RUN pnpm --filter @repo/db run db:generate
 RUN pnpm --filter web-main build
 
 FROM base AS runner

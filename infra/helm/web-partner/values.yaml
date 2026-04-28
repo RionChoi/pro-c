@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/rionchoi/platform-web-partner
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3002
+
+ingress:
+  enabled: false
+  host: partner.example.com
+  tls:
+    enabled: false
+    clusterIssuer: letsencrypt-prod
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+env:
+  NODE_ENV: production
+  NEXTAUTH_URL: http://localhost:3002
+
+secret:
+  name: web-partner-secret

@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -12,9 +13,60 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - values-staging.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: platform
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-admin
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RionChoi/platform.git
+    targetRevision: HEAD
+    path: infra/helm/web-admin
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-staging.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-partner
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RionChoi/platform.git
+    targetRevision: HEAD
+    path: infra/helm/web-partner
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-staging.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform
   syncPolicy:
     automated:
       prune: true

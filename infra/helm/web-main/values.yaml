@@ -1,14 +1,21 @@
 replicaCount: 1
 
 image:
-  repository: platform/web-main
+  repository: ghcr.io/rionchoi/platform-web-main
   tag: latest
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 80
   targetPort: 3000
+
+ingress:
+  enabled: false
+  host: app.example.com
+  tls:
+    enabled: false
+    clusterIssuer: letsencrypt-prod
 
 resources:
   requests:

@@ -41,3 +41,7 @@ yarn-error.log*
 # Secrets
 client_secret_*.json
 **/client_secret_*.json
+# 평문 secret 파일 — 절대 커밋 금지 (kubeseal로 암호화 후 sealed-secret.yaml에 삽입)
+**/secret-plain.yaml
+**/secret-plain.env
+infra/k8s/**/*-plain.yaml

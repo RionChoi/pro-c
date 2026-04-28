@@ -1,0 +1,23 @@
+replicaCount: 2
+
+image:
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: true
+  host: admin.example.com
+  tls:
+    enabled: true
+    clusterIssuer: letsencrypt-prod
+
+env:
+  NODE_ENV: production
+  NEXTAUTH_URL: https://admin.example.com
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "1000m"

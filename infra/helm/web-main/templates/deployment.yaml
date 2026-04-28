@@ -20,6 +20,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: {{ .Values.service.targetPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
           env:
             - name: NODE_ENV
               value: {{ .Values.env.NODE_ENV }}
@@ -45,5 +57,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
                   key: DATABASE_URL
+            - name: KAFKA_BROKERS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.name }}
+                  key: KAFKA_BROKERS
+                  optional: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

@@ -25,7 +25,13 @@ export async function createTenantAction(formData: FormData) {
     redirect("/onboarding?error=slug-taken");
   }
 
-  const tenant = await createTenant(name, slug, formData.get("plan") as string | undefined ?? "FREE");
+  const user = await prisma.user.findUnique({ where: { email: session.user.email }, select: { id: true } });
+  const tenant = await createTenant(
+    name,
+    slug,
+    (formData.get("plan") as string | undefined) ?? "FREE",
+    user?.id
+  );
 
   await prisma.user.update({
     where: { email: session.user.email },

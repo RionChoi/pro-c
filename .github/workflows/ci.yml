@@ -34,8 +34,6 @@ jobs:
 
       - name: Generate Prisma Client
         run: pnpm --filter @repo/db run db:generate
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Type check
         run: pnpm check-types
@@ -51,7 +49,7 @@ jobs:
           AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          KAFKA_BROKER: ${{ secrets.KAFKA_BROKER }}
+          KAFKA_BROKERS: ${{ secrets.KAFKA_BROKERS }}
 
   migrate:
     name: DB Migrate (Staging)

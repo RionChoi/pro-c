@@ -1,15 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@repo/db";
 import { createTenant } from "@/lib/tenant";
-import { auth } from "@/auth";
+import { requireRole } from "@/lib/with-role";
 
 export async function GET() {
-  const session = await auth();
-  const isDev = process.env.NODE_ENV === "development";
-
-  if (!session && !isDev) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const check = await requireRole("ADMIN");
+  if (!check.ok) return check.response;
 
   const tenants = await prisma.tenant.findMany({
     select: {
@@ -28,31 +24,21 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await auth();
-  const isDev = process.env.NODE_ENV === "development";
+  const check = await requireRole("ADMIN");
+  if (!check.ok) return check.response;
 
-  if (!session && !isDev) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const { name, slug, plan } = await req.json();
+  const body = await req.json() as { name?: string; slug?: string; plan?: string };
+  const { name, slug, plan } = body;
 
   if (!name || !slug) {
-    return NextResponse.json(
-      { error: "name and slug are required" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "name and slug are required" }, { status: 400 });
   }
 
   const existing = await prisma.tenant.findUnique({ where: { slug } });
   if (existing) {
-    return NextResponse.json(
-      { error: "slug already exists" },
-      { status: 409 }
-    );
+    return NextResponse.json({ error: "slug already exists" }, { status: 409 });
   }
 
   const tenant = await createTenant(name, slug, plan);
-
   return NextResponse.json({ data: tenant, success: true }, { status: 201 });
 }

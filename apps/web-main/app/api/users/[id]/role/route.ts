@@ -1,31 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@repo/db";
-import { auth } from "@/auth";
+import { requireRole } from "@/lib/with-role";
+import type { Role } from "@repo/auth";
 
-type Role = "ADMIN" | "MEMBER" | "PARTNER" | "VIEWER";
+const VALID_ROLES: Role[] = ["ADMIN", "MEMBER", "PARTNER", "VIEWER"];
 
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const session = await auth();
-  const isDev = process.env.NODE_ENV === "development";
-
-  if (!session && !isDev) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const check = await requireRole("ADMIN");
+  if (!check.ok) return check.response;
 
   const { id } = await params;
-  const { role } = await req.json();
+  const body = await req.json() as { role?: unknown };
 
-  const validRoles: Role[] = ["ADMIN", "MEMBER", "PARTNER", "VIEWER"];
-  if (!validRoles.includes(role)) {
+  if (!body.role || !VALID_ROLES.includes(body.role as Role)) {
     return NextResponse.json({ error: "Invalid role" }, { status: 400 });
   }
 
   const updated = await prisma.user.update({
     where: { id },
-    data: { role },
+    data: { role: body.role as Role },
     select: { id: true, email: true, name: true, role: true },
   });
 

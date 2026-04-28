@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  tag: dev
+  pullPolicy: Always
+
+ingress:
+  enabled: true
+  host: admin.dev.example.com
+  tls:
+    enabled: false
+
+env:
+  NODE_ENV: development
+  NEXTAUTH_URL: http://admin.dev.example.com
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "50m"
+  limits:
+    memory: "256Mi"
+    cpu: "250m"

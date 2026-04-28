@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/rionchoi/platform-web-admin
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3001
+
+ingress:
+  enabled: false
+  host: admin.example.com
+  tls:
+    enabled: false
+    clusterIssuer: letsencrypt-prod
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+env:
+  NODE_ENV: production
+  NEXTAUTH_URL: http://localhost:3001
+
+secret:
+  name: web-admin-secret

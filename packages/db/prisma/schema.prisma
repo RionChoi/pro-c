@@ -13,13 +13,14 @@ model User {
   name      String?
   image     String?
   role      Role     @default(MEMBER)
-  tenantId  String?
+  tenantId  String?  // 현재 활성 테넌트 (선택 화면에서 갱신)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  accounts Account[]
-  sessions Session[]
-  tenant   Tenant?   @relation(fields: [tenantId], references: [id])
+  accounts    Account[]
+  sessions    Session[]
+  tenant      Tenant?        @relation(fields: [tenantId], references: [id])
+  memberships TenantMember[]
 }
 
 model Tenant {
@@ -31,7 +32,35 @@ model Tenant {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  users User[]
+  users   User[]
+  members TenantMember[]
+  invites Invite[]
+}
+
+model TenantMember {
+  id       String   @id @default(cuid())
+  userId   String
+  tenantId String
+  role     Role     @default(MEMBER)
+  joinedAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tenantId])
+}
+
+model Invite {
+  id        String    @id @default(cuid())
+  email     String
+  tenantId  String
+  role      Role      @default(MEMBER)
+  token     String    @unique @default(cuid())
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 }
 
 model Account {

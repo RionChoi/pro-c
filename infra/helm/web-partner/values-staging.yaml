@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  tag: staging
+
+ingress:
+  enabled: true
+  host: partner.staging.example.com
+  tls:
+    enabled: true
+    clusterIssuer: letsencrypt-staging
+
+env:
+  NODE_ENV: production
+  NEXTAUTH_URL: https://partner.staging.example.com

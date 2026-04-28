@@ -1,6 +1,7 @@
 import { prisma } from "@repo/db";
 import { producer } from "@/lib/kafka";
 import { TOPICS } from "@/lib/kafka-topics";
+import { createDomainEvent } from "@repo/shared-types";
 
 export async function createTenantSchema(schemaName: string) {
   await prisma.$executeRawUnsafe(`CREATE SCHEMA IF NOT EXISTS "${schemaName}"`);
@@ -18,7 +19,8 @@ export async function createTenantSchema(schemaName: string) {
 export async function createTenant(
   name: string,
   slug: string,
-  plan = "FREE"
+  plan = "FREE",
+  creatorUserId?: string
 ) {
   const schemaName = `tenant_${slug.replace(/-/g, "_")}`;
 
@@ -28,28 +30,28 @@ export async function createTenant(
       slug,
       schemaName,
       plan: plan as "FREE" | "STARTER" | "PRO" | "ENTERPRISE",
+      ...(creatorUserId && {
+        members: { create: { userId: creatorUserId, role: "ADMIN" } },
+        users:   { connect: { id: creatorUserId } },
+      }),
     },
   });
 
   await createTenantSchema(schemaName);
 
   try {
+    const event = createDomainEvent("TENANT_CREATED", tenant.id, {
+      tenantId: tenant.id,
+      name: tenant.name,
+      slug: tenant.slug,
+      plan: tenant.plan.toLowerCase() as "free" | "starter" | "pro" | "enterprise",
+      adminEmail: "",
+      createdAt: tenant.createdAt.toISOString(),
+    });
     await producer.connect();
     await producer.send({
       topic: TOPICS.TENANT_CREATED,
-      messages: [
-        {
-          key: tenant.id,
-          value: JSON.stringify({
-            id: tenant.id,
-            name: tenant.name,
-            slug: tenant.slug,
-            plan: tenant.plan,
-            schemaName: tenant.schemaName,
-            createdAt: tenant.createdAt,
-          }),
-        },
-      ],
+      messages: [{ key: tenant.id, value: JSON.stringify(event) }],
     });
     await producer.disconnect();
   } catch (kafkaError) {

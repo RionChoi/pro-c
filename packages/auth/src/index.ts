@@ -124,3 +124,5 @@ export function createAuthConfig(options: CreateAuthConfigOptions = {}): NextAut
 
 export { NextAuth };
 export type { NextAuthConfig };
+export { hasRole } from "./rbac";
+export type { Role } from "./rbac";
