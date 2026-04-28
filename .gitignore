@@ -45,3 +45,9 @@ client_secret_*.json
 **/secret-plain.yaml
 **/secret-plain.env
 infra/k8s/**/*-plain.yaml
+
+# Local Claude settings
+.claude/settings.local.json
+
+# External projects
+notebooklm-py/

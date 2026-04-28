@@ -1,12 +1,12 @@
 # Graph Report - /Users/choi/platform  (2026-04-28)
 
 ## Corpus Check
-- 221 files · ~293,034 words
+- 225 files · ~294,172 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6266 nodes · 21963 edges · 304 communities detected
-- Extraction: 28% EXTRACTED · 72% INFERRED · 0% AMBIGUOUS · INFERRED: 15890 edges (avg confidence: 0.58)
+- 6272 nodes · 21971 edges · 299 communities detected
+- Extraction: 28% EXTRACTED · 72% INFERRED · 0% AMBIGUOUS · INFERRED: 15896 edges (avg confidence: 0.58)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -309,11 +309,6 @@
 - [[_COMMUNITY_Community 296|Community 296]]
 - [[_COMMUNITY_Community 297|Community 297]]
 - [[_COMMUNITY_Community 298|Community 298]]
-- [[_COMMUNITY_Community 299|Community 299]]
-- [[_COMMUNITY_Community 300|Community 300]]
-- [[_COMMUNITY_Community 301|Community 301]]
-- [[_COMMUNITY_Community 302|Community 302]]
-- [[_COMMUNITY_Community 303|Community 303]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `ValidationError` - 740 edges
@@ -330,156 +325,156 @@
 ## Surprising Connections (you probably didn't know these)
 - `Unit tests for chat history parsing and formatting functions.  Tests cover: - Ch` --uses--> `ChatAPI`  [INFERRED]
   /Users/choi/platform/notebooklm-py/tests/unit/test_chat_history.py → /Users/choi/platform/notebooklm-py/src/notebooklm/_chat.py
-- `Tests for ChatAPI._parse_turns_to_qa_pairs static method.      The API returns t` --uses--> `ChatAPI`  [INFERRED]
+- `Tests for CLI formatting helpers.` --uses--> `ChatAPI`  [INFERRED]
   /Users/choi/platform/notebooklm-py/tests/unit/test_chat_history.py → /Users/choi/platform/notebooklm-py/src/notebooklm/_chat.py
-- `A question at the end with no following answer gets empty string.` --uses--> `ChatAPI`  [INFERRED]
+- `Tests for _determine_conversation_id CLI helper.` --uses--> `ChatAPI`  [INFERRED]
   /Users/choi/platform/notebooklm-py/tests/unit/test_chat_history.py → /Users/choi/platform/notebooklm-py/src/notebooklm/_chat.py
-- `When two questions are adjacent, the first gets an empty answer.` --uses--> `ChatAPI`  [INFERRED]
-  /Users/choi/platform/notebooklm-py/tests/unit/test_chat_history.py → /Users/choi/platform/notebooklm-py/src/notebooklm/_chat.py
-- `Turns with fewer than 3 elements are skipped.` --uses--> `ChatAPI`  [INFERRED]
-  /Users/choi/platform/notebooklm-py/tests/unit/test_chat_history.py → /Users/choi/platform/notebooklm-py/src/notebooklm/_chat.py
+- `test_from_storage_success()` --calls--> `from_storage()`  [INFERRED]
+  /Users/choi/platform/notebooklm-py/tests/unit/test_auth.py → /Users/choi/platform/notebooklm-py/src/notebooklm/client.py
+- `test_from_storage_file_not_found()` --calls--> `from_storage()`  [INFERRED]
+  /Users/choi/platform/notebooklm-py/tests/unit/test_auth.py → /Users/choi/platform/notebooklm-py/src/notebooklm/client.py
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.0
-Nodes (853): createTenantAction(), inviteMemberAction(), selectTenantAction(), _fetch_tokens_once(), True when an auth failure should trigger NOTEBOOKLM_REFRESH_CMD., Single-shot token fetch without refresh (inner implementation)., _should_try_refresh(), main() (+845 more)
+Cohesion: 0.01
+Nodes (828): confirmOtpSetupAction(), createTenantAction(), inviteMemberAction(), selectTenantAction(), verifyOtpAction(), convert_rookiepy_cookies_to_storage_state(), _fetch_tokens_once(), Convert rookiepy cookie dicts to Playwright storage_state.json format.      Key (+820 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.01
-Nodes (755): AuthTokens, Authentication tokens for NotebookLM API.      Attributes:         cookies: Dict, Get turns (individual messages) for a specific conversation.          Args:, Get the most recent conversation ID from the API.          The underlying RPC (h, Get Q&A history for the most recent conversation.          Args:             not, Parse raw turn data into (question, answer) pairs in array order.          Pairs, Get locally cached conversation turns.          Args:             conversation_i, Operations for notebook chat/conversations.      Provides methods for asking que (+747 more)
+Nodes (486): ArtifactsAPI, _extract_artifact_error(), _format_flashcards_markdown(), _format_quiz_markdown(), ChatAPI, _parse_turns_to_qa_pairs(), check_method(), CheckResult (+478 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.01
-Nodes (555): ArtifactsAPI, _extract_app_data(), _format_flashcards_markdown(), _format_quiz_markdown(), ChatAPI, check_method(), CheckResult, CheckStatus (+547 more)
+Nodes (295): artifact(), Artifact management commands.      \b     Commands:       list      List all art, create_mock_client(), get_cli_module(), mock_auth(), mock_auth_for_vcr(), mock_context_file(), mock_fetch_tokens() (+287 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.02
-Nodes (574): _extract_cell_text(), _parse_data_table(), Artifacts API for NotebookLM studio content.  Provides operations for generating, Format flashcards as markdown., Download an Audio Overview to a file.          Args:             notebook_id: Th, Download a Video Overview to a file.          Args:             notebook_id: The, Download an Infographic to a file.          Args:             notebook_id: The n, Recursively extract text from a nested cell structure.      Data table cells hav (+566 more)
+Cohesion: 0.01
+Nodes (454): AuthTokens, extract_cookies_from_storage(), extract_csrf_from_html(), extract_session_id_from_html(), fetch_tokens(), from_storage(), _is_allowed_auth_domain(), _is_allowed_cookie_domain() (+446 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.01
-Nodes (264): artifact(), Artifact management commands.      \b     Commands:       list      List all art, create_mock_client(), get_cli_module(), mock_auth(), mock_auth_for_vcr(), mock_context_file(), mock_fetch_tokens() (+256 more)
+Nodes (405): agent(), Agent integration commands., Show bundled instructions for supported agent environments., Display instructions for Codex or Claude Code., show_agent(), get_agent_source_content(), Shared agent instruction loading helpers., Read a packaged agent template file. (+397 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.01
-Nodes (345): agent(), Agent integration commands., Show bundled instructions for supported agent environments., Display instructions for Codex or Claude Code., show_agent(), get_agent_source_content(), Shared agent instruction loading helpers., Read a packaged agent template file. (+337 more)
+Cohesion: 0.02
+Nodes (358): Artifacts API for NotebookLM studio content.  Provides operations for generating, Format flashcards as markdown., Download an Audio Overview to a file.          Args:             notebook_id: Th, Download a Video Overview to a file.          Args:             notebook_id: The, Download an Infographic to a file.          Args:             notebook_id: The n, Recursively extract text from a nested cell structure.      Data table cells hav, Download a slide deck as PDF or PPTX.          Args:             notebook_id: Th, Fetch artifact HTML content for quiz/flashcard types. (+350 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.01
-Nodes (172): convert_rookiepy_cookies_to_storage_state(), extract_cookies_from_storage(), extract_csrf_from_html(), extract_session_id_from_html(), fetch_tokens(), from_storage(), _is_allowed_auth_domain(), _is_allowed_cookie_domain() (+164 more)
+Nodes (427): Base for RPC-specific failures after connection established.      Attributes:, Invalid user input or parameters., RPCError, ValidationError, _build_report_import_entry(), _build_web_import_entry(), _extract_legacy_report_chunks(), _parse_result_type() (+419 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.01
-Nodes (148): createDomainEvent(), hasRole(), POST(), Get details of a specific source.          Args:             notebook_id: The no, Wait for a source to become ready.          Polls the source status until it bec, Wait for multiple sources to become ready in parallel.          Args:, Operations on NotebookLM sources.      Provides methods for adding, listing, get, Initialize the sources API.          Args:             core: The core client inf (+140 more)
+Cohesion: 0.04
+Nodes (342): _extract_app_data(), _contains_user_displayable_error(), extract_rpc_result(), _extract_status_code(), _find_wrb_status(), get_error_message_for_code(), Decode RPC responses from NotebookLM batchexecute API., Get human-readable error message and retryability for an error code.      Args: (+334 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.02
-Nodes (121): NotesAPI, List all mind maps in the notebook.          Mind maps are stored in the same in, Operations on NotebookLM notes.      Notes are user-created content, distinct fr, Delete a mind map from the notebook.          Args:             notebook_id: The, Fetch all notes and mind maps from the API., Check if a note/mind map item is deleted (status=2).          Deleted items have, Extract content string from note/mind map item., Parse a raw note item into a Note object. (+113 more)
+Nodes (156): createDomainEvent(), Failed to add a source.      Attributes:         url: The URL or identifier that, SourceAddError, hasRole(), POST(), SourcesAPI, createTenant(), createTenantSchema() (+148 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.02
-Nodes (73): artifact_list(), List artifacts in a notebook., cli_name_to_artifact_type(), display_research_sources(), get_artifact_type_display(), get_auth_tokens(), get_client(), get_source_type_display() (+65 more)
+Nodes (72): cli_name_to_artifact_type(), display_research_sources(), get_artifact_type_display(), get_auth_tokens(), get_client(), get_source_type_display(), import_with_retry(), Get auth components from context.      Args:         ctx: Click context with opt (+64 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.03
-Nodes (114): Open the HTTP client connection.          Called automatically by NotebookLMClie, ArtifactConfig, _display_download_result(), download(), _download_artifacts_generic(), download_data_table(), download_flashcards_cmd(), download_infographic() (+106 more)
+Cohesion: 0.02
+Nodes (91): List all mind maps in the notebook.          Mind maps are stored in the same in, Delete a mind map from the notebook.          Args:             notebook_id: The, Fetch all notes and mind maps from the API., Check if a note/mind map item is deleted (status=2).          Deleted items have, Extract content string from note/mind map item., Parse a raw note item into a Note object., List all text notes in the notebook.          This excludes:         - Mind maps, Get a specific note by ID.          Args:             notebook_id: The notebook (+83 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.03
-Nodes (55): artifact_title_to_filename(), Convert artifact title to safe filename.      Args:         title: Artifact titl, Select an artifact from a list based on criteria.      CRITICAL: Implements Filt, select_artifact(), Tests for download helper functions., Should error with helpful message when no artifacts., Should select latest by default when no flags provided., Should error when both --latest and --earliest are specified. (+47 more)
+Cohesion: 0.02
+Nodes (65): artifact_title_to_filename(), Convert artifact title to safe filename.      Args:         title: Artifact titl, Resolve a partial artifact ID to a full ID.      Full IDs (20+ chars) are return, Select an artifact from a list based on criteria.      CRITICAL: Implements Filt, resolve_partial_artifact_id(), select_artifact(), Tests for download helper functions., Should error with helpful message when no artifacts. (+57 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.03
-Nodes (62): assert_command_success(), mock_context(), parse_json_output(), Create a Click test runner., Create a Click test runner., Mock context file with a test notebook ID.      CLI commands that require a note, Assert a CLI command completed without crashing.      Args:         result: The, Parse JSON from CLI output, handling potential non-JSON prefixes.      Returns t (+54 more)
+Cohesion: 0.07
+Nodes (80): Sharing management CLI commands.  Commands:     status       Show sharing status, Enable or disable public link sharing.      When public sharing is enabled, anyo, Set what viewers can access.      \b     LEVEL options:       full   - Viewers s, Share notebook with a user.      Adds a user with the specified permission level, Convert permission enum to display name., Update a user's permission level.      Changes the permission level for a user w, Convert view level enum to display name., Remove a user's access to the notebook.      \b     Examples:       notebooklm s (+72 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.04
-Nodes (39): _display_results(), Display doctor results using Rich., _extract_task_id(), handle_generation_result(), _output_generation_status(), _output_mind_map_result(), json_error_response(), Print JSON error and exit (no colors for machine parsing).      Args:         co (+31 more)
+Nodes (81): Open the HTTP client connection.          Called automatically by NotebookLMClie, ArtifactConfig, _display_download_result(), download(), _download_artifacts_generic(), download_data_table(), download_flashcards_cmd(), download_infographic() (+73 more)
 
 ### Community 14 - "Community 14"
+Cohesion: 0.03
+Nodes (71): assert_command_success(), mock_context(), mock_list_notebooks_response(), parse_json_output(), pytest_configure(), E2E test fixtures and configuration., Create a Click test runner., Register custom markers and configure test environment. (+63 more)
+
+### Community 15 - "Community 15"
+Cohesion: 0.04
+Nodes (39): _display_results(), Display doctor results using Rich., _extract_task_id(), handle_generation_result(), _output_generation_status(), _output_mind_map_result(), json_error_response(), Print JSON error and exit (no colors for machine parsing).      Args:         co (+31 more)
+
+### Community 16 - "Community 16"
 Cohesion: 0.04
 Nodes (44): _apply_fixes(), Apply automatic fixes for detected issues., Custom Click group with sectioned help output.  Organizes CLI commands into logi, Click group that displays commands organized in sections.      Instead of a flat, Override to display commands in sections., SectionedGroup, ensure_profiles_dir(), _has_legacy_files() (+36 more)
 
-### Community 15 - "Community 15"
-Cohesion: 0.03
-Nodes (38): add_version_comment(), get_skill_version(), Extract version from skill file header comment., Embed the CLI version into a skill file., Tests for skill CLI commands., Tests for skill status command., Test status when skill is not installed., Test status when skill is installed with a different version than the CLI. (+30 more)
-
-### Community 16 - "Community 16"
-Cohesion: 0.07
-Nodes (33): _extract_artifact_error(), _art(), _make_api(), Tests for quota/daily-limit failure detection during artifact polling.  Regressi, Return an ArtifactsAPI with mocked core + notes., Build a minimal raw artifact list entry., GenerationStatus.is_not_found correctly identifies the new status., is_rate_limited now also matches 'limit exceeded' in error text. (+25 more)
-
 ### Community 17 - "Community 17"
-Cohesion: 0.07
-Nodes (23): _format_history(), _format_single_qa(), _get_latest_conversation_from_server(), _parse_turns_to_qa_pairs(), Format Q&A history as note content., Fetch the most recent conversation ID from the server.      Returns None if unav, Unit tests for chat history parsing and formatting functions.  Tests cover: - Ch, Turns with fewer than 3 elements are skipped. (+15 more)
+Cohesion: 0.09
+Nodes (14): is_auth_error(), Check if an exception indicates an authentication failure.      Args:         er, HTTP 401 should be detected as auth error., HTTP 403 should be detected as auth error., HTTP 500 should NOT be detected as auth error., RPCError with 'Authentication' in message should be auth error., RPCError with 'expired' in message should be auth error., RPCError with 'Unauthorized' in message should be auth error. (+6 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.06
-Nodes (17): Test auth check when storage file doesn't exist., Test auth check --json when storage file doesn't exist., Test auth check when storage file contains invalid JSON., Test auth check --json when storage contains invalid JSON., Test auth check when SID cookie is missing., Test auth check with valid storage containing SID., Test auth check --json with valid storage., Test auth check --test with successful token fetch. (+9 more)
-
-### Community 19 - "Community 19"
 Cohesion: 0.08
 Nodes (21): Temporarily restore default event loop policy for Playwright on Windows.      Pl, _windows_playwright_event_loop(), Regression tests for Windows compatibility fixes.  These tests verify that fixes, Regression tests for Windows asyncio event loop policy fix (#75, #79).      The, Regression tests for Windows UTF-8 encoding fix (#75, #80).      Non-English Win, Tests for encoding resilience across platforms., Verify output survives encoding with errors='replace'.          This simulates t, Smoke tests that actually invoke Playwright to catch real integration issues. (+13 more)
 
-### Community 20 - "Community 20"
+### Community 19 - "Community 19"
 Cohesion: 0.08
 Nodes (14): Tests for SectionedGroup CLI help formatting., Test that sections appear in the correct order., Verify sections appear in the expected order., Test that CLI help output is organized into sections., Verify Session section appears with expected commands., Verify Notebooks section appears with expected commands., Verify Chat section appears with expected commands., Verify Command Groups section appears with subcommand listings. (+6 more)
 
-### Community 21 - "Community 21"
-Cohesion: 0.13
-Nodes (0): 
-
-### Community 22 - "Community 22"
+### Community 20 - "Community 20"
 Cohesion: 0.16
 Nodes (11): _build_source_list_response(), mock_auth(), mock_context(), Integration tests for source delete CLI flows., Create a Click test runner., Mock authentication for CLI integration tests., Provide a canonical notebook UUID so CLI skips notebook-list resolution., Build a GET_NOTEBOOK response containing a single source. (+3 more)
 
-### Community 23 - "Community 23"
-Cohesion: 0.15
-Nodes (7): Test status command when no notebook is selected., Test status command shows current notebook context., Test status command shows conversation ID when set., Test status --json outputs valid JSON., Test status --json outputs valid JSON when no context., Test status handles corrupted context file gracefully., TestStatusCommand
-
-### Community 24 - "Community 24"
-Cohesion: 0.24
-Nodes (7): calculate_backoff_delay(), Tests for the calculate_backoff_delay helper function., Test that first attempt uses initial delay., Test that delay increases exponentially., Test that delay is capped at max_delay., Test custom backoff multiplier., TestCalculateBackoffDelay
-
-### Community 25 - "Community 25"
+### Community 21 - "Community 21"
 Cohesion: 0.18
 Nodes (3): register(), startKafkaConsumer(), createConsumer()
 
-### Community 26 - "Community 26"
+### Community 22 - "Community 22"
 Cohesion: 0.24
 Nodes (9): VCR.py configuration for recording and replaying HTTP interactions.  This module, Scrub sensitive data from recorded HTTP request.      Handles:     - Cookie head, Scrub sensitive data from recorded HTTP response.      Handles:     - Response b, Match requests by the ``rpcids`` query parameter.      All batchexecute POST req, Apply all sensitive pattern replacements to a string., _rpcids_matcher(), scrub_request(), scrub_response() (+1 more)
 
-### Community 27 - "Community 27"
-Cohesion: 0.25
-Nodes (5): Regression tests for Windows permission handling in login command.      On Windo, On Windows, login mkdir calls omit mode= and chmod is never called., On Unix, login mkdir calls include mode=0o700 and chmod is called., On Windows, storage_state.json chmod(0o600) is also skipped., TestLoginWindowsPermissions
-
-### Community 28 - "Community 28"
-Cohesion: 0.29
-Nodes (1): TestGenerateCommandsExist
-
-### Community 29 - "Community 29"
-Cohesion: 0.29
-Nodes (1): TestNotebookCommandsExist
-
-### Community 30 - "Community 30"
+### Community 23 - "Community 23"
 Cohesion: 0.7
 Nodes (4): convert(), is_google_domain(), main(), normalize_same_site()
 
-### Community 31 - "Community 31"
+### Community 24 - "Community 24"
 Cohesion: 0.5
 Nodes (3): Packaging smoke tests for skill assets., The built wheel should carry the canonical repo agent docs into package data., test_wheel_includes_root_skill_content()
 
-### Community 32 - "Community 32"
+### Community 25 - "Community 25"
 Cohesion: 0.5
 Nodes (1): RootLayout()
 
-### Community 33 - "Community 33"
+### Community 26 - "Community 26"
 Cohesion: 1.0
 Nodes (2): safeParse(), validate()
 
-### Community 34 - "Community 34"
+### Community 27 - "Community 27"
 Cohesion: 1.0
 Nodes (1): Allow running ``python -m notebooklm``.
+
+### Community 28 - "Community 28"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 29 - "Community 29"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 30 - "Community 30"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 31 - "Community 31"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 32 - "Community 32"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 33 - "Community 33"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 34 - "Community 34"
+Cohesion: 1.0
+Nodes (0): 
 
 ### Community 35 - "Community 35"
 Cohesion: 1.0
@@ -495,899 +490,899 @@ Nodes (0):
 
 ### Community 38 - "Community 38"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify sync_playwright() works on Windows with our event loop fix.          This
 
 ### Community 39 - "Community 39"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify context manager switches to default policy and restores on exit.
 
 ### Community 40 - "Community 40"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify policy is restored even if an exception occurs.
 
 ### Community 41 - "Community 41"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify Windows uses SelectorEventLoop after CLI initialization.          This pr
 
 ### Community 42 - "Community 42"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify UTF-8 mode is enabled on Windows.          This prevents UnicodeEncodeErr
 
 ### Community 43 - "Community 43"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Verify common CLI output characters can be encoded.          These characters ar
 
 ### Community 44 - "Community 44"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Create a client instance for testing the extraction method.
 
 ### Community 45 - "Community 45"
 Cohesion: 1.0
-Nodes (1): Verify sync_playwright() works on Windows with our event loop fix.          This
+Nodes (1): Should return True for legitimate YouTube URLs.
 
 ### Community 46 - "Community 46"
 Cohesion: 1.0
-Nodes (1): Verify context manager switches to default policy and restores on exit.
+Nodes (1): Should return False for non-YouTube or malicious URLs.
 
 ### Community 47 - "Community 47"
 Cohesion: 1.0
-Nodes (1): Verify policy is restored even if an exception occurs.
+Nodes (1): Should return True for Google accounts URLs.
 
 ### Community 48 - "Community 48"
 Cohesion: 1.0
-Nodes (1): Verify Windows uses SelectorEventLoop after CLI initialization.          This pr
+Nodes (1): Should return False for non-auth or malicious URLs.
 
 ### Community 49 - "Community 49"
 Cohesion: 1.0
-Nodes (1): Verify UTF-8 mode is enabled on Windows.          This prevents UnicodeEncodeErr
+Nodes (1): Should return True when HTML contains Google auth URL.
 
 ### Community 50 - "Community 50"
 Cohesion: 1.0
-Nodes (1): Verify common CLI output characters can be encoded.          These characters ar
+Nodes (1): Should return False when HTML doesn't contain Google auth URL.
 
 ### Community 51 - "Community 51"
 Cohesion: 1.0
-Nodes (1): Create a client instance for testing the extraction method.
+Nodes (0): 
 
 ### Community 52 - "Community 52"
 Cohesion: 1.0
-Nodes (1): Should return True for legitimate YouTube URLs.
+Nodes (1): create=True sets directory permissions to 0o700.
 
 ### Community 53 - "Community 53"
 Cohesion: 1.0
-Nodes (1): Should return False for non-YouTube or malicious URLs.
+Nodes (1): Get a specific notebook.
 
 ### Community 54 - "Community 54"
 Cohesion: 1.0
-Nodes (1): Should return True for Google accounts URLs.
+Nodes (1): Get notebook summary.
 
 ### Community 55 - "Community 55"
 Cohesion: 1.0
-Nodes (1): Should return False for non-auth or malicious URLs.
+Nodes (1): Get notebook description.
 
 ### Community 56 - "Community 56"
 Cohesion: 1.0
-Nodes (1): Should return True when HTML contains Google auth URL.
+Nodes (1): Get raw notebook data.
 
 ### Community 57 - "Community 57"
 Cohesion: 1.0
-Nodes (1): Should return False when HTML doesn't contain Google auth URL.
+Nodes (1): Rename a notebook (then rename back).
 
 ### Community 58 - "Community 58"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): List sources in a notebook.
 
 ### Community 59 - "Community 59"
 Cohesion: 1.0
-Nodes (1): create=True sets directory permissions to 0o700.
+Nodes (1): Get source guide for a specific source.
 
 ### Community 60 - "Community 60"
 Cohesion: 1.0
-Nodes (1): Get a specific notebook.
+Nodes (1): Get source fulltext content.
 
 ### Community 61 - "Community 61"
 Cohesion: 1.0
-Nodes (1): Get notebook summary.
+Nodes (1): Add a Google Drive document source.          Uses a public Google Doc for testin
 
 ### Community 62 - "Community 62"
 Cohesion: 1.0
-Nodes (1): Get notebook description.
+Nodes (1): List notes in a notebook.
 
 ### Community 63 - "Community 63"
 Cohesion: 1.0
-Nodes (1): Get raw notebook data.
+Nodes (1): List mind maps in a notebook.
 
 ### Community 64 - "Community 64"
 Cohesion: 1.0
-Nodes (1): Rename a notebook (then rename back).
+Nodes (1): Create and update a note.
 
 ### Community 65 - "Community 65"
 Cohesion: 1.0
-Nodes (1): List sources in a notebook.
+Nodes (1): Test artifact list methods.
 
 ### Community 66 - "Community 66"
 Cohesion: 1.0
-Nodes (1): Get source guide for a specific source.
+Nodes (1): Get report suggestions.
 
 ### Community 67 - "Community 67"
 Cohesion: 1.0
-Nodes (1): Get source fulltext content.
+Nodes (1): Download a report as markdown.
 
 ### Community 68 - "Community 68"
 Cohesion: 1.0
-Nodes (1): Add a Google Drive document source.          Uses a public Google Doc for testin
+Nodes (1): Download a mind map as JSON.
 
 ### Community 69 - "Community 69"
 Cohesion: 1.0
-Nodes (1): List notes in a notebook.
+Nodes (1): Download a data table as CSV.
 
 ### Community 70 - "Community 70"
 Cohesion: 1.0
-Nodes (1): List mind maps in a notebook.
+Nodes (1): Download a quiz as JSON.
 
 ### Community 71 - "Community 71"
 Cohesion: 1.0
-Nodes (1): Create and update a note.
+Nodes (1): Download a quiz as markdown.
 
 ### Community 72 - "Community 72"
 Cohesion: 1.0
-Nodes (1): Test artifact list methods.
+Nodes (1): Download flashcards as JSON.
 
 ### Community 73 - "Community 73"
 Cohesion: 1.0
-Nodes (1): Get report suggestions.
+Nodes (1): Download flashcards as markdown.
 
 ### Community 74 - "Community 74"
 Cohesion: 1.0
-Nodes (1): Download a report as markdown.
+Nodes (1): Generate a briefing doc report.
 
 ### Community 75 - "Community 75"
 Cohesion: 1.0
-Nodes (1): Download a mind map as JSON.
+Nodes (1): Generate a study guide.
 
 ### Community 76 - "Community 76"
 Cohesion: 1.0
-Nodes (1): Download a data table as CSV.
+Nodes (1): Ask a question that generates references.
 
 ### Community 77 - "Community 77"
 Cohesion: 1.0
-Nodes (1): Download a quiz as JSON.
+Nodes (1): Get current output language setting.
 
 ### Community 78 - "Community 78"
 Cohesion: 1.0
-Nodes (1): Download a quiz as markdown.
+Nodes (1): Set output language (then restore original).
 
 ### Community 79 - "Community 79"
 Cohesion: 1.0
-Nodes (1): Download flashcards as JSON.
+Nodes (1): Get sharing status for a notebook.
 
 ### Community 80 - "Community 80"
 Cohesion: 1.0
-Nodes (1): Download flashcards as markdown.
+Nodes (1): Toggle public sharing (restore original state).
 
 ### Community 81 - "Community 81"
 Cohesion: 1.0
-Nodes (1): Generate a briefing doc report.
+Nodes (1): Check source freshness.
 
 ### Community 82 - "Community 82"
 Cohesion: 1.0
-Nodes (1): Generate a study guide.
+Nodes (1): Check freshness for Drive source (different response format).
 
 ### Community 83 - "Community 83"
 Cohesion: 1.0
-Nodes (1): Ask a question that generates references.
+Nodes (1): Rename a source (then restore original name).
 
 ### Community 84 - "Community 84"
 Cohesion: 1.0
-Nodes (1): Get current output language setting.
+Nodes (1): Delete a source (creates one first to delete).
 
 ### Community 85 - "Community 85"
 Cohesion: 1.0
-Nodes (1): Set output language (then restore original).
+Nodes (1): Create a new notebook.
 
 ### Community 86 - "Community 86"
 Cohesion: 1.0
-Nodes (1): Get sharing status for a notebook.
+Nodes (1): Delete a notebook (creates one first).
 
 ### Community 87 - "Community 87"
 Cohesion: 1.0
-Nodes (1): Toggle public sharing (restore original state).
+Nodes (1): Remove a notebook from recently viewed.
 
 ### Community 88 - "Community 88"
 Cohesion: 1.0
-Nodes (1): Check source freshness.
+Nodes (1): Delete a note (creates one first).
 
 ### Community 89 - "Community 89"
 Cohesion: 1.0
-Nodes (1): Check freshness for Drive source (different response format).
+Nodes (1): Export a report to Google Docs.
 
 ### Community 90 - "Community 90"
 Cohesion: 1.0
-Nodes (1): Rename a source (then restore original name).
+Nodes (1): Start fast web research.
 
 ### Community 91 - "Community 91"
 Cohesion: 1.0
-Nodes (1): Delete a source (creates one first to delete).
+Nodes (1): Poll research status.
 
 ### Community 92 - "Community 92"
 Cohesion: 1.0
-Nodes (1): Create a new notebook.
+Nodes (1): Import research sources.
 
 ### Community 93 - "Community 93"
 Cohesion: 1.0
-Nodes (1): Delete a notebook (creates one first).
+Nodes (1): Start deep web research.
 
 ### Community 94 - "Community 94"
 Cohesion: 1.0
-Nodes (1): Remove a notebook from recently viewed.
+Nodes (1): Test getting status for a public notebook.
 
 ### Community 95 - "Community 95"
 Cohesion: 1.0
-Nodes (1): Delete a note (creates one first).
+Nodes (1): Test getting status for a private notebook.
 
 ### Community 96 - "Community 96"
 Cohesion: 1.0
-Nodes (1): Export a report to Google Docs.
+Nodes (1): Test get_status sends correct RPC request.
 
 ### Community 97 - "Community 97"
 Cohesion: 1.0
-Nodes (1): Start fast web research.
+Nodes (1): Test setting view level to full notebook.
 
 ### Community 98 - "Community 98"
 Cohesion: 1.0
-Nodes (1): Poll research status.
+Nodes (1): Test disabling public sharing.
 
 ### Community 99 - "Community 99"
 Cohesion: 1.0
-Nodes (1): Import research sources.
+Nodes (1): Test setting view level to chat only.
 
 ### Community 100 - "Community 100"
 Cohesion: 1.0
-Nodes (1): Start deep web research.
+Nodes (1): Test setting view level to full notebook.
 
 ### Community 101 - "Community 101"
 Cohesion: 1.0
-Nodes (1): Test getting status for a public notebook.
+Nodes (1): Test adding a user as viewer.
 
 ### Community 102 - "Community 102"
 Cohesion: 1.0
-Nodes (1): Test getting status for a private notebook.
+Nodes (1): Test adding a user as editor.
 
 ### Community 103 - "Community 103"
 Cohesion: 1.0
-Nodes (1): Test get_status sends correct RPC request.
+Nodes (1): Test adding a user with a welcome message.
 
 ### Community 104 - "Community 104"
 Cohesion: 1.0
-Nodes (1): Test setting view level to full notebook.
+Nodes (1): Test updating a user's permission.
 
 ### Community 105 - "Community 105"
 Cohesion: 1.0
-Nodes (1): Test disabling public sharing.
+Nodes (1): Test removing a user.
 
 ### Community 106 - "Community 106"
 Cohesion: 1.0
-Nodes (1): Test setting view level to chat only.
+Nodes (1): Test that NotebookLMClient has sharing API.
 
 ### Community 107 - "Community 107"
 Cohesion: 1.0
-Nodes (1): Test setting view level to full notebook.
+Nodes (1): Record listing notebooks from real API.
 
 ### Community 108 - "Community 108"
 Cohesion: 1.0
-Nodes (1): Test adding a user as viewer.
+Nodes (1): Record getting a specific notebook from real API.
 
 ### Community 109 - "Community 109"
 Cohesion: 1.0
-Nodes (1): Test adding a user as editor.
+Nodes (1): Record listing sources from a notebook.
 
 ### Community 110 - "Community 110"
 Cohesion: 1.0
-Nodes (1): Test adding a user with a welcome message.
+Nodes (1): Record listing all artifacts from a notebook.
 
 ### Community 111 - "Community 111"
 Cohesion: 1.0
-Nodes (1): Test updating a user's permission.
+Nodes (1): Record listing audio artifacts (podcasts).
 
 ### Community 112 - "Community 112"
 Cohesion: 1.0
-Nodes (1): Test removing a user.
+Nodes (1): Record listing report artifacts.
 
 ### Community 113 - "Community 113"
 Cohesion: 1.0
-Nodes (1): Test that NotebookLMClient has sharing API.
+Nodes (1): Record listing quiz artifacts.
 
 ### Community 114 - "Community 114"
 Cohesion: 1.0
-Nodes (1): Record listing notebooks from real API.
+Nodes (1): Record listing mind map artifacts (via notes API).
 
 ### Community 115 - "Community 115"
 Cohesion: 1.0
-Nodes (1): Record getting a specific notebook from real API.
+Nodes (1): Verify VCR.py can record and replay HTTP interactions.          This test uses h
 
 ### Community 116 - "Community 116"
 Cohesion: 1.0
-Nodes (1): Record listing sources from a notebook.
+Nodes (1): Verify VCR.py handles POST requests with form data.
 
 ### Community 117 - "Community 117"
 Cohesion: 1.0
-Nodes (1): Record listing all artifacts from a notebook.
+Nodes (1): Verify sensitive cookies are scrubbed from cassettes.          The scrubbing hap
 
 ### Community 118 - "Community 118"
 Cohesion: 1.0
-Nodes (1): Record listing audio artifacts (podcasts).
+Nodes (1): Simulate the batchexecute request pattern used by notebooklm-py.          The ac
 
 ### Community 119 - "Community 119"
 Cohesion: 1.0
-Nodes (1): Record listing report artifacts.
+Nodes (1): Test sharing a notebook.
 
 ### Community 120 - "Community 120"
 Cohesion: 1.0
-Nodes (1): Record listing quiz artifacts.
+Nodes (1): Test getting notebook summary.
 
 ### Community 121 - "Community 121"
 Cohesion: 1.0
-Nodes (1): Record listing mind map artifacts (via notes API).
+Nodes (1): Test removing notebook from recent list.
 
 ### Community 122 - "Community 122"
 Cohesion: 1.0
-Nodes (1): Verify VCR.py can record and replay HTTP interactions.          This test uses h
+Nodes (1): Test getting raw notebook data.
 
 ### Community 123 - "Community 123"
 Cohesion: 1.0
-Nodes (1): Verify VCR.py handles POST requests with form data.
+Nodes (1): Test getting notebook description with summary and topics.
 
 ### Community 124 - "Community 124"
 Cohesion: 1.0
-Nodes (1): Verify sensitive cookies are scrubbed from cassettes.          The scrubbing hap
+Nodes (1): Scenario A: Server returns empty body after anti-XSSI prefix.
 
 ### Community 125 - "Community 125"
 Cohesion: 1.0
-Nodes (1): Simulate the batchexecute request pattern used by notebooklm-py.          The ac
+Nodes (1): Scenario B: Server returns JSON chunks but no RPC data.
 
 ### Community 126 - "Community 126"
 Cohesion: 1.0
-Nodes (1): Test sharing a notebook.
+Nodes (1): Scenario C: wrb.fr matches GET_NOTEBOOK ID but result_data is None.
 
 ### Community 127 - "Community 127"
 Cohesion: 1.0
-Nodes (1): Test getting notebook summary.
+Nodes (1): Scenario D: wrb.fr item has only 2 elements (skipped by extract).
 
 ### Community 128 - "Community 128"
 Cohesion: 1.0
-Nodes (1): Test removing notebook from recent list.
+Nodes (1): Test listing notebooks when none exist.
 
 ### Community 129 - "Community 129"
 Cohesion: 1.0
-Nodes (1): Test getting raw notebook data.
+Nodes (1): Test listing notebooks with nested empty array.
 
 ### Community 130 - "Community 130"
 Cohesion: 1.0
-Nodes (1): Test getting notebook description with summary and topics.
+Nodes (1): Test getting summary when empty.
 
 ### Community 131 - "Community 131"
 Cohesion: 1.0
-Nodes (1): Scenario A: Server returns empty body after anti-XSSI prefix.
+Nodes (1): Test getting description with no suggested topics.
 
 ### Community 132 - "Community 132"
 Cohesion: 1.0
-Nodes (1): Scenario B: Server returns JSON chunks but no RPC data.
+Nodes (1): Test getting description with malformed topic data.
 
 ### Community 133 - "Community 133"
 Cohesion: 1.0
-Nodes (1): Scenario C: wrb.fr matches GET_NOTEBOOK ID but result_data is None.
+Nodes (1): result has only outer[0] (no outer[1]) so topics stay empty.
 
 ### Community 134 - "Community 134"
 Cohesion: 1.0
-Nodes (1): Scenario D: wrb.fr item has only 2 elements (skipped by extract).
+Nodes (1): outer[1] exists but is an empty list, so topics block is skipped.
 
 ### Community 135 - "Community 135"
 Cohesion: 1.0
-Nodes (1): Test listing notebooks when none exist.
+Nodes (1): outer[1] is present but not a list, so topics block is skipped.
 
 ### Community 136 - "Community 136"
 Cohesion: 1.0
-Nodes (1): Test listing notebooks with nested empty array.
+Nodes (1): Line 260: share() public=True with artifact_id builds deep-link URL.
 
 ### Community 137 - "Community 137"
 Cohesion: 1.0
-Nodes (1): Test getting summary when empty.
+Nodes (1): Line 264: share() public=False sets url to None.
 
 ### Community 138 - "Community 138"
 Cohesion: 1.0
-Nodes (1): Test getting description with no suggested topics.
+Nodes (1): Line 288: get_share_url() without artifact_id returns base URL.
 
 ### Community 139 - "Community 139"
 Cohesion: 1.0
-Nodes (1): Test getting description with malformed topic data.
+Nodes (1): Lines 285-287: get_share_url() with artifact_id appends query param.
 
 ### Community 140 - "Community 140"
 Cohesion: 1.0
-Nodes (1): result has only outer[0] (no outer[1]) so topics stay empty.
+Nodes (1): Test get_fulltext() parses source_type and url from result[0][2] (lines 708-732)
 
 ### Community 141 - "Community 141"
 Cohesion: 1.0
-Nodes (1): outer[1] exists but is an empty list, so topics block is skipped.
+Nodes (1): Test get_guide() returns empty when inner outer[0] is not a list (line 659->667)
 
 ### Community 142 - "Community 142"
 Cohesion: 1.0
-Nodes (1): outer[1] is present but not a list, so topics block is skipped.
+Nodes (1): Test _register_file_source() raises when result has no extractable ID (line 931)
 
 ### Community 143 - "Community 143"
 Cohesion: 1.0
-Nodes (1): Line 260: share() public=True with artifact_id builds deep-link URL.
+Nodes (1): Test listing notes in a notebook.
 
 ### Community 144 - "Community 144"
 Cohesion: 1.0
-Nodes (1): Line 264: share() public=False sets url to None.
+Nodes (1): Create and delete a note in temp notebook.
 
 ### Community 145 - "Community 145"
 Cohesion: 1.0
-Nodes (1): Line 288: get_share_url() without artifact_id returns base URL.
+Nodes (1): Test that list() filters out mind maps.
 
 ### Community 146 - "Community 146"
 Cohesion: 1.0
-Nodes (1): Lines 285-287: get_share_url() with artifact_id appends query param.
+Nodes (1): Test getting a specific note by ID.
 
 ### Community 147 - "Community 147"
 Cohesion: 1.0
-Nodes (1): Test get_fulltext() parses source_type and url from result[0][2] (lines 708-732)
+Nodes (1): Test getting a note that doesn't exist.
 
 ### Community 148 - "Community 148"
 Cohesion: 1.0
-Nodes (1): Test get_guide() returns empty when inner outer[0] is not a list (line 659->667)
+Nodes (1): Test creating a new note.
 
 ### Community 149 - "Community 149"
 Cohesion: 1.0
-Nodes (1): Test _register_file_source() raises when result has no extractable ID (line 931)
+Nodes (1): Test updating an existing note.
 
 ### Community 150 - "Community 150"
 Cohesion: 1.0
-Nodes (1): Test listing notes in a notebook.
+Nodes (1): Test deleting a note.
 
 ### Community 151 - "Community 151"
 Cohesion: 1.0
-Nodes (1): Create and delete a note in temp notebook.
+Nodes (1): Test listing mind maps in a notebook.
 
 ### Community 152 - "Community 152"
 Cohesion: 1.0
-Nodes (1): Test that list() filters out mind maps.
+Nodes (1): Test deleting a mind map.
 
 ### Community 153 - "Community 153"
 Cohesion: 1.0
-Nodes (1): Test getting a specific note by ID.
+Nodes (1): Test setting output language returns the language code.
 
 ### Community 154 - "Community 154"
 Cohesion: 1.0
-Nodes (1): Test getting a note that doesn't exist.
+Nodes (1): Test setting English returns the language code.
 
 ### Community 155 - "Community 155"
 Cohesion: 1.0
-Nodes (1): Test creating a new note.
+Nodes (1): Test getting output language from user settings.
 
 ### Community 156 - "Community 156"
 Cohesion: 1.0
-Nodes (1): Test updating an existing note.
+Nodes (1): Test getting output language returns None when not set on server.
 
 ### Community 157 - "Community 157"
 Cohesion: 1.0
-Nodes (1): Test deleting a note.
+Nodes (1): Test getting output language returns None on unexpected response structure.
 
 ### Community 158 - "Community 158"
 Cohesion: 1.0
-Nodes (1): Test listing mind maps in a notebook.
+Nodes (1): List notebooks shows results from real client.
 
 ### Community 159 - "Community 159"
 Cohesion: 1.0
-Nodes (1): Test deleting a mind map.
+Nodes (1): List notebooks with --json flag returns JSON output.
 
 ### Community 160 - "Community 160"
 Cohesion: 1.0
-Nodes (1): Test setting output language returns the language code.
+Nodes (1): Summary command shows notebook summary.
 
 ### Community 161 - "Community 161"
 Cohesion: 1.0
-Nodes (1): Test setting English returns the language code.
+Nodes (1): Generate commands work with real client.
 
 ### Community 162 - "Community 162"
 Cohesion: 1.0
-Nodes (1): Test getting output language from user settings.
+Nodes (1): List artifacts with optional --json flag.
 
 ### Community 163 - "Community 163"
 Cohesion: 1.0
-Nodes (1): Test getting output language returns None when not set on server.
+Nodes (1): List artifacts filtered by type.
 
 ### Community 164 - "Community 164"
 Cohesion: 1.0
-Nodes (1): Test getting output language returns None on unexpected response structure.
+Nodes (1): Get artifact suggestions works with real client.
 
 ### Community 165 - "Community 165"
 Cohesion: 1.0
-Nodes (1): List notebooks shows results from real client.
+Nodes (1): Ask a question shows response from real client.
 
 ### Community 166 - "Community 166"
 Cohesion: 1.0
-Nodes (1): List notebooks with --json flag returns JSON output.
+Nodes (1): Ask with --json flag returns JSON output.
 
 ### Community 167 - "Community 167"
 Cohesion: 1.0
-Nodes (1): Summary command shows notebook summary.
+Nodes (1): History command shows Q&A turns from last conversation.
 
 ### Community 168 - "Community 168"
 Cohesion: 1.0
-Nodes (1): Generate commands work with real client.
+Nodes (1): history command shows Q&A preview columns populated from khqZz turns API.
 
 ### Community 169 - "Community 169"
 Cohesion: 1.0
-Nodes (1): List artifacts with optional --json flag.
+Nodes (1): ask --save-as-note' saves the answer as a note.
 
 ### Community 170 - "Community 170"
 Cohesion: 1.0
-Nodes (1): List artifacts filtered by type.
+Nodes (1): List sources with optional --json flag.
 
 ### Community 171 - "Community 171"
 Cohesion: 1.0
-Nodes (1): Get artifact suggestions works with real client.
+Nodes (1): Add source (URL or text) works with real client.
 
 ### Community 172 - "Community 172"
 Cohesion: 1.0
-Nodes (1): Ask a question shows response from real client.
+Nodes (1): Get source content works with real client.
 
 ### Community 173 - "Community 173"
 Cohesion: 1.0
-Nodes (1): Ask with --json flag returns JSON output.
+Nodes (1): Delete source by full UUID works with real client.
 
 ### Community 174 - "Community 174"
 Cohesion: 1.0
-Nodes (1): History command shows Q&A turns from last conversation.
+Nodes (1): Download commands work with real client.
 
 ### Community 175 - "Community 175"
 Cohesion: 1.0
-Nodes (1): history command shows Q&A preview columns populated from khqZz turns API.
+Nodes (1): Note commands work with real client.
 
 ### Community 176 - "Community 176"
 Cohesion: 1.0
-Nodes (1): ask --save-as-note' saves the answer as a note.
+Nodes (1): Test getting share status for a notebook.
 
 ### Community 177 - "Community 177"
 Cohesion: 1.0
-Nodes (1): List sources with optional --json flag.
+Nodes (1): Test that share status includes the owner in shared_users.
 
 ### Community 178 - "Community 178"
 Cohesion: 1.0
-Nodes (1): Add source (URL or text) works with real client.
+Nodes (1): Test enabling public sharing.
 
 ### Community 179 - "Community 179"
 Cohesion: 1.0
-Nodes (1): Get source content works with real client.
+Nodes (1): Test disabling public sharing.
 
 ### Community 180 - "Community 180"
 Cohesion: 1.0
-Nodes (1): Delete source by full UUID works with real client.
+Nodes (1): Test that setting public multiple times is idempotent.
 
 ### Community 181 - "Community 181"
 Cohesion: 1.0
-Nodes (1): Download commands work with real client.
+Nodes (1): Test setting view level to chat only.
 
 ### Community 182 - "Community 182"
 Cohesion: 1.0
-Nodes (1): Note commands work with real client.
+Nodes (1): Test complete public sharing workflow.
 
 ### Community 183 - "Community 183"
 Cohesion: 1.0
-Nodes (1): Test getting share status for a notebook.
+Nodes (1): Test that client has sharing API with all methods.
 
 ### Community 184 - "Community 184"
 Cohesion: 1.0
-Nodes (1): Test that share status includes the owner in shared_users.
+Nodes (1): Test that imported sources from fast research appear in notebook.          This
 
 ### Community 185 - "Community 185"
 Cohesion: 1.0
-Nodes (1): Test enabling public sharing.
+Nodes (1): Test that sources without URLs are filtered out before import.          The impo
 
 ### Community 186 - "Community 186"
 Cohesion: 1.0
-Nodes (1): Test disabling public sharing.
+Nodes (0): 
 
 ### Community 187 - "Community 187"
 Cohesion: 1.0
-Nodes (1): Test that setting public multiple times is idempotent.
+Nodes (1): Test getting notebook summary.
 
 ### Community 188 - "Community 188"
 Cohesion: 1.0
-Nodes (1): Test setting view level to chat only.
+Nodes (1): Test getting raw notebook data.
 
 ### Community 189 - "Community 189"
 Cohesion: 1.0
-Nodes (1): Test complete public sharing workflow.
+Nodes (1): Test sharing a notebook.
 
 ### Community 190 - "Community 190"
 Cohesion: 1.0
-Nodes (1): Test that client has sharing API with all methods.
+Nodes (1): Test revoking notebook sharing.
 
 ### Community 191 - "Community 191"
 Cohesion: 1.0
-Nodes (1): Test that imported sources from fast research appear in notebook.          This
+Nodes (1): Test removing notebook from recent list.
 
 ### Community 192 - "Community 192"
 Cohesion: 1.0
-Nodes (1): Test that sources without URLs are filtered out before import.          The impo
+Nodes (1): Test adding a text source to an owned notebook.
 
 ### Community 193 - "Community 193"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Test adding a URL source to an owned notebook.
 
 ### Community 194 - "Community 194"
 Cohesion: 1.0
-Nodes (1): Test getting notebook summary.
+Nodes (1): Test adding a YouTube source to an owned notebook.
 
 ### Community 195 - "Community 195"
 Cohesion: 1.0
-Nodes (1): Test getting raw notebook data.
+Nodes (1): Test renaming a source in an owned notebook.
 
 ### Community 196 - "Community 196"
 Cohesion: 1.0
-Nodes (1): Test sharing a notebook.
+Nodes (1): Test getting a specific source by ID.
 
 ### Community 197 - "Community 197"
 Cohesion: 1.0
-Nodes (1): Test revoking notebook sharing.
+Nodes (1): Test getting a non-existent source returns None.
 
 ### Community 198 - "Community 198"
 Cohesion: 1.0
-Nodes (1): Test removing notebook from recent list.
+Nodes (1): Test getting source guide/summary.
 
 ### Community 199 - "Community 199"
 Cohesion: 1.0
-Nodes (1): Test adding a text source to an owned notebook.
+Nodes (1): Test deleting a source.
 
 ### Community 200 - "Community 200"
 Cohesion: 1.0
-Nodes (1): Test adding a URL source to an owned notebook.
+Nodes (1): Test refreshing a URL source.
 
 ### Community 201 - "Community 201"
 Cohesion: 1.0
-Nodes (1): Test adding a YouTube source to an owned notebook.
+Nodes (1): Test that sources have a status field.
 
 ### Community 202 - "Community 202"
 Cohesion: 1.0
-Nodes (1): Test renaming a source in an owned notebook.
+Nodes (1): Test that is_ready property works correctly.
 
 ### Community 203 - "Community 203"
 Cohesion: 1.0
-Nodes (1): Test getting a specific source by ID.
+Nodes (1): Test adding a text source with wait=True.
 
 ### Community 204 - "Community 204"
 Cohesion: 1.0
-Nodes (1): Test getting a non-existent source returns None.
+Nodes (1): Test wait_until_ready() method.
 
 ### Community 205 - "Community 205"
 Cohesion: 1.0
-Nodes (1): Test getting source guide/summary.
+Nodes (1): Test wait_for_sources() for batch operations.
 
 ### Community 206 - "Community 206"
 Cohesion: 1.0
-Nodes (1): Test deleting a source.
+Nodes (1): Test uploading a PDF file.
 
 ### Community 207 - "Community 207"
 Cohesion: 1.0
-Nodes (1): Test refreshing a URL source.
+Nodes (1): Test uploading a text file.
 
 ### Community 208 - "Community 208"
 Cohesion: 1.0
-Nodes (1): Test that sources have a status field.
+Nodes (1): Test uploading a markdown file.
 
 ### Community 209 - "Community 209"
 Cohesion: 1.0
-Nodes (1): Test that is_ready property works correctly.
+Nodes (1): Test uploading a CSV file.
 
 ### Community 210 - "Community 210"
 Cohesion: 1.0
-Nodes (1): Test adding a text source with wait=True.
+Nodes (1): Test uploading an MP3 file.
 
 ### Community 211 - "Community 211"
 Cohesion: 1.0
-Nodes (1): Test wait_until_ready() method.
+Nodes (1): Test uploading an MP4 file.
 
 ### Community 212 - "Community 212"
 Cohesion: 1.0
-Nodes (1): Test wait_for_sources() for batch operations.
+Nodes (1): Test uploading a DOCX file.
 
 ### Community 213 - "Community 213"
 Cohesion: 1.0
-Nodes (1): Test uploading a PDF file.
+Nodes (1): Test uploading a JPEG image file.
 
 ### Community 214 - "Community 214"
 Cohesion: 1.0
-Nodes (1): Test uploading a text file.
+Nodes (1): Test uploading an EPUB file.
 
 ### Community 215 - "Community 215"
 Cohesion: 1.0
-Nodes (1): Test uploading a markdown file.
+Nodes (1): Test audio generation with true defaults.
 
 ### Community 216 - "Community 216"
 Cohesion: 1.0
-Nodes (1): Test uploading a CSV file.
+Nodes (1): Test audio generation with non-default format to verify param encoding.
 
 ### Community 217 - "Community 217"
 Cohesion: 1.0
-Nodes (1): Test uploading an MP3 file.
+Nodes (1): Test video generation with non-default style to verify param encoding.
 
 ### Community 218 - "Community 218"
 Cohesion: 1.0
-Nodes (1): Test uploading an MP4 file.
+Nodes (1): Test cinematic video generation with defaults.
 
 ### Community 219 - "Community 219"
 Cohesion: 1.0
-Nodes (1): Test uploading a DOCX file.
+Nodes (1): Test cinematic video generation with custom instructions.
 
 ### Community 220 - "Community 220"
 Cohesion: 1.0
-Nodes (1): Test uploading a JPEG image file.
+Nodes (1): Test cinematic video generation with explicit language.
 
 ### Community 221 - "Community 221"
 Cohesion: 1.0
-Nodes (1): Test uploading an EPUB file.
+Nodes (1): Test quiz generation with non-default difficulty to verify param encoding.
 
 ### Community 222 - "Community 222"
 Cohesion: 1.0
-Nodes (1): Test audio generation with true defaults.
+Nodes (1): Test flashcards generation with non-default quantity to verify param encoding.
 
 ### Community 223 - "Community 223"
 Cohesion: 1.0
-Nodes (1): Test audio generation with non-default format to verify param encoding.
+Nodes (1): Test infographic generation with non-default orientation to verify param encodin
 
 ### Community 224 - "Community 224"
 Cohesion: 1.0
-Nodes (1): Test video generation with non-default style to verify param encoding.
+Nodes (1): Test slide deck generation with non-default format to verify param encoding.
 
 ### Community 225 - "Community 225"
 Cohesion: 1.0
-Nodes (1): Test cinematic video generation with defaults.
+Nodes (1): Test data table generation with instructions to verify param encoding.
 
 ### Community 226 - "Community 226"
 Cohesion: 1.0
-Nodes (1): Test cinematic video generation with custom instructions.
+Nodes (1): Mind map generation is fast (~5-10s), not slow.
 
 ### Community 227 - "Community 227"
 Cohesion: 1.0
-Nodes (1): Test cinematic video generation with explicit language.
+Nodes (1): Test study guide generation.
 
 ### Community 228 - "Community 228"
 Cohesion: 1.0
-Nodes (1): Test quiz generation with non-default difficulty to verify param encoding.
+Nodes (1): List notes in test notebook - read-only.
 
 ### Community 229 - "Community 229"
 Cohesion: 1.0
-Nodes (1): Test flashcards generation with non-default quantity to verify param encoding.
+Nodes (1): Get a specific note from test notebook - read-only.
 
 ### Community 230 - "Community 230"
 Cohesion: 1.0
-Nodes (1): Test infographic generation with non-default orientation to verify param encodin
+Nodes (1): Test getting a non-existent note returns None.
 
 ### Community 231 - "Community 231"
 Cohesion: 1.0
-Nodes (1): Test slide deck generation with non-default format to verify param encoding.
+Nodes (1): Update a note's content and title.
 
 ### Community 232 - "Community 232"
 Cohesion: 1.0
-Nodes (1): Test data table generation with instructions to verify param encoding.
+Nodes (1): List mind maps in test notebook - read-only.
 
 ### Community 233 - "Community 233"
 Cohesion: 1.0
-Nodes (1): Mind map generation is fast (~5-10s), not slow.
+Nodes (1): Test setting and then getting language.
 
 ### Community 234 - "Community 234"
 Cohesion: 1.0
-Nodes (1): Test study guide generation.
+Nodes (1): Test setting language to English.
 
 ### Community 235 - "Community 235"
 Cohesion: 1.0
-Nodes (1): List notes in test notebook - read-only.
+Nodes (1): Test setting language to Japanese.
 
 ### Community 236 - "Community 236"
 Cohesion: 1.0
-Nodes (1): Get a specific note from test notebook - read-only.
+Nodes (1): Test setting language with regional variant.
 
 ### Community 237 - "Community 237"
 Cohesion: 1.0
-Nodes (1): Test getting a non-existent note returns None.
+Nodes (1): Test that language setting persists when creating new client.
 
 ### Community 238 - "Community 238"
 Cohesion: 1.0
-Nodes (1): Update a note's content and title.
+Nodes (1): Test asking a question using all sources (source_ids=None).
 
 ### Community 239 - "Community 239"
 Cohesion: 1.0
-Nodes (1): List mind maps in test notebook - read-only.
+Nodes (1): Test asking a question using only one source.
 
 ### Community 240 - "Community 240"
 Cohesion: 1.0
-Nodes (1): Test setting and then getting language.
+Nodes (1): Test follow-up question can use different source selection.
 
 ### Community 241 - "Community 241"
 Cohesion: 1.0
-Nodes (1): Test setting language to English.
+Nodes (1): Test report generation using all sources.
 
 ### Community 242 - "Community 242"
 Cohesion: 1.0
-Nodes (1): Test setting language to Japanese.
+Nodes (1): Test report generation using only one source.
 
 ### Community 243 - "Community 243"
 Cohesion: 1.0
-Nodes (1): Test setting language with regional variant.
+Nodes (1): Test report generation using a random subset of sources.
 
 ### Community 244 - "Community 244"
 Cohesion: 1.0
-Nodes (1): Test that language setting persists when creating new client.
+Nodes (1): Test quiz generation using only one source.
 
 ### Community 245 - "Community 245"
 Cohesion: 1.0
-Nodes (1): Test asking a question using all sources (source_ids=None).
+Nodes (1): Test flashcard generation using a subset of sources.
 
 ### Community 246 - "Community 246"
 Cohesion: 1.0
-Nodes (1): Test asking a question using only one source.
+Nodes (1): Test audio generation using only one source.
 
 ### Community 247 - "Community 247"
 Cohesion: 1.0
-Nodes (1): Test follow-up question can use different source selection.
+Nodes (1): Verify the test notebook has at least 3 sources.
 
 ### Community 248 - "Community 248"
 Cohesion: 1.0
-Nodes (1): Test report generation using all sources.
+Nodes (1): Verify all source IDs are unique.
 
 ### Community 249 - "Community 249"
 Cohesion: 1.0
-Nodes (1): Test report generation using only one source.
+Nodes (1): Test asking with explicitly listing all source IDs (same as None).
 
 ### Community 250 - "Community 250"
 Cohesion: 1.0
-Nodes (1): Test report generation using a random subset of sources.
+Nodes (1): Test that source order doesn't affect results.
 
 ### Community 251 - "Community 251"
 Cohesion: 1.0
-Nodes (1): Test quiz generation using only one source.
+Nodes (1): Generate Cookie header value for HTTP requests.          Returns:             Se
 
 ### Community 252 - "Community 252"
 Cohesion: 1.0
-Nodes (1): Test flashcard generation using a subset of sources.
+Nodes (1): Create AuthTokens from Playwright storage state file.          This is the recom
 
 ### Community 253 - "Community 253"
 Cohesion: 1.0
-Nodes (1): Test audio generation using only one source.
+Nodes (1): Alias for method_id (deprecated, use method_id instead).
 
 ### Community 254 - "Community 254"
 Cohesion: 1.0
-Nodes (1): Verify the test notebook has at least 3 sources.
+Nodes (1): Alias for rpc_code (deprecated, use rpc_code instead).
 
 ### Community 255 - "Community 255"
 Cohesion: 1.0
-Nodes (1): Verify all source IDs are unique.
+Nodes (0): 
 
 ### Community 256 - "Community 256"
 Cohesion: 1.0
-Nodes (1): Test asking with explicitly listing all source IDs (same as None).
+Nodes (0): 
 
 ### Community 257 - "Community 257"
 Cohesion: 1.0
-Nodes (1): Test that source order doesn't affect results.
+Nodes (0): 
 
 ### Community 258 - "Community 258"
 Cohesion: 1.0
-Nodes (1): Generate Cookie header value for HTTP requests.          Returns:             Se
+Nodes (0): 
 
 ### Community 259 - "Community 259"
 Cohesion: 1.0
-Nodes (1): Create AuthTokens from Playwright storage state file.          This is the recom
+Nodes (0): 
 
 ### Community 260 - "Community 260"
 Cohesion: 1.0
-Nodes (1): Alias for method_id (deprecated, use method_id instead).
+Nodes (0): 
 
 ### Community 261 - "Community 261"
 Cohesion: 1.0
-Nodes (1): Alias for rpc_code (deprecated, use rpc_code instead).
+Nodes (0): 
 
 ### Community 262 - "Community 262"
 Cohesion: 1.0
@@ -1537,579 +1532,563 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 299 - "Community 299"
-Cohesion: 1.0
-Nodes (0): 
-
-### Community 300 - "Community 300"
-Cohesion: 1.0
-Nodes (0): 
-
-### Community 301 - "Community 301"
-Cohesion: 1.0
-Nodes (0): 
-
-### Community 302 - "Community 302"
-Cohesion: 1.0
-Nodes (0): 
-
-### Community 303 - "Community 303"
-Cohesion: 1.0
-Nodes (0): 
-
 ## Knowledge Gaps
 - **965 isolated node(s):** `Register custom markers and configure test environment.`, `Sample Playwright storage state with valid cookies.`, `Sample NotebookLM homepage HTML with tokens.`, `Factory for building RPC responses.      Args:         rpc_id: Either an RPCMeth`, `VCR.py configuration for recording and replaying HTTP interactions.  This module` (+960 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 34`** (2 nodes): `Allow running ``python -m notebooklm``.`, `__main__.py`
+- **Thin community `Community 27`** (2 nodes): `Allow running ``python -m notebooklm``.`, `__main__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (2 nodes): `Card()`, `card.tsx`
+- **Thin community `Community 28`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 29`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 30`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (2 nodes): `utils.ts`, `cn()`
+- **Thin community `Community 31`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 32`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (2 nodes): `AdminHomePage()`, `page.tsx`
+- **Thin community `Community 33`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (2 nodes): `async()`, `page.tsx`
+- **Thin community `Community 34`** (2 nodes): `async()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (2 nodes): `ThemeImage()`, `page.tsx`
+- **Thin community `Community 35`** (2 nodes): `ThemeImage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (2 nodes): `HomePage()`, `page.tsx`
+- **Thin community `Community 36`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 37`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `Verify sync_playwright() works on Windows with our event loop fix.          This`
+- **Thin community `Community 38`** (1 nodes): `Verify sync_playwright() works on Windows with our event loop fix.          This`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `Verify context manager switches to default policy and restores on exit.`
+- **Thin community `Community 39`** (1 nodes): `Verify context manager switches to default policy and restores on exit.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `Verify policy is restored even if an exception occurs.`
+- **Thin community `Community 40`** (1 nodes): `Verify policy is restored even if an exception occurs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (1 nodes): `Verify Windows uses SelectorEventLoop after CLI initialization.          This pr`
+- **Thin community `Community 41`** (1 nodes): `Verify Windows uses SelectorEventLoop after CLI initialization.          This pr`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `Verify UTF-8 mode is enabled on Windows.          This prevents UnicodeEncodeErr`
+- **Thin community `Community 42`** (1 nodes): `Verify UTF-8 mode is enabled on Windows.          This prevents UnicodeEncodeErr`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `Verify common CLI output characters can be encoded.          These characters ar`
+- **Thin community `Community 43`** (1 nodes): `Verify common CLI output characters can be encoded.          These characters ar`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (1 nodes): `Create a client instance for testing the extraction method.`
+- **Thin community `Community 44`** (1 nodes): `Create a client instance for testing the extraction method.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 52`** (1 nodes): `Should return True for legitimate YouTube URLs.`
+- **Thin community `Community 45`** (1 nodes): `Should return True for legitimate YouTube URLs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 53`** (1 nodes): `Should return False for non-YouTube or malicious URLs.`
+- **Thin community `Community 46`** (1 nodes): `Should return False for non-YouTube or malicious URLs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 54`** (1 nodes): `Should return True for Google accounts URLs.`
+- **Thin community `Community 47`** (1 nodes): `Should return True for Google accounts URLs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 55`** (1 nodes): `Should return False for non-auth or malicious URLs.`
+- **Thin community `Community 48`** (1 nodes): `Should return False for non-auth or malicious URLs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 56`** (1 nodes): `Should return True when HTML contains Google auth URL.`
+- **Thin community `Community 49`** (1 nodes): `Should return True when HTML contains Google auth URL.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 57`** (1 nodes): `Should return False when HTML doesn't contain Google auth URL.`
+- **Thin community `Community 50`** (1 nodes): `Should return False when HTML doesn't contain Google auth URL.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 58`** (1 nodes): `Test complete workflow: start -> poll -> import.          Validates that poll()`
+- **Thin community `Community 51`** (1 nodes): `Test complete workflow: start -> poll -> import.          Validates that poll()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 59`** (1 nodes): `create=True sets directory permissions to 0o700.`
+- **Thin community `Community 52`** (1 nodes): `create=True sets directory permissions to 0o700.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 60`** (1 nodes): `Get a specific notebook.`
+- **Thin community `Community 53`** (1 nodes): `Get a specific notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 61`** (1 nodes): `Get notebook summary.`
+- **Thin community `Community 54`** (1 nodes): `Get notebook summary.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 62`** (1 nodes): `Get notebook description.`
+- **Thin community `Community 55`** (1 nodes): `Get notebook description.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 63`** (1 nodes): `Get raw notebook data.`
+- **Thin community `Community 56`** (1 nodes): `Get raw notebook data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 64`** (1 nodes): `Rename a notebook (then rename back).`
+- **Thin community `Community 57`** (1 nodes): `Rename a notebook (then rename back).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 65`** (1 nodes): `List sources in a notebook.`
+- **Thin community `Community 58`** (1 nodes): `List sources in a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 66`** (1 nodes): `Get source guide for a specific source.`
+- **Thin community `Community 59`** (1 nodes): `Get source guide for a specific source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 67`** (1 nodes): `Get source fulltext content.`
+- **Thin community `Community 60`** (1 nodes): `Get source fulltext content.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 68`** (1 nodes): `Add a Google Drive document source.          Uses a public Google Doc for testin`
+- **Thin community `Community 61`** (1 nodes): `Add a Google Drive document source.          Uses a public Google Doc for testin`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 69`** (1 nodes): `List notes in a notebook.`
+- **Thin community `Community 62`** (1 nodes): `List notes in a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 70`** (1 nodes): `List mind maps in a notebook.`
+- **Thin community `Community 63`** (1 nodes): `List mind maps in a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 71`** (1 nodes): `Create and update a note.`
+- **Thin community `Community 64`** (1 nodes): `Create and update a note.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 72`** (1 nodes): `Test artifact list methods.`
+- **Thin community `Community 65`** (1 nodes): `Test artifact list methods.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 73`** (1 nodes): `Get report suggestions.`
+- **Thin community `Community 66`** (1 nodes): `Get report suggestions.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 74`** (1 nodes): `Download a report as markdown.`
+- **Thin community `Community 67`** (1 nodes): `Download a report as markdown.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 75`** (1 nodes): `Download a mind map as JSON.`
+- **Thin community `Community 68`** (1 nodes): `Download a mind map as JSON.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 76`** (1 nodes): `Download a data table as CSV.`
+- **Thin community `Community 69`** (1 nodes): `Download a data table as CSV.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 77`** (1 nodes): `Download a quiz as JSON.`
+- **Thin community `Community 70`** (1 nodes): `Download a quiz as JSON.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 78`** (1 nodes): `Download a quiz as markdown.`
+- **Thin community `Community 71`** (1 nodes): `Download a quiz as markdown.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 79`** (1 nodes): `Download flashcards as JSON.`
+- **Thin community `Community 72`** (1 nodes): `Download flashcards as JSON.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 80`** (1 nodes): `Download flashcards as markdown.`
+- **Thin community `Community 73`** (1 nodes): `Download flashcards as markdown.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 81`** (1 nodes): `Generate a briefing doc report.`
+- **Thin community `Community 74`** (1 nodes): `Generate a briefing doc report.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 82`** (1 nodes): `Generate a study guide.`
+- **Thin community `Community 75`** (1 nodes): `Generate a study guide.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 83`** (1 nodes): `Ask a question that generates references.`
+- **Thin community `Community 76`** (1 nodes): `Ask a question that generates references.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 84`** (1 nodes): `Get current output language setting.`
+- **Thin community `Community 77`** (1 nodes): `Get current output language setting.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 85`** (1 nodes): `Set output language (then restore original).`
+- **Thin community `Community 78`** (1 nodes): `Set output language (then restore original).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 86`** (1 nodes): `Get sharing status for a notebook.`
+- **Thin community `Community 79`** (1 nodes): `Get sharing status for a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 87`** (1 nodes): `Toggle public sharing (restore original state).`
+- **Thin community `Community 80`** (1 nodes): `Toggle public sharing (restore original state).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 88`** (1 nodes): `Check source freshness.`
+- **Thin community `Community 81`** (1 nodes): `Check source freshness.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 89`** (1 nodes): `Check freshness for Drive source (different response format).`
+- **Thin community `Community 82`** (1 nodes): `Check freshness for Drive source (different response format).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 90`** (1 nodes): `Rename a source (then restore original name).`
+- **Thin community `Community 83`** (1 nodes): `Rename a source (then restore original name).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 91`** (1 nodes): `Delete a source (creates one first to delete).`
+- **Thin community `Community 84`** (1 nodes): `Delete a source (creates one first to delete).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 92`** (1 nodes): `Create a new notebook.`
+- **Thin community `Community 85`** (1 nodes): `Create a new notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 93`** (1 nodes): `Delete a notebook (creates one first).`
+- **Thin community `Community 86`** (1 nodes): `Delete a notebook (creates one first).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 94`** (1 nodes): `Remove a notebook from recently viewed.`
+- **Thin community `Community 87`** (1 nodes): `Remove a notebook from recently viewed.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 95`** (1 nodes): `Delete a note (creates one first).`
+- **Thin community `Community 88`** (1 nodes): `Delete a note (creates one first).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 96`** (1 nodes): `Export a report to Google Docs.`
+- **Thin community `Community 89`** (1 nodes): `Export a report to Google Docs.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 97`** (1 nodes): `Start fast web research.`
+- **Thin community `Community 90`** (1 nodes): `Start fast web research.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 98`** (1 nodes): `Poll research status.`
+- **Thin community `Community 91`** (1 nodes): `Poll research status.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 99`** (1 nodes): `Import research sources.`
+- **Thin community `Community 92`** (1 nodes): `Import research sources.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 100`** (1 nodes): `Start deep web research.`
+- **Thin community `Community 93`** (1 nodes): `Start deep web research.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 101`** (1 nodes): `Test getting status for a public notebook.`
+- **Thin community `Community 94`** (1 nodes): `Test getting status for a public notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 102`** (1 nodes): `Test getting status for a private notebook.`
+- **Thin community `Community 95`** (1 nodes): `Test getting status for a private notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 103`** (1 nodes): `Test get_status sends correct RPC request.`
+- **Thin community `Community 96`** (1 nodes): `Test get_status sends correct RPC request.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 104`** (1 nodes): `Test setting view level to full notebook.`
+- **Thin community `Community 97`** (1 nodes): `Test setting view level to full notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 105`** (1 nodes): `Test disabling public sharing.`
+- **Thin community `Community 98`** (1 nodes): `Test disabling public sharing.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 106`** (1 nodes): `Test setting view level to chat only.`
+- **Thin community `Community 99`** (1 nodes): `Test setting view level to chat only.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 107`** (1 nodes): `Test setting view level to full notebook.`
+- **Thin community `Community 100`** (1 nodes): `Test setting view level to full notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 108`** (1 nodes): `Test adding a user as viewer.`
+- **Thin community `Community 101`** (1 nodes): `Test adding a user as viewer.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 109`** (1 nodes): `Test adding a user as editor.`
+- **Thin community `Community 102`** (1 nodes): `Test adding a user as editor.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 110`** (1 nodes): `Test adding a user with a welcome message.`
+- **Thin community `Community 103`** (1 nodes): `Test adding a user with a welcome message.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 111`** (1 nodes): `Test updating a user's permission.`
+- **Thin community `Community 104`** (1 nodes): `Test updating a user's permission.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 112`** (1 nodes): `Test removing a user.`
+- **Thin community `Community 105`** (1 nodes): `Test removing a user.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 113`** (1 nodes): `Test that NotebookLMClient has sharing API.`
+- **Thin community `Community 106`** (1 nodes): `Test that NotebookLMClient has sharing API.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 114`** (1 nodes): `Record listing notebooks from real API.`
+- **Thin community `Community 107`** (1 nodes): `Record listing notebooks from real API.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 115`** (1 nodes): `Record getting a specific notebook from real API.`
+- **Thin community `Community 108`** (1 nodes): `Record getting a specific notebook from real API.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 116`** (1 nodes): `Record listing sources from a notebook.`
+- **Thin community `Community 109`** (1 nodes): `Record listing sources from a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 117`** (1 nodes): `Record listing all artifacts from a notebook.`
+- **Thin community `Community 110`** (1 nodes): `Record listing all artifacts from a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 118`** (1 nodes): `Record listing audio artifacts (podcasts).`
+- **Thin community `Community 111`** (1 nodes): `Record listing audio artifacts (podcasts).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 119`** (1 nodes): `Record listing report artifacts.`
+- **Thin community `Community 112`** (1 nodes): `Record listing report artifacts.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 120`** (1 nodes): `Record listing quiz artifacts.`
+- **Thin community `Community 113`** (1 nodes): `Record listing quiz artifacts.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 121`** (1 nodes): `Record listing mind map artifacts (via notes API).`
+- **Thin community `Community 114`** (1 nodes): `Record listing mind map artifacts (via notes API).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 122`** (1 nodes): `Verify VCR.py can record and replay HTTP interactions.          This test uses h`
+- **Thin community `Community 115`** (1 nodes): `Verify VCR.py can record and replay HTTP interactions.          This test uses h`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 123`** (1 nodes): `Verify VCR.py handles POST requests with form data.`
+- **Thin community `Community 116`** (1 nodes): `Verify VCR.py handles POST requests with form data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 124`** (1 nodes): `Verify sensitive cookies are scrubbed from cassettes.          The scrubbing hap`
+- **Thin community `Community 117`** (1 nodes): `Verify sensitive cookies are scrubbed from cassettes.          The scrubbing hap`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 125`** (1 nodes): `Simulate the batchexecute request pattern used by notebooklm-py.          The ac`
+- **Thin community `Community 118`** (1 nodes): `Simulate the batchexecute request pattern used by notebooklm-py.          The ac`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 126`** (1 nodes): `Test sharing a notebook.`
+- **Thin community `Community 119`** (1 nodes): `Test sharing a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 127`** (1 nodes): `Test getting notebook summary.`
+- **Thin community `Community 120`** (1 nodes): `Test getting notebook summary.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 128`** (1 nodes): `Test removing notebook from recent list.`
+- **Thin community `Community 121`** (1 nodes): `Test removing notebook from recent list.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 129`** (1 nodes): `Test getting raw notebook data.`
+- **Thin community `Community 122`** (1 nodes): `Test getting raw notebook data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 130`** (1 nodes): `Test getting notebook description with summary and topics.`
+- **Thin community `Community 123`** (1 nodes): `Test getting notebook description with summary and topics.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 131`** (1 nodes): `Scenario A: Server returns empty body after anti-XSSI prefix.`
+- **Thin community `Community 124`** (1 nodes): `Scenario A: Server returns empty body after anti-XSSI prefix.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 132`** (1 nodes): `Scenario B: Server returns JSON chunks but no RPC data.`
+- **Thin community `Community 125`** (1 nodes): `Scenario B: Server returns JSON chunks but no RPC data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 133`** (1 nodes): `Scenario C: wrb.fr matches GET_NOTEBOOK ID but result_data is None.`
+- **Thin community `Community 126`** (1 nodes): `Scenario C: wrb.fr matches GET_NOTEBOOK ID but result_data is None.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 134`** (1 nodes): `Scenario D: wrb.fr item has only 2 elements (skipped by extract).`
+- **Thin community `Community 127`** (1 nodes): `Scenario D: wrb.fr item has only 2 elements (skipped by extract).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 135`** (1 nodes): `Test listing notebooks when none exist.`
+- **Thin community `Community 128`** (1 nodes): `Test listing notebooks when none exist.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 136`** (1 nodes): `Test listing notebooks with nested empty array.`
+- **Thin community `Community 129`** (1 nodes): `Test listing notebooks with nested empty array.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 137`** (1 nodes): `Test getting summary when empty.`
+- **Thin community `Community 130`** (1 nodes): `Test getting summary when empty.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 138`** (1 nodes): `Test getting description with no suggested topics.`
+- **Thin community `Community 131`** (1 nodes): `Test getting description with no suggested topics.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 139`** (1 nodes): `Test getting description with malformed topic data.`
+- **Thin community `Community 132`** (1 nodes): `Test getting description with malformed topic data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 140`** (1 nodes): `result has only outer[0] (no outer[1]) so topics stay empty.`
+- **Thin community `Community 133`** (1 nodes): `result has only outer[0] (no outer[1]) so topics stay empty.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 141`** (1 nodes): `outer[1] exists but is an empty list, so topics block is skipped.`
+- **Thin community `Community 134`** (1 nodes): `outer[1] exists but is an empty list, so topics block is skipped.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 142`** (1 nodes): `outer[1] is present but not a list, so topics block is skipped.`
+- **Thin community `Community 135`** (1 nodes): `outer[1] is present but not a list, so topics block is skipped.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 143`** (1 nodes): `Line 260: share() public=True with artifact_id builds deep-link URL.`
+- **Thin community `Community 136`** (1 nodes): `Line 260: share() public=True with artifact_id builds deep-link URL.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 144`** (1 nodes): `Line 264: share() public=False sets url to None.`
+- **Thin community `Community 137`** (1 nodes): `Line 264: share() public=False sets url to None.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 145`** (1 nodes): `Line 288: get_share_url() without artifact_id returns base URL.`
+- **Thin community `Community 138`** (1 nodes): `Line 288: get_share_url() without artifact_id returns base URL.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 146`** (1 nodes): `Lines 285-287: get_share_url() with artifact_id appends query param.`
+- **Thin community `Community 139`** (1 nodes): `Lines 285-287: get_share_url() with artifact_id appends query param.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 147`** (1 nodes): `Test get_fulltext() parses source_type and url from result[0][2] (lines 708-732)`
+- **Thin community `Community 140`** (1 nodes): `Test get_fulltext() parses source_type and url from result[0][2] (lines 708-732)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 148`** (1 nodes): `Test get_guide() returns empty when inner outer[0] is not a list (line 659->667)`
+- **Thin community `Community 141`** (1 nodes): `Test get_guide() returns empty when inner outer[0] is not a list (line 659->667)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 149`** (1 nodes): `Test _register_file_source() raises when result has no extractable ID (line 931)`
+- **Thin community `Community 142`** (1 nodes): `Test _register_file_source() raises when result has no extractable ID (line 931)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 150`** (1 nodes): `Test listing notes in a notebook.`
+- **Thin community `Community 143`** (1 nodes): `Test listing notes in a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 151`** (1 nodes): `Create and delete a note in temp notebook.`
+- **Thin community `Community 144`** (1 nodes): `Create and delete a note in temp notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 152`** (1 nodes): `Test that list() filters out mind maps.`
+- **Thin community `Community 145`** (1 nodes): `Test that list() filters out mind maps.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 153`** (1 nodes): `Test getting a specific note by ID.`
+- **Thin community `Community 146`** (1 nodes): `Test getting a specific note by ID.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 154`** (1 nodes): `Test getting a note that doesn't exist.`
+- **Thin community `Community 147`** (1 nodes): `Test getting a note that doesn't exist.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 155`** (1 nodes): `Test creating a new note.`
+- **Thin community `Community 148`** (1 nodes): `Test creating a new note.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 156`** (1 nodes): `Test updating an existing note.`
+- **Thin community `Community 149`** (1 nodes): `Test updating an existing note.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 157`** (1 nodes): `Test deleting a note.`
+- **Thin community `Community 150`** (1 nodes): `Test deleting a note.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 158`** (1 nodes): `Test listing mind maps in a notebook.`
+- **Thin community `Community 151`** (1 nodes): `Test listing mind maps in a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 159`** (1 nodes): `Test deleting a mind map.`
+- **Thin community `Community 152`** (1 nodes): `Test deleting a mind map.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 160`** (1 nodes): `Test setting output language returns the language code.`
+- **Thin community `Community 153`** (1 nodes): `Test setting output language returns the language code.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 161`** (1 nodes): `Test setting English returns the language code.`
+- **Thin community `Community 154`** (1 nodes): `Test setting English returns the language code.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 162`** (1 nodes): `Test getting output language from user settings.`
+- **Thin community `Community 155`** (1 nodes): `Test getting output language from user settings.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 163`** (1 nodes): `Test getting output language returns None when not set on server.`
+- **Thin community `Community 156`** (1 nodes): `Test getting output language returns None when not set on server.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 164`** (1 nodes): `Test getting output language returns None on unexpected response structure.`
+- **Thin community `Community 157`** (1 nodes): `Test getting output language returns None on unexpected response structure.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 165`** (1 nodes): `List notebooks shows results from real client.`
+- **Thin community `Community 158`** (1 nodes): `List notebooks shows results from real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 166`** (1 nodes): `List notebooks with --json flag returns JSON output.`
+- **Thin community `Community 159`** (1 nodes): `List notebooks with --json flag returns JSON output.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 167`** (1 nodes): `Summary command shows notebook summary.`
+- **Thin community `Community 160`** (1 nodes): `Summary command shows notebook summary.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 168`** (1 nodes): `Generate commands work with real client.`
+- **Thin community `Community 161`** (1 nodes): `Generate commands work with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 169`** (1 nodes): `List artifacts with optional --json flag.`
+- **Thin community `Community 162`** (1 nodes): `List artifacts with optional --json flag.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 170`** (1 nodes): `List artifacts filtered by type.`
+- **Thin community `Community 163`** (1 nodes): `List artifacts filtered by type.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 171`** (1 nodes): `Get artifact suggestions works with real client.`
+- **Thin community `Community 164`** (1 nodes): `Get artifact suggestions works with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 172`** (1 nodes): `Ask a question shows response from real client.`
+- **Thin community `Community 165`** (1 nodes): `Ask a question shows response from real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 173`** (1 nodes): `Ask with --json flag returns JSON output.`
+- **Thin community `Community 166`** (1 nodes): `Ask with --json flag returns JSON output.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 174`** (1 nodes): `History command shows Q&A turns from last conversation.`
+- **Thin community `Community 167`** (1 nodes): `History command shows Q&A turns from last conversation.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 175`** (1 nodes): `history command shows Q&A preview columns populated from khqZz turns API.`
+- **Thin community `Community 168`** (1 nodes): `history command shows Q&A preview columns populated from khqZz turns API.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 176`** (1 nodes): `ask --save-as-note' saves the answer as a note.`
+- **Thin community `Community 169`** (1 nodes): `ask --save-as-note' saves the answer as a note.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 177`** (1 nodes): `List sources with optional --json flag.`
+- **Thin community `Community 170`** (1 nodes): `List sources with optional --json flag.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 178`** (1 nodes): `Add source (URL or text) works with real client.`
+- **Thin community `Community 171`** (1 nodes): `Add source (URL or text) works with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 179`** (1 nodes): `Get source content works with real client.`
+- **Thin community `Community 172`** (1 nodes): `Get source content works with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 180`** (1 nodes): `Delete source by full UUID works with real client.`
+- **Thin community `Community 173`** (1 nodes): `Delete source by full UUID works with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 181`** (1 nodes): `Download commands work with real client.`
+- **Thin community `Community 174`** (1 nodes): `Download commands work with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 182`** (1 nodes): `Note commands work with real client.`
+- **Thin community `Community 175`** (1 nodes): `Note commands work with real client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 183`** (1 nodes): `Test getting share status for a notebook.`
+- **Thin community `Community 176`** (1 nodes): `Test getting share status for a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 184`** (1 nodes): `Test that share status includes the owner in shared_users.`
+- **Thin community `Community 177`** (1 nodes): `Test that share status includes the owner in shared_users.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 185`** (1 nodes): `Test enabling public sharing.`
+- **Thin community `Community 178`** (1 nodes): `Test enabling public sharing.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 186`** (1 nodes): `Test disabling public sharing.`
+- **Thin community `Community 179`** (1 nodes): `Test disabling public sharing.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 187`** (1 nodes): `Test that setting public multiple times is idempotent.`
+- **Thin community `Community 180`** (1 nodes): `Test that setting public multiple times is idempotent.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 188`** (1 nodes): `Test setting view level to chat only.`
+- **Thin community `Community 181`** (1 nodes): `Test setting view level to chat only.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 189`** (1 nodes): `Test complete public sharing workflow.`
+- **Thin community `Community 182`** (1 nodes): `Test complete public sharing workflow.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 190`** (1 nodes): `Test that client has sharing API with all methods.`
+- **Thin community `Community 183`** (1 nodes): `Test that client has sharing API with all methods.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 191`** (1 nodes): `Test that imported sources from fast research appear in notebook.          This`
+- **Thin community `Community 184`** (1 nodes): `Test that imported sources from fast research appear in notebook.          This`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 192`** (1 nodes): `Test that sources without URLs are filtered out before import.          The impo`
+- **Thin community `Community 185`** (1 nodes): `Test that sources without URLs are filtered out before import.          The impo`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 193`** (1 nodes): `__init__.py`
+- **Thin community `Community 186`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 194`** (1 nodes): `Test getting notebook summary.`
+- **Thin community `Community 187`** (1 nodes): `Test getting notebook summary.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 195`** (1 nodes): `Test getting raw notebook data.`
+- **Thin community `Community 188`** (1 nodes): `Test getting raw notebook data.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 196`** (1 nodes): `Test sharing a notebook.`
+- **Thin community `Community 189`** (1 nodes): `Test sharing a notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 197`** (1 nodes): `Test revoking notebook sharing.`
+- **Thin community `Community 190`** (1 nodes): `Test revoking notebook sharing.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 198`** (1 nodes): `Test removing notebook from recent list.`
+- **Thin community `Community 191`** (1 nodes): `Test removing notebook from recent list.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 199`** (1 nodes): `Test adding a text source to an owned notebook.`
+- **Thin community `Community 192`** (1 nodes): `Test adding a text source to an owned notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 200`** (1 nodes): `Test adding a URL source to an owned notebook.`
+- **Thin community `Community 193`** (1 nodes): `Test adding a URL source to an owned notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 201`** (1 nodes): `Test adding a YouTube source to an owned notebook.`
+- **Thin community `Community 194`** (1 nodes): `Test adding a YouTube source to an owned notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 202`** (1 nodes): `Test renaming a source in an owned notebook.`
+- **Thin community `Community 195`** (1 nodes): `Test renaming a source in an owned notebook.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 203`** (1 nodes): `Test getting a specific source by ID.`
+- **Thin community `Community 196`** (1 nodes): `Test getting a specific source by ID.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 204`** (1 nodes): `Test getting a non-existent source returns None.`
+- **Thin community `Community 197`** (1 nodes): `Test getting a non-existent source returns None.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 205`** (1 nodes): `Test getting source guide/summary.`
+- **Thin community `Community 198`** (1 nodes): `Test getting source guide/summary.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 206`** (1 nodes): `Test deleting a source.`
+- **Thin community `Community 199`** (1 nodes): `Test deleting a source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 207`** (1 nodes): `Test refreshing a URL source.`
+- **Thin community `Community 200`** (1 nodes): `Test refreshing a URL source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 208`** (1 nodes): `Test that sources have a status field.`
+- **Thin community `Community 201`** (1 nodes): `Test that sources have a status field.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 209`** (1 nodes): `Test that is_ready property works correctly.`
+- **Thin community `Community 202`** (1 nodes): `Test that is_ready property works correctly.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 210`** (1 nodes): `Test adding a text source with wait=True.`
+- **Thin community `Community 203`** (1 nodes): `Test adding a text source with wait=True.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 211`** (1 nodes): `Test wait_until_ready() method.`
+- **Thin community `Community 204`** (1 nodes): `Test wait_until_ready() method.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 212`** (1 nodes): `Test wait_for_sources() for batch operations.`
+- **Thin community `Community 205`** (1 nodes): `Test wait_for_sources() for batch operations.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 213`** (1 nodes): `Test uploading a PDF file.`
+- **Thin community `Community 206`** (1 nodes): `Test uploading a PDF file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 214`** (1 nodes): `Test uploading a text file.`
+- **Thin community `Community 207`** (1 nodes): `Test uploading a text file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 215`** (1 nodes): `Test uploading a markdown file.`
+- **Thin community `Community 208`** (1 nodes): `Test uploading a markdown file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 216`** (1 nodes): `Test uploading a CSV file.`
+- **Thin community `Community 209`** (1 nodes): `Test uploading a CSV file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 217`** (1 nodes): `Test uploading an MP3 file.`
+- **Thin community `Community 210`** (1 nodes): `Test uploading an MP3 file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 218`** (1 nodes): `Test uploading an MP4 file.`
+- **Thin community `Community 211`** (1 nodes): `Test uploading an MP4 file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 219`** (1 nodes): `Test uploading a DOCX file.`
+- **Thin community `Community 212`** (1 nodes): `Test uploading a DOCX file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 220`** (1 nodes): `Test uploading a JPEG image file.`
+- **Thin community `Community 213`** (1 nodes): `Test uploading a JPEG image file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 221`** (1 nodes): `Test uploading an EPUB file.`
+- **Thin community `Community 214`** (1 nodes): `Test uploading an EPUB file.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 222`** (1 nodes): `Test audio generation with true defaults.`
+- **Thin community `Community 215`** (1 nodes): `Test audio generation with true defaults.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 223`** (1 nodes): `Test audio generation with non-default format to verify param encoding.`
+- **Thin community `Community 216`** (1 nodes): `Test audio generation with non-default format to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 224`** (1 nodes): `Test video generation with non-default style to verify param encoding.`
+- **Thin community `Community 217`** (1 nodes): `Test video generation with non-default style to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 225`** (1 nodes): `Test cinematic video generation with defaults.`
+- **Thin community `Community 218`** (1 nodes): `Test cinematic video generation with defaults.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 226`** (1 nodes): `Test cinematic video generation with custom instructions.`
+- **Thin community `Community 219`** (1 nodes): `Test cinematic video generation with custom instructions.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 227`** (1 nodes): `Test cinematic video generation with explicit language.`
+- **Thin community `Community 220`** (1 nodes): `Test cinematic video generation with explicit language.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 228`** (1 nodes): `Test quiz generation with non-default difficulty to verify param encoding.`
+- **Thin community `Community 221`** (1 nodes): `Test quiz generation with non-default difficulty to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 229`** (1 nodes): `Test flashcards generation with non-default quantity to verify param encoding.`
+- **Thin community `Community 222`** (1 nodes): `Test flashcards generation with non-default quantity to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 230`** (1 nodes): `Test infographic generation with non-default orientation to verify param encodin`
+- **Thin community `Community 223`** (1 nodes): `Test infographic generation with non-default orientation to verify param encodin`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 231`** (1 nodes): `Test slide deck generation with non-default format to verify param encoding.`
+- **Thin community `Community 224`** (1 nodes): `Test slide deck generation with non-default format to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 232`** (1 nodes): `Test data table generation with instructions to verify param encoding.`
+- **Thin community `Community 225`** (1 nodes): `Test data table generation with instructions to verify param encoding.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 233`** (1 nodes): `Mind map generation is fast (~5-10s), not slow.`
+- **Thin community `Community 226`** (1 nodes): `Mind map generation is fast (~5-10s), not slow.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 234`** (1 nodes): `Test study guide generation.`
+- **Thin community `Community 227`** (1 nodes): `Test study guide generation.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 235`** (1 nodes): `List notes in test notebook - read-only.`
+- **Thin community `Community 228`** (1 nodes): `List notes in test notebook - read-only.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 236`** (1 nodes): `Get a specific note from test notebook - read-only.`
+- **Thin community `Community 229`** (1 nodes): `Get a specific note from test notebook - read-only.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 237`** (1 nodes): `Test getting a non-existent note returns None.`
+- **Thin community `Community 230`** (1 nodes): `Test getting a non-existent note returns None.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 238`** (1 nodes): `Update a note's content and title.`
+- **Thin community `Community 231`** (1 nodes): `Update a note's content and title.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 239`** (1 nodes): `List mind maps in test notebook - read-only.`
+- **Thin community `Community 232`** (1 nodes): `List mind maps in test notebook - read-only.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 240`** (1 nodes): `Test setting and then getting language.`
+- **Thin community `Community 233`** (1 nodes): `Test setting and then getting language.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 241`** (1 nodes): `Test setting language to English.`
+- **Thin community `Community 234`** (1 nodes): `Test setting language to English.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 242`** (1 nodes): `Test setting language to Japanese.`
+- **Thin community `Community 235`** (1 nodes): `Test setting language to Japanese.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 243`** (1 nodes): `Test setting language with regional variant.`
+- **Thin community `Community 236`** (1 nodes): `Test setting language with regional variant.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 244`** (1 nodes): `Test that language setting persists when creating new client.`
+- **Thin community `Community 237`** (1 nodes): `Test that language setting persists when creating new client.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 245`** (1 nodes): `Test asking a question using all sources (source_ids=None).`
+- **Thin community `Community 238`** (1 nodes): `Test asking a question using all sources (source_ids=None).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 246`** (1 nodes): `Test asking a question using only one source.`
+- **Thin community `Community 239`** (1 nodes): `Test asking a question using only one source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 247`** (1 nodes): `Test follow-up question can use different source selection.`
+- **Thin community `Community 240`** (1 nodes): `Test follow-up question can use different source selection.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 248`** (1 nodes): `Test report generation using all sources.`
+- **Thin community `Community 241`** (1 nodes): `Test report generation using all sources.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 249`** (1 nodes): `Test report generation using only one source.`
+- **Thin community `Community 242`** (1 nodes): `Test report generation using only one source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 250`** (1 nodes): `Test report generation using a random subset of sources.`
+- **Thin community `Community 243`** (1 nodes): `Test report generation using a random subset of sources.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 251`** (1 nodes): `Test quiz generation using only one source.`
+- **Thin community `Community 244`** (1 nodes): `Test quiz generation using only one source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 252`** (1 nodes): `Test flashcard generation using a subset of sources.`
+- **Thin community `Community 245`** (1 nodes): `Test flashcard generation using a subset of sources.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 253`** (1 nodes): `Test audio generation using only one source.`
+- **Thin community `Community 246`** (1 nodes): `Test audio generation using only one source.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 254`** (1 nodes): `Verify the test notebook has at least 3 sources.`
+- **Thin community `Community 247`** (1 nodes): `Verify the test notebook has at least 3 sources.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 255`** (1 nodes): `Verify all source IDs are unique.`
+- **Thin community `Community 248`** (1 nodes): `Verify all source IDs are unique.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 256`** (1 nodes): `Test asking with explicitly listing all source IDs (same as None).`
+- **Thin community `Community 249`** (1 nodes): `Test asking with explicitly listing all source IDs (same as None).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 257`** (1 nodes): `Test that source order doesn't affect results.`
+- **Thin community `Community 250`** (1 nodes): `Test that source order doesn't affect results.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 258`** (1 nodes): `Generate Cookie header value for HTTP requests.          Returns:             Se`
+- **Thin community `Community 251`** (1 nodes): `Generate Cookie header value for HTTP requests.          Returns:             Se`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 259`** (1 nodes): `Create AuthTokens from Playwright storage state file.          This is the recom`
+- **Thin community `Community 252`** (1 nodes): `Create AuthTokens from Playwright storage state file.          This is the recom`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 260`** (1 nodes): `Alias for method_id (deprecated, use method_id instead).`
+- **Thin community `Community 253`** (1 nodes): `Alias for method_id (deprecated, use method_id instead).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 261`** (1 nodes): `Alias for rpc_code (deprecated, use rpc_code instead).`
+- **Thin community `Community 254`** (1 nodes): `Alias for rpc_code (deprecated, use rpc_code instead).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 262`** (1 nodes): `eslint.config.mjs`
+- **Thin community `Community 255`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 263`** (1 nodes): `label.tsx`
+- **Thin community `Community 256`** (1 nodes): `label.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 264`** (1 nodes): `dialog.tsx`
+- **Thin community `Community 257`** (1 nodes): `dialog.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 265`** (1 nodes): `table.tsx`
+- **Thin community `Community 258`** (1 nodes): `table.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 266`** (1 nodes): `input.tsx`
+- **Thin community `Community 259`** (1 nodes): `input.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 267`** (1 nodes): `api.ts`
+- **Thin community `Community 260`** (1 nodes): `api.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 268`** (1 nodes): `index.ts`
+- **Thin community `Community 261`** (1 nodes): `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 269`** (1 nodes): `user.ts`
+- **Thin community `Community 262`** (1 nodes): `user.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 270`** (1 nodes): `auth.ts`
+- **Thin community `Community 263`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 271`** (1 nodes): `index.ts`
+- **Thin community `Community 264`** (1 nodes): `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 272`** (1 nodes): `event.ts`
+- **Thin community `Community 265`** (1 nodes): `event.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 273`** (1 nodes): `next.js`
+- **Thin community `Community 266`** (1 nodes): `next.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 274`** (1 nodes): `react-internal.js`
+- **Thin community `Community 267`** (1 nodes): `react-internal.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 275`** (1 nodes): `base.js`
+- **Thin community `Community 268`** (1 nodes): `base.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 276`** (1 nodes): `index.ts`
+- **Thin community `Community 269`** (1 nodes): `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 277`** (1 nodes): `middleware.ts`
+- **Thin community `Community 270`** (1 nodes): `middleware.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 278`** (1 nodes): `postcss.config.mjs`
+- **Thin community `Community 271`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 279`** (1 nodes): `next.config.js`
+- **Thin community `Community 272`** (1 nodes): `next.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 280`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 273`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 281`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 274`** (1 nodes): `eslint.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 282`** (1 nodes): `auth.ts`
+- **Thin community `Community 275`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 283`** (1 nodes): `route.ts`
+- **Thin community `Community 276`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 284`** (1 nodes): `page.tsx`
+- **Thin community `Community 277`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 285`** (1 nodes): `middleware.ts`
+- **Thin community `Community 278`** (1 nodes): `route.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 286`** (1 nodes): `postcss.config.mjs`
+- **Thin community `Community 279`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 287`** (1 nodes): `next.config.js`
+- **Thin community `Community 280`** (1 nodes): `middleware.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 288`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 281`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 289`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 282`** (1 nodes): `next.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 290`** (1 nodes): `auth.ts`
+- **Thin community `Community 283`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 291`** (1 nodes): `route.ts`
+- **Thin community `Community 284`** (1 nodes): `eslint.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 292`** (1 nodes): `page.tsx`
+- **Thin community `Community 285`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 293`** (1 nodes): `middleware.ts`
+- **Thin community `Community 286`** (1 nodes): `route.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 294`** (1 nodes): `postcss.config.mjs`
+- **Thin community `Community 287`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 295`** (1 nodes): `next.config.js`
+- **Thin community `Community 288`** (1 nodes): `middleware.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 296`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 289`** (1 nodes): `postcss.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 297`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 290`** (1 nodes): `next.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 298`** (1 nodes): `auth.ts`
+- **Thin community `Community 291`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 299`** (1 nodes): `page.tsx`
+- **Thin community `Community 292`** (1 nodes): `eslint.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 300`** (1 nodes): `page.tsx`
+- **Thin community `Community 293`** (1 nodes): `auth.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 301`** (1 nodes): `route.ts`
+- **Thin community `Community 294`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 302`** (1 nodes): `page.tsx`
+- **Thin community `Community 295`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 303`** (1 nodes): `kafka-topics.ts`
+- **Thin community `Community 296`** (1 nodes): `route.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 297`** (1 nodes): `page.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 298`** (1 nodes): `kafka-topics.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `NotebookLMClient` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 9`, `Community 10`, `Community 17`, `Community 19`?**
-  _High betweenness centrality (0.139) - this node is a cross-community bridge._
-- **Why does `AuthTokens` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 9`, `Community 10`, `Community 12`, `Community 13`, `Community 19`?**
-  _High betweenness centrality (0.121) - this node is a cross-community bridge._
-- **Why does `ValidationError` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 5`, `Community 7`?**
-  _High betweenness centrality (0.089) - this node is a cross-community bridge._
+- **Why does `NotebookLMClient` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 8`, `Community 9`, `Community 12`, `Community 13`, `Community 17`, `Community 18`?**
+  _High betweenness centrality (0.130) - this node is a cross-community bridge._
+- **Why does `AuthTokens` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 13`, `Community 14`, `Community 15`, `Community 17`, `Community 18`?**
+  _High betweenness centrality (0.125) - this node is a cross-community bridge._
+- **Why does `ValidationError` connect `Community 6` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`?**
+  _High betweenness centrality (0.094) - this node is a cross-community bridge._
 - **Are the 737 inferred relationships involving `ValidationError` (e.g. with `TestNewEnums` and `TestConfigureChat`) actually correct?**
   _`ValidationError` has 737 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 682 inferred relationships involving `AuthTokens` (e.g. with `TestAuthTokens` and `TestExtractCookies`) actually correct?**
