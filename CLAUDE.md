@@ -47,6 +47,21 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 
 ---
 
+## 4-1. Docker / CD 사전 체크리스트
+
+**push 전 반드시 확인:**
+
+1. **새 workspace 패키지 추가 시** → 3개 Dockerfile(`web-main/admin/partner`) deps 스테이지에 `COPY <pkg>/package.json` 라인 추가했는지 확인
+2. **`next.config.js` 확인** → 3개 앱 모두 `output: "standalone"` 있는지 확인
+3. **새 환경변수 추가 시** → `turbo.json` `globalEnv` 등록 여부 확인
+
+**현재 구조 (shamefully-hoist=true 적용):**
+- `.npmrc`의 `shamefully-hoist=true` 덕분에 모든 패키지가 root `node_modules`에 호이스팅됨
+- builder 스테이지는 `COPY --from=deps /app/node_modules ./node_modules` 한 줄만 필요
+- 새 패키지 추가해도 Dockerfile builder 스테이지 수정 불필요
+
+---
+
 ## 5. Graphify 사용
 
 - 파일/함수 검색 전 `graphify-out/graph.json` 먼저 확인
@@ -84,7 +99,23 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 
 ---
 
-## 9. 절대 금지
+## 9. Vercel 배포 구조
+
+앱마다 **별도 Vercel 프로젝트** 필요. 단일 프로젝트로 빌드 시 루트에서 `.next`를 찾아 에러 발생.
+
+| 앱 | Root Directory | Build Command |
+|---|---|---|
+| web-main | `apps/web-main` | `cd ../.. && pnpm turbo run build --filter=web-main...` |
+| web-admin | `apps/web-admin` | `cd ../.. && pnpm turbo run build --filter=web-admin...` |
+| web-partner | `apps/web-partner` | `cd ../.. && pnpm turbo run build --filter=web-partner...` |
+
+- Output Directory: `.next` (공통)
+- Install Command: `cd ../.. && pnpm install` (공통)
+- Vercel Team: `haegunchois-projects`
+
+---
+
+## 10. 절대 금지
 
 - `.env*` 파일 읽기/쓰기
 - `prisma migrate deploy` (prod 대상)

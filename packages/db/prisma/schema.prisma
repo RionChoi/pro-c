@@ -13,9 +13,11 @@ model User {
   name      String?
   image     String?
   role      Role     @default(MEMBER)
-  tenantId  String?  // 현재 활성 테넌트 (선택 화면에서 갱신)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  tenantId    String?  // 현재 활성 테넌트 (선택 화면에서 갱신)
+  totpSecret  String?
+  totpEnabled Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   accounts    Account[]
   sessions    Session[]

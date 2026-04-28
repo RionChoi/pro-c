@@ -6,6 +6,7 @@ export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isLoggedIn = !!req.auth;
   const isAuthPage = pathname.startsWith("/login");
+  const isOtpPage = pathname.startsWith("/otp");
 
   if (!isLoggedIn && !isAuthPage) {
     return NextResponse.redirect(new URL("/login", req.url));
@@ -14,11 +15,14 @@ export default auth((req) => {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  // web-admin 전체 → ADMIN 전용
   if (isLoggedIn) {
     const role = req.auth?.user?.role;
     if (!hasRole(role, "ADMIN")) {
       return NextResponse.redirect(new URL("/login?error=forbidden", req.url));
+    }
+
+    if (!isOtpPage && !req.auth?.otpVerified) {
+      return NextResponse.redirect(new URL("/otp/verify", req.url));
     }
   }
 
