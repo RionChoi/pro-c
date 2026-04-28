@@ -7,6 +7,7 @@ import type { Role } from "@repo/db";
 declare module "next-auth" {
   interface Session {
     accessToken?: string;
+    otpVerified?: boolean;
     user: {
       id?: string;
       role?: string;
@@ -96,8 +97,13 @@ export function createAuthConfig(options: CreateAuthConfigOptions = {}): NextAut
           return false;
         }
       },
-      async jwt({ token, account }) {
+      async jwt({ token, account, trigger, session }) {
         const t = token as ExtendedToken;
+        if (trigger === "update" && session != null) {
+          if (typeof (session as { otpVerified?: boolean }).otpVerified === "boolean") {
+            t.otpVerified = (session as { otpVerified: boolean }).otpVerified;
+          }
+        }
         if (account) t.accessToken = account.access_token ?? undefined;
         if (t.email) {
           const dbUser = await prisma.user.findUnique({
@@ -112,6 +118,7 @@ export function createAuthConfig(options: CreateAuthConfigOptions = {}): NextAut
         const t = token as ExtendedToken;
         session.accessToken = t.accessToken;
         session.user.role = t.role;
+        session.otpVerified = (t.otpVerified as boolean | undefined) ?? false;
         return session;
       },
     },
