@@ -99,7 +99,23 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 
 ---
 
-## 9. 절대 금지
+## 9. Vercel 배포 구조
+
+앱마다 **별도 Vercel 프로젝트** 필요. 단일 프로젝트로 빌드 시 루트에서 `.next`를 찾아 에러 발생.
+
+| 앱 | Root Directory | Build Command |
+|---|---|---|
+| web-main | `apps/web-main` | `cd ../.. && pnpm turbo run build --filter=web-main...` |
+| web-admin | `apps/web-admin` | `cd ../.. && pnpm turbo run build --filter=web-admin...` |
+| web-partner | `apps/web-partner` | `cd ../.. && pnpm turbo run build --filter=web-partner...` |
+
+- Output Directory: `.next` (공통)
+- Install Command: `cd ../.. && pnpm install` (공통)
+- Vercel Team: `haegunchois-projects`
+
+---
+
+## 10. 절대 금지
 
 - `.env*` 파일 읽기/쓰기
 - `prisma migrate deploy` (prod 대상)
