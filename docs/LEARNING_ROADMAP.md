@@ -67,8 +67,8 @@
 | 02 | 문자열 & 네임스페이스 (String & Namespace) | ✅ 완료 |
 | 03 | 제어 흐름 (Control Flow) | ✅ 완료 |
 | 04 | 함수 & 오버로딩 (Functions & Overloading) | ✅ 완료 |
-| 05 | 배열 & 벡터 (Arrays & Vectors) | ⬜ 대기 |
-| 06 | 포인터 & 참조 (Pointers & References) | ⬜ 대기 |
+| 05 | 배열 & 벡터 (Arrays & Vectors) | ✅ 완료 |
+| 06 | 포인터 & 참조 (Pointers & References) | ✅ 완료 |
 | 07 | OOP — 클래스 (Classes) | ⬜ 대기 |
 | 08 | 생성자 & 소멸자 (Constructors & Destructors) | ⬜ 대기 |
 | 09 | 상속 & 다형성 (Inheritance & Polymorphism) | ⬜ 대기 |
@@ -111,3 +111,4 @@
 | 2026-04-26 | C-19, C-20 | 해시 테이블, C 최종 프로젝트 (주소록) |
 | 2026-04-27 | C++-01, C++-02 | C++ 기초 입출력, 문자열 & 네임스페이스 |
 | 2026-04-28 | C++-03, C++-04 | 제어 흐름, 함수 & 오버로딩 |
+| 2026-04-29 | C++-05, C++-06 | 배열 & 벡터, 포인터 & 참조 |
