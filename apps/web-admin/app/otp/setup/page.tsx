@@ -1,9 +1,9 @@
 import { auth } from "@/auth";
 import { prisma } from "@repo/db";
 import { redirect } from "next/navigation";
-import speakeasy from "speakeasy";
 import QRCode from "qrcode";
 import { cookies } from "next/headers";
+import { generateTotpSecret, totpOtpauthUrl } from "@repo/auth";
 import { confirmOtpSetupAction } from "./actions";
 
 const ERROR_MESSAGES: Record<string, string> = {
@@ -31,8 +31,11 @@ export default async function OtpSetupPage({ searchParams }: Props) {
   let secret = cookieStore.get("totp_setup_secret")?.value;
 
   if (!secret) {
-    const generated = speakeasy.generateSecret({ name: `Platform Admin (${session.user.email})` });
-    secret = generated.base32;
+    const { base32 } = generateTotpSecret(
+      `Platform Admin (${session.user.email})`,
+      "Platform Admin"
+    );
+    secret = base32;
     cookieStore.set("totp_setup_secret", secret, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -41,13 +44,8 @@ export default async function OtpSetupPage({ searchParams }: Props) {
     });
   }
 
-  const otpauth = speakeasy.otpauthURL({
-    secret,
-    label: session.user.email,
-    issuer: "Platform Admin",
-    encoding: "base32",
-  });
-  const qrDataUrl = await QRCode.toDataURL(otpauth, { width: 200, margin: 2 });
+  const otpauthUrl = totpOtpauthUrl(secret, session.user.email, "Platform Admin");
+  const qrDataUrl = await QRCode.toDataURL(otpauthUrl, { width: 200, margin: 2 });
 
   const { error } = await searchParams;
 

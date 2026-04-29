@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
-import { hasRole } from "@repo/auth";
-import type { Role } from "@repo/auth";
+import type { Session } from "next-auth";
+import { hasRole } from "./rbac";
+import type { Role } from "./rbac";
 
 type Ok = { ok: true; role: Role };
 type Fail = { ok: false; response: NextResponse };
 
-export async function requireRole(...roles: Role[]): Promise<Ok | Fail> {
-  const session = await auth();
+export function requireRole(session: Session | null, ...roles: Role[]): Ok | Fail {
   if (!session?.user) {
     return { ok: false, response: NextResponse.json({ error: "Unauthorized" }, { status: 401 }) };
   }

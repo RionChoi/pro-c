@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@repo/db";
-import { requireRole } from "@/lib/with-role";
+import { requireRole } from "@repo/auth";
 import type { Role } from "@repo/auth";
+import { auth } from "@/auth";
 
 const VALID_ROLES: Role[] = ["ADMIN", "MEMBER", "PARTNER", "VIEWER"];
 
@@ -9,7 +10,8 @@ export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const check = await requireRole("ADMIN");
+  const session = await auth();
+  const check = requireRole(session, "ADMIN");
   if (!check.ok) return check.response;
 
   const { id } = await params;

@@ -2,12 +2,8 @@
 
 import { auth, unstable_update } from "@/auth";
 import { prisma } from "@repo/db";
-import speakeasy from "speakeasy";
 import { redirect } from "next/navigation";
-import { decryptSecret } from "@/lib/otp-crypto";
-
-const MAX_ATTEMPTS = 5;
-const LOCK_DURATION_MS = 15 * 60 * 1000; // 15분
+import { verifyTotpToken, isOtpLocked, nextLockoutState, MAX_OTP_ATTEMPTS } from "@repo/auth";
 
 export async function verifyOtpAction(formData: FormData) {
   const session = await auth();
@@ -28,31 +24,18 @@ export async function verifyOtpAction(formData: FormData) {
 
   if (!user?.totpEnabled || !user.totpSecret) redirect("/otp/setup");
 
-  if (user.otpLockedUntil && user.otpLockedUntil > new Date()) {
-    redirect("/otp/verify?error=locked");
-  }
+  if (isOtpLocked(user.otpLockedUntil)) redirect("/otp/verify?error=locked");
 
-  const isValid = speakeasy.totp.verify({
-    secret: decryptSecret(user.totpSecret),
-    encoding: "base32",
-    token: code,
-    window: 1,
-  });
+  const isValid = verifyTotpToken(user.totpSecret, code);
 
   if (!isValid) {
-    const newAttempts = user.otpFailedAttempts + 1;
+    const lockout = nextLockoutState(user.otpFailedAttempts);
     await prisma.user.update({
       where: { email: session.user.email },
-      data: {
-        otpFailedAttempts: newAttempts,
-        otpLockedUntil:
-          newAttempts >= MAX_ATTEMPTS
-            ? new Date(Date.now() + LOCK_DURATION_MS)
-            : null,
-      },
+      data: lockout,
     });
     redirect(
-      newAttempts >= MAX_ATTEMPTS
+      lockout.otpFailedAttempts >= MAX_OTP_ATTEMPTS
         ? "/otp/verify?error=locked"
         : "/otp/verify?error=invalid"
     );

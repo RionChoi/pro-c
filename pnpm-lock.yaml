@@ -44,9 +44,6 @@ importers:
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
-      speakeasy:
-        specifier: ^2.0.0
-        version: 2.0.0
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -69,9 +66,6 @@ importers:
       '@types/react-dom':
         specifier: 19.2.2
         version: 19.2.2(@types/react@19.2.2)
-      '@types/speakeasy':
-        specifier: ^2.0.10
-        version: 2.0.10
       autoprefixer:
         specifier: ^10.5.0
         version: 10.5.0(postcss@8.5.10)
@@ -221,6 +215,9 @@ importers:
       next-auth:
         specifier: 5.0.0-beta.30
         version: 5.0.0-beta.30(next@16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      speakeasy:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
@@ -228,6 +225,9 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.3
+      '@types/speakeasy':
+        specifier: ^2.0.10
+        version: 2.0.10
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

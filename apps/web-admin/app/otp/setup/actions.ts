@@ -2,10 +2,9 @@
 
 import { auth, unstable_update } from "@/auth";
 import { prisma } from "@repo/db";
-import speakeasy from "speakeasy";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { encryptSecret } from "@/lib/otp-crypto";
+import { encryptSecret, verifyRawTotpToken } from "@repo/auth";
 
 export async function confirmOtpSetupAction(formData: FormData) {
   const session = await auth();
@@ -18,13 +17,7 @@ export async function confirmOtpSetupAction(formData: FormData) {
   const secret = cookieStore.get("totp_setup_secret")?.value;
   if (!secret) redirect("/otp/setup?error=expired");
 
-  const isValid = speakeasy.totp.verify({
-    secret,
-    encoding: "base32",
-    token: code,
-    window: 1,
-  });
-  if (!isValid) redirect("/otp/setup?error=invalid");
+  if (!verifyRawTotpToken(secret, code)) redirect("/otp/setup?error=invalid");
 
   await prisma.user.update({
     where: { email: session.user.email },

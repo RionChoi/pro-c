@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@repo/db";
 import { createTenant } from "@/lib/tenant";
-import { requireRole } from "@/lib/with-role";
+import { requireRole } from "@repo/auth";
+import { auth } from "@/auth";
 
 export async function GET() {
-  const check = await requireRole("ADMIN");
+  const session = await auth();
+  const check = requireRole(session, "ADMIN");
   if (!check.ok) return check.response;
 
   const tenants = await prisma.tenant.findMany({
@@ -24,7 +26,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const check = await requireRole("ADMIN");
+  const session = await auth();
+  const check = requireRole(session, "ADMIN");
   if (!check.ok) return check.response;
 
   const body = await req.json() as { name?: string; slug?: string; plan?: string };

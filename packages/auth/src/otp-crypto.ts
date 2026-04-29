@@ -1,7 +1,7 @@
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
 const ALGORITHM = "aes-256-gcm";
-const KEY_HEX_LENGTH = 64; // 32 bytes
+const KEY_HEX_LENGTH = 64;
 
 function getKey(): Buffer {
   const raw = process.env.TOTP_ENCRYPTION_KEY ?? "";
@@ -23,9 +23,7 @@ export function encryptSecret(plaintext: string): string {
 export function decryptSecret(stored: string): string {
   const parts = stored.split(":");
   if (parts.length !== 3) throw new Error("Invalid encrypted secret format");
-  const ivHex = parts[0]!;
-  const authTagHex = parts[1]!;
-  const encryptedHex = parts[2]!;
+  const [ivHex, authTagHex, encryptedHex] = parts as [string, string, string];
   const key = getKey();
   const decipher = createDecipheriv(ALGORITHM, key, Buffer.from(ivHex, "hex"));
   decipher.setAuthTag(Buffer.from(authTagHex, "hex"));

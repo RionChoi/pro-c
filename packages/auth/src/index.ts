@@ -136,3 +136,6 @@ export { NextAuth };
 export type { NextAuthConfig };
 export { hasRole } from "./rbac";
 export type { Role } from "./rbac";
+export { requireRole } from "./require-role";
+export { encryptSecret, decryptSecret } from "./otp-crypto";
+export { generateTotpSecret, totpOtpauthUrl, verifyRawTotpToken, verifyTotpToken, isOtpLocked, nextLockoutState, MAX_OTP_ATTEMPTS, OTP_LOCK_DURATION_MS } from "./totp";
