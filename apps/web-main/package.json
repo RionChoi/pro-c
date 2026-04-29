@@ -13,6 +13,7 @@
   "dependencies": {
     "@repo/auth": "workspace:*",
     "@repo/db": "workspace:*",
+    "@repo/payments": "workspace:^",
     "@repo/shared-types": "workspace:^",
     "@repo/ui": "workspace:*",
     "kafkajs": "^2.2.4",

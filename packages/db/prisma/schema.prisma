@@ -33,12 +33,45 @@ model Tenant {
   slug       String   @unique
   plan       Plan     @default(FREE)
   schemaName String   @unique
+  tossBillingKey String? // Toss 빌링키 (카드 등록 후 발급)
+  tossCustomerKey String? @unique // Toss 고객 고유키
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  users   User[]
-  members TenantMember[]
-  invites Invite[]
+  users        User[]
+  members      TenantMember[]
+  invites      Invite[]
+  subscription Subscription?
+  invoices     Invoice[]
+}
+
+model Subscription {
+  id                String             @id @default(cuid())
+  tenantId          String             @unique
+  plan              Plan
+  status            SubscriptionStatus @default(ACTIVE)
+  currentPeriodStart DateTime
+  currentPeriodEnd  DateTime
+  cancelAtPeriodEnd Boolean            @default(false)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+}
+
+model Invoice {
+  id           String        @id @default(cuid())
+  tenantId     String
+  plan         Plan
+  amount       Int           // 원 단위
+  status       InvoiceStatus @default(PENDING)
+  tossPaymentKey String?     @unique
+  tossOrderId  String        @unique
+  paidAt       DateTime?
+  failReason   String?
+  createdAt    DateTime      @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 }
 
 model TenantMember {
@@ -102,4 +135,18 @@ enum Plan {
   STARTER
   PRO
   ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE   // 결제 실패, 유예 기간
+  CANCELED
+  EXPIRED
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  FAILED
+  CANCELED
 }
