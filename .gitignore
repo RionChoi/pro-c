@@ -51,3 +51,6 @@ infra/k8s/**/*-plain.yaml
 
 # External projects
 notebooklm-py/
+
+# Graphify cache
+graphify-out/cache/
