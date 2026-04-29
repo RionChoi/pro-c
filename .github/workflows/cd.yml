@@ -79,14 +79,14 @@ jobs:
 
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v6
         with:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Install yq
         run: |
@@ -97,6 +97,11 @@ jobs:
         id: sha
         run: echo "short=$(echo ${{ github.event.workflow_run.head_sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
+      - name: Switch to deploy/staging branch
+        run: |
+          git fetch origin deploy/staging 2>/dev/null && git checkout deploy/staging \
+            || git checkout -b deploy/staging
+
       - name: Update staging image tags
         run: |
           TAG="sha-${{ steps.sha.outputs.short }}"
@@ -104,20 +109,11 @@ jobs:
             yq -i ".image.tag = \"$TAG\"" infra/helm/$app/values-staging.yaml
           done
 
-      - name: Create PR
-        id: cpr
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: chore/helm-staging-${{ steps.sha.outputs.short }}
-          commit-message: "chore(helm): update staging image tag to sha-${{ steps.sha.outputs.short }} [skip ci]"
-          title: "chore(helm): update staging image tag to sha-${{ steps.sha.outputs.short }}"
-          body: "Automated helm values update by CD pipeline."
-          labels: automated,helm
-          delete-branch: true
-
-      - name: Auto-merge PR
-        if: steps.cpr.outputs.pull-request-number != ''
-        run: gh pr merge --auto --squash ${{ steps.cpr.outputs.pull-request-number }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add infra/helm/*/values-staging.yaml
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(helm): staging → sha-${{ steps.sha.outputs.short }} [skip ci]"
+          git push origin deploy/staging

@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RionChoi/platform.git
-    targetRevision: HEAD
+    targetRevision: deploy/staging
     path: infra/helm/web-main
     helm:
       valueFiles:
@@ -33,7 +33,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RionChoi/platform.git
-    targetRevision: HEAD
+    targetRevision: deploy/staging
     path: infra/helm/web-admin
     helm:
       valueFiles:
@@ -58,7 +58,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RionChoi/platform.git
-    targetRevision: HEAD
+    targetRevision: deploy/staging
     path: infra/helm/web-partner
     helm:
       valueFiles:
