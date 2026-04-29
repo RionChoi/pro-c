@@ -75,12 +75,20 @@ export default async function DashboardPage() {
 
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-900">팀원 관리</h2>
-          <Link
-            href="/dashboard/members"
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-          >
-            팀원 초대
-          </Link>
+          <div className="flex gap-2">
+            <Link
+              href="/dashboard/settings/billing"
+              className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              구독 & 결제
+            </Link>
+            <Link
+              href="/dashboard/members"
+              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              팀원 초대
+            </Link>
+          </div>
         </div>
       </div>
     </main>
