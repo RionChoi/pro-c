@@ -8,6 +8,10 @@ metadata:
     {{- if .Values.ingress.tls.enabled }}
     cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer }}
     {{- end }}
+    {{- if .Values.ingress.rateLimit.enabled }}
+    nginx.ingress.kubernetes.io/limit-rps: "{{ .Values.ingress.rateLimit.rps }}"
+    nginx.ingress.kubernetes.io/limit-connections: "{{ .Values.ingress.rateLimit.connections }}"
+    {{- end }}
 spec:
   ingressClassName: nginx
   {{- if .Values.ingress.tls.enabled }}

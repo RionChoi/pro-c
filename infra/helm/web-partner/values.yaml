@@ -16,6 +16,13 @@ ingress:
   tls:
     enabled: false
     clusterIssuer: letsencrypt-prod
+  rateLimit:
+    enabled: false
+    rps: "20"
+    connections: "20"
+    sensitiveRps: "3"
+    sensitiveConnections: "5"
+    sensitivePaths: []
 
 resources:
   requests:
