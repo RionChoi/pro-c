@@ -2860,12 +2860,12 @@ Cohesion: 0.18
 Nodes (3): register(), startKafkaConsumer(), createConsumer()
 
 ### Community 2 - "Community 2"
-Cohesion: 0.22
-Nodes (4): createTenantAction(), createDomainEvent(), createTenant(), createTenantSchema()
-
-### Community 3 - "Community 3"
 Cohesion: 0.2
 Nodes (3): inviteMemberAction(), selectTenantAction(), GET()
+
+### Community 3 - "Community 3"
+Cohesion: 0.22
+Nodes (4): createTenantAction(), createDomainEvent(), createTenant(), createTenantSchema()
 
 ### Community 4 - "Community 4"
 Cohesion: 0.25
@@ -14110,27 +14110,27 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Knowledge Gaps
 - **2751 isolated node(s):** `E2E test fixtures and configuration.`, `Register custom markers and configure test environment.`, `Sample Playwright storage state with valid cookies.`, `Sample NotebookLM homepage HTML with tokens.`, `Factory for building RPC responses.      Args:         rpc_id: Either an RPCMeth` (+2746 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 7`** (2 nodes): `HomePage()`, `page.tsx`
+- **Thin community `Community 7`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 8`** (2 nodes): `utils.ts`, `cn()`
+- **Thin community `Community 8`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 9`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 9`** (2 nodes): `DashboardPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 10`** (2 nodes): `async()`, `page.tsx`
+- **Thin community `Community 10`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 11`** (2 nodes): `ThemeImage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 12`** (2 nodes): `Card()`, `card.tsx`
+- **Thin community `Community 12`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 13`** (2 nodes): `AdminHomePage()`, `page.tsx`
+- **Thin community `Community 13`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 14`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (2 nodes): `DashboardPage()`, `page.tsx`
+- **Thin community `Community 15`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 16`** (2 nodes): `async()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 17`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 18`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -19728,11 +19728,9 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GET()` connect `Community 3` to `Community 0`, `Community 2`, `Community 4`?**
+- **Why does `GET()` connect `Community 2` to `Community 0`, `Community 3`, `Community 4`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `createTenantAction()` connect `Community 2` to `Community 3`?**
-  _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `verifyOtpAction()` connect `Community 0` to `Community 3`?**
+- **Why does `requireRole()` connect `Community 4` to `Community 2`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `GET()` (e.g. with `verifyOtpAction()` and `confirmOtpSetupAction()`) actually correct?**
   _`GET()` has 6 INFERRED edges - model-reasoned connections that need verification._
@@ -19742,3 +19740,5 @@ _Questions this graph is uniquely positioned to answer:_
   _`requireRole()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 3 inferred relationships involving `createTenant()` (e.g. with `POST()` and `createTenantAction()`) actually correct?**
   _`createTenant()` has 3 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 2 inferred relationships involving `decryptSecret()` (e.g. with `verifyTotpToken()` and `verifyOtpAction()`) actually correct?**
+  _`decryptSecret()` has 2 INFERRED edges - model-reasoned connections that need verification._
