@@ -9,7 +9,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "^0.34.3",
+    "@auth/core": "0.34.3",
     "@repo/db": "workspace:*",
     "next-auth": "5.0.0-beta.30"
   },
