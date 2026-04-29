@@ -1,0 +1,12 @@
+node_modules
+.next
+.turbo
+dist
+build
+out
+coverage
+graphify-out
+.git
+infra/helm
+infra/k8s
+notebooklm-py
