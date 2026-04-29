@@ -104,13 +104,16 @@ export function createAuthConfig(options: CreateAuthConfigOptions = {}): NextAut
             t.otpVerified = (session as { otpVerified: boolean }).otpVerified;
           }
         }
-        if (account) t.accessToken = account.access_token ?? undefined;
-        if (t.email) {
-          const dbUser = await prisma.user.findUnique({
-            where: { email: t.email },
-            select: { role: true },
-          });
-          t.role = dbUser?.role ?? undefined;
+        if (account) {
+          t.accessToken = account.access_token ?? undefined;
+          // role은 최초 로그인 시에만 DB에서 조회 후 JWT에 캐시
+          if (t.email) {
+            const dbUser = await prisma.user.findUnique({
+              where: { email: t.email },
+              select: { role: true },
+            });
+            t.role = dbUser?.role ?? undefined;
+          }
         }
         return t;
       },
