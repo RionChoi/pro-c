@@ -6,6 +6,7 @@ import { verifyOtpAction } from "./actions";
 const ERROR_MESSAGES: Record<string, string> = {
   invalid: "인증 코드가 올바르지 않습니다. 다시 시도해주세요.",
   required: "인증 코드를 입력해주세요.",
+  locked: "인증 실패 횟수를 초과했습니다. 15분 후 다시 시도해주세요.",
 };
 
 interface Props {
