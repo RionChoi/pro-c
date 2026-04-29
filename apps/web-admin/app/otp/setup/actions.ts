@@ -5,6 +5,7 @@ import { prisma } from "@repo/db";
 import speakeasy from "speakeasy";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { encryptSecret } from "@/lib/otp-crypto";
 
 export async function confirmOtpSetupAction(formData: FormData) {
   const session = await auth();
@@ -27,7 +28,7 @@ export async function confirmOtpSetupAction(formData: FormData) {
 
   await prisma.user.update({
     where: { email: session.user.email },
-    data: { totpSecret: secret, totpEnabled: true },
+    data: { totpSecret: encryptSecret(secret), totpEnabled: true },
   });
 
   cookieStore.delete("totp_setup_secret");

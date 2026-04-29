@@ -10,7 +10,8 @@
     "NEXTAUTH_URL",
     "KAFKA_BROKERS",
     "KAFKA_BROKER",
-    "NEXT_RUNTIME"
+    "NEXT_RUNTIME",
+    "TOTP_ENCRYPTION_KEY"
   ],
   "tasks": {
     "db:generate": {
