@@ -213,7 +213,7 @@ importers:
   packages/auth:
     dependencies:
       '@auth/core':
-        specifier: ^0.34.3
+        specifier: 0.34.3
         version: 0.34.3
       '@repo/db':
         specifier: workspace:*
