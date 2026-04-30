@@ -571,7 +571,7 @@ http://localhost:3002/api/auth/callback/google
 Role 변경 테스트:
 
 ```bash
-curl -X PATCH http://localhost:3000/api/users/<USER_ID>/role \
+curl -X PATCH http://localhost:3003/api/users/<USER_ID>/role \
   -H "Content-Type: application/json" \
   -d '{"role": "ADMIN"}'
 ```
@@ -638,7 +638,7 @@ jobs:
           AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
           AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NEXTAUTH_URL: http://localhost:3000
+          NEXTAUTH_URL: http://localhost:3003
 ```
 
 `turbo.json` globalEnv에 환경변수 등록 필수:

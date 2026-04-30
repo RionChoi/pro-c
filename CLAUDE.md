@@ -43,7 +43,8 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 
 - 새 shared 패키지 추가 시 `pnpm-workspace.yaml` 확인
 - `@repo/*` import는 workspace:^ 로 참조
-- packages/db, packages/auth는 아직 미구현 — 현재 각 앱의 `lib/prisma.ts`, `auth.ts` 직접 수정
+- packages/db, packages/auth, packages/shared-types 완료 — 각 앱에서 적극 활용 중
+- CQRS 패턴 준수: `QueryResult`, `CommandResult` 활용 (packages/shared-types/src/cqrs.ts)
 
 ---
 

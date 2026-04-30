@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@repo/db";
 import type { Role } from "@repo/auth";
+import { sendInviteEmail } from "@/lib/mail";
 
 export async function inviteMemberAction(formData: FormData) {
   const session = await auth();
@@ -46,8 +47,7 @@ export async function inviteMemberAction(formData: FormData) {
 
   const inviteUrl = `${process.env.NEXTAUTH_URL}/invite/${invite.token}`;
 
-  // TODO: Resend / SMTP로 실제 이메일 발송 연동
-  console.log(`[invite] ${email} → ${inviteUrl} (tenant: ${invite.tenant.name}, role: ${role})`);
+  await sendInviteEmail(email, inviteUrl, invite.tenant.name, role);
 
   redirect("/dashboard/members?success=1");
 }

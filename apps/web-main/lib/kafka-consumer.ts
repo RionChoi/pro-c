@@ -7,19 +7,32 @@ import type {
 } from "@repo/shared-types";
 import { createConsumer } from "@/lib/kafka";
 import { TOPICS } from "@/lib/kafka-topics";
+import { sendMail } from "@/lib/mail";
 
 let consumerInstance: Consumer | null = null;
 
 async function handleTenantCreated(event: DomainEvent<TenantCreatedPayload>) {
-  const { tenantId, name, slug, plan } = event.payload;
+  const { tenantId, name, slug, plan, adminEmail } = event.payload;
   console.log(`[kafka] tenant.created — ${slug} (${tenantId}) plan=${plan} name=${name}`);
-  // TODO: 테넌트 프로비저닝 후처리 (알림, 분석 이벤트 등)
+  
+  // 테넌트 생성 알림 (어드민에게)
+  await sendMail({
+    to: adminEmail,
+    subject: `Welcome to Platform! Your tenant ${name} is ready.`,
+    html: `<h1>Welcome!</h1><p>Your tenant <strong>${name}</strong> has been successfully created on the ${plan} plan.</p>`,
+  });
 }
 
 async function handleUserCreated(event: DomainEvent<UserCreatedPayload>) {
-  const { userId, email, role, tenantId } = event.payload;
+  const { userId, email, role, tenantId, name } = event.payload;
   console.log(`[kafka] user.created — ${email} (${userId}) role=${role} tenant=${tenantId}`);
-  // TODO: 웰컴 이메일 발송, 사용자 분석 집계 등
+  
+  // 웰컴 이메일 발송
+  await sendMail({
+    to: email,
+    subject: `Welcome to Platform, ${name}!`,
+    html: `<h1>Welcome!</h1><p>Your account has been created on Platform. We're glad to have you!</p>`,
+  });
 }
 
 async function handleUserRoleChanged(event: DomainEvent<UserRoleChangedPayload>) {
