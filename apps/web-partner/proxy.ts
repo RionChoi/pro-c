@@ -2,7 +2,7 @@ import { getToken } from "next-auth/jwt";
 import { hasRole } from "@repo/auth/rbac";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.AUTH_SECRET });
   const { pathname } = req.nextUrl;
 

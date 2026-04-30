@@ -137,6 +137,23 @@ COPY packages/payments/package.json ./packages/payments/   ← 2026-04-30 추가
 - staging/prod 환경변수 수정
 - `graphify-out/graph.json` 직접 편집
 
+## 11. 알려진 이슈 / 기술 부채
+
+빌드·런타임에서 발견된 미해결 문제. 작업 중 해당 파일 수정 시 함께 처리할 것.
+
+### ✅ middleware → proxy 파일 컨벤션 변경 (Next.js 16.2.0) — 2026-04-30 해결
+
+- 3개 앱 모두 `middleware.ts` → `proxy.ts` 파일명 변경, 함수명 `middleware` → `proxy` 변경 완료
+- 신규 proxy 파일 작성 시 파일명 `proxy.ts`, 함수명 `proxy`로 작성할 것
+
+### ✅ `@repo/auth` 바렐 export에 Node.js crypto 포함 (Edge Runtime 경고) — 2026-04-30 해결
+
+- `packages/auth/src/edge.ts` 생성: `hasRole`, `Role`, `requireRole` 등 Edge-safe export만 포함
+- `packages/auth/package.json`에 `"./edge": "./src/edge.ts"` 서브패스 추가
+- Edge Runtime(proxy 파일 등)에서는 `@repo/auth` 대신 `@repo/auth/edge` 또는 `@repo/auth/rbac` 에서 import할 것
+
+---
+
 ## graphify
 
 This project has a graphify knowledge graph at graphify-out/.

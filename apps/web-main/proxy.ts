@@ -2,29 +2,25 @@ import { getToken } from "next-auth/jwt";
 import { hasRole } from "@repo/auth/rbac";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.AUTH_SECRET });
   const { pathname } = req.nextUrl;
 
   const isLoggedIn = !!token;
   const isAuthPage = pathname.startsWith("/login");
-  const isOtpPage = pathname.startsWith("/otp");
+  const isInvitePage = pathname.startsWith("/invite");
 
-  if (!isLoggedIn && !isAuthPage) {
+  if (!isLoggedIn && !isAuthPage && !isInvitePage) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
   if (isLoggedIn && isAuthPage) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  if (isLoggedIn) {
+  if (pathname.startsWith("/admin")) {
     const role = token?.role as string | undefined;
     if (!hasRole(role, "ADMIN")) {
-      return NextResponse.redirect(new URL("/login?error=forbidden", req.url));
-    }
-
-    if (!isOtpPage && !token?.otpVerified) {
-      return NextResponse.redirect(new URL("/otp/verify", req.url));
+      return NextResponse.redirect(new URL("/dashboard?error=forbidden", req.url));
     }
   }
 

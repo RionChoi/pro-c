@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./rbac": "./src/rbac.ts"
+    "./rbac": "./src/rbac.ts",
+    "./edge": "./src/edge.ts"
   },
   "scripts": {
     "check-types": "tsc --noEmit"
