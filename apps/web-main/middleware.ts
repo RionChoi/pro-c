@@ -1,10 +1,12 @@
-import { auth } from "@/auth";
-import { hasRole } from "@repo/auth";
-import { NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
+import { hasRole } from "@repo/auth/rbac";
+import { NextResponse, type NextRequest } from "next/server";
 
-export default auth((req) => {
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
   const { pathname } = req.nextUrl;
-  const isLoggedIn = !!req.auth;
+
+  const isLoggedIn = !!token;
   const isAuthPage = pathname.startsWith("/login");
   const isInvitePage = pathname.startsWith("/invite");
 
@@ -15,16 +17,15 @@ export default auth((req) => {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  // /admin/* 경로는 ADMIN 전용
   if (pathname.startsWith("/admin")) {
-    const role = req.auth?.user?.role;
+    const role = token?.role as string | undefined;
     if (!hasRole(role, "ADMIN")) {
       return NextResponse.redirect(new URL("/dashboard?error=forbidden", req.url));
     }
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],

@@ -1,12 +1,12 @@
 # Graph Report - /Users/choi/platform  (2026-04-30)
 
 ## Corpus Check
-- 95 files · ~29,588 words
+- 95 files · ~29,791 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2909 nodes · 115 edges · 2821 communities detected
-- Extraction: 71% EXTRACTED · 29% INFERRED · 0% AMBIGUOUS · INFERRED: 33 edges (avg confidence: 0.8)
+- 2910 nodes · 116 edges · 2821 communities detected
+- Extraction: 72% EXTRACTED · 28% INFERRED · 0% AMBIGUOUS · INFERRED: 33 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -2872,15 +2872,15 @@ Nodes (7): register(), handleTenantCreated(), handleUserCreated(), startKafkaCon
 
 ### Community 3 - "Community 3"
 Cohesion: 0.2
-Nodes (5): hasRole(), requireRole(), DELETE(), PATCH(), POST()
+Nodes (4): createTenantAction(), createDomainEvent(), buildTenantSchemaName(), createTenant()
 
 ### Community 4 - "Community 4"
 Cohesion: 0.2
-Nodes (3): inviteMemberAction(), selectTenantAction(), GET()
+Nodes (5): hasRole(), requireRole(), DELETE(), PATCH(), POST()
 
 ### Community 5 - "Community 5"
-Cohesion: 0.22
-Nodes (4): createTenantAction(), createDomainEvent(), createTenant(), createTenantSchema()
+Cohesion: 0.2
+Nodes (3): inviteMemberAction(), selectTenantAction(), GET()
 
 ### Community 6 - "Community 6"
 Cohesion: 0.5
@@ -14145,27 +14145,27 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Knowledge Gaps
 - **2751 isolated node(s):** `E2E test fixtures and configuration.`, `Register custom markers and configure test environment.`, `Sample Playwright storage state with valid cookies.`, `Sample NotebookLM homepage HTML with tokens.`, `Factory for building RPC responses.      Args:         rpc_id: Either an RPCMeth` (+2746 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 9`** (2 nodes): `ThemeImage()`, `page.tsx`
+- **Thin community `Community 9`** (2 nodes): `DashboardPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 10`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 10`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 11`** (2 nodes): `DashboardPage()`, `page.tsx`
+- **Thin community `Community 11`** (2 nodes): `async()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 12`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 12`** (2 nodes): `ThemeImage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 13`** (2 nodes): `utils.ts`, `cn()`
+- **Thin community `Community 13`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (2 nodes): `Card()`, `card.tsx`
+- **Thin community `Community 14`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (2 nodes): `AdminHomePage()`, `page.tsx`
+- **Thin community `Community 15`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (2 nodes): `async()`, `page.tsx`
+- **Thin community `Community 16`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 17`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 18`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `HomePage()`, `page.tsx`
+- **Thin community `Community 19`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 20`** (1 nodes): `eslint.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -19773,12 +19773,12 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GET()` connect `Community 4` to `Community 0`, `Community 3`, `Community 5`?**
-  _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `POST()` connect `Community 3` to `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `inviteMemberAction()` connect `Community 4` to `Community 2`?**
-  _High betweenness centrality (0.000) - this node is a cross-community bridge._
+- **Why does `GET()` connect `Community 5` to `Community 0`, `Community 3`, `Community 4`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+- **Why does `POST()` connect `Community 4` to `Community 1`, `Community 3`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+- **Why does `requireRole()` connect `Community 4` to `Community 5`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `GET()` (e.g. with `verifyOtpAction()` and `confirmOtpSetupAction()`) actually correct?**
   _`GET()` has 6 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 5 inferred relationships involving `verifyOtpAction()` (e.g. with `GET()` and `isOtpLocked()`) actually correct?**

@@ -67,7 +67,7 @@ export default async function OnboardingPage({ searchParams }: Props) {
               type="text"
               required
               placeholder="예: acme-corp"
-              pattern="^[a-z0-9-]+$"
+              pattern="^[-a-z0-9]+$"
               title="소문자, 숫자, 하이픈만 사용 가능합니다"
               className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Plan } from "@repo/db";
-import { PLAN_CONFIG } from "@repo/payments";
+import { PLAN_CONFIG } from "@repo/payments/plans";
 
 declare global {
   interface Window {

@@ -1,7 +1,7 @@
 # CLAUDE.md — Claude Code Project Rules
 
 > Claude Code 전용. Hermes는 AGENTS.md를 참조.
-> 마지막 업데이트: 2026-04-18
+> 마지막 업데이트: 2026-04-30
 
 ---
 
@@ -52,9 +52,22 @@ Ekko 승인 없이 prod 관련 작업은 절대 수행하지 않는다.
 
 **push 전 반드시 확인:**
 
-1. **새 workspace 패키지 추가 시** → 3개 Dockerfile(`web-main/admin/partner`) deps 스테이지에 `COPY <pkg>/package.json` 라인 추가했는지 확인
+1. **새 workspace 패키지 추가 시** → 해당 패키지를 import하는 앱의 Dockerfile `deps` 스테이지에 `COPY <pkg>/package.json ./<pkg>/` 라인 추가했는지 확인
+   - 누락 시 Docker 빌드에서 `Module not found: Can't resolve '@repo/<pkg>'` 에러 발생 (로컬에선 정상 동작해 발견 어려움)
 2. **`next.config.js` 확인** → 3개 앱 모두 `output: "standalone"` 있는지 확인
 3. **새 환경변수 추가 시** → `turbo.json` `globalEnv` 등록 여부 확인
+
+**현재 `apps/web-main/Dockerfile` deps 스테이지 COPY 목록 (2026-04-30 기준):**
+```
+COPY packages/ui/package.json ./packages/ui/
+COPY packages/shared-types/package.json ./packages/shared-types/
+COPY packages/shared-config/package.json ./packages/shared-config/
+COPY packages/shared-config/typescript-config/package.json ./packages/shared-config/typescript-config/
+COPY packages/db/package.json ./packages/db/
+COPY packages/auth/package.json ./packages/auth/
+COPY packages/payments/package.json ./packages/payments/   ← 2026-04-30 추가
+```
+새 패키지를 `web-main`에서 import한다면 이 목록에도 추가할 것.
 
 **현재 구조 (shamefully-hoist=true 적용):**
 - `.npmrc`의 `shamefully-hoist=true` 덕분에 모든 패키지가 root `node_modules`에 호이스팅됨

@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { prisma } from "@repo/db";
 import { redirect } from "next/navigation";
-import { PLAN_CONFIG } from "@repo/payments";
+import { PLAN_CONFIG } from "@repo/payments/plans";
 import type { Plan } from "@repo/db";
 import BillingWidget from "./BillingWidget";
 

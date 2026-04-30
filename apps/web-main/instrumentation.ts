@@ -6,5 +6,9 @@ export async function register() {
   if (!process.env.KAFKA_BROKERS && !process.env.KAFKA_BROKER) return;
 
   const { startKafkaConsumer } = await import("@/lib/kafka-consumer");
-  await startKafkaConsumer();
+  try {
+    await startKafkaConsumer();
+  } catch {
+    // non-fatal: Kafka unavailable in this environment
+  }
 }

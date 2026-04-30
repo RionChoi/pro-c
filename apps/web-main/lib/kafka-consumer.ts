@@ -89,9 +89,8 @@ export async function startKafkaConsumer(): Promise<void> {
 
     console.log("[kafka] consumer started");
   } catch (err) {
-    console.error("[kafka] consumer start failed:", err);
+    console.warn("[kafka] consumer start failed — running without Kafka:", (err as Error).message);
     consumerInstance = null;
-    throw err;
   }
 }
 

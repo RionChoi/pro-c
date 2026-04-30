@@ -12,6 +12,7 @@ COPY packages/shared-config/package.json ./packages/shared-config/
 COPY packages/shared-config/typescript-config/package.json ./packages/shared-config/typescript-config/
 COPY packages/db/package.json ./packages/db/
 COPY packages/auth/package.json ./packages/auth/
+COPY packages/payments/package.json ./packages/payments/
 
 RUN npm install -g pnpm@9.0.0
 RUN pnpm install --frozen-lockfile
