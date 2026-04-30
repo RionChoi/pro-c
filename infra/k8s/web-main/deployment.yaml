@@ -20,12 +20,12 @@ spec:
           image: platform/web-main:latest
           imagePullPolicy: Never
           ports:
-            - containerPort: 3000
+            - containerPort: 3003
           env:
             - name: NODE_ENV
               value: "production"
             - name: NEXTAUTH_URL
-              value: "http://localhost:3000"
+              value: "http://localhost:3003"
             - name: AUTH_SECRET
               valueFrom:
                 secretKeyRef:

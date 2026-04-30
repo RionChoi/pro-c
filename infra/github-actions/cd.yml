@@ -21,7 +21,7 @@ jobs:
         include:
           - app: web-main
             image: ghcr.io/rionchoi/platform-web-main
-            port: 3000
+            port: 3003
           - app: web-admin
             image: ghcr.io/rionchoi/platform-web-admin
             port: 3001
