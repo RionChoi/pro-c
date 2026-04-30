@@ -69,10 +69,10 @@
 | 04 | 함수 & 오버로딩 (Functions & Overloading) | ✅ 완료 |
 | 05 | 배열 & 벡터 (Arrays & Vectors) | ✅ 완료 |
 | 06 | 포인터 & 참조 (Pointers & References) | ✅ 완료 |
-     72| 07 | OOP — 클래스 (Classes) | ✅ 완료 |
-     73|| 08 | 생성자 & 소멸자 (Constructors & Destructors) | ✅ 완료 |
-| 09 | 상속 & 다형성 (Inheritance & Polymorphism) | ⬜ 대기 |
-| 10 | 연산자 오버로딩 (Operator Overloading) | ⬜ 대기 |
+| 07 | OOP — 클래스 (Classes) | ✅ 완료 |
+| 08 | 생성자 & 소멸자 (Constructors & Destructors) | ✅ 완료 |
+| 09 | 상속 & 다형성 (Inheritance & Polymorphism) | ✅ 완료 |
+| 10 | 연산자 오버로딩 (Operator Overloading) | ✅ 완료 |
 | 11 | 템플릿 (Templates) | ⬜ 대기 |
 | 12 | STL 컨테이너 (STL Containers) | ⬜ 대기 |
 | 13 | STL 알고리즘 (STL Algorithms) | ⬜ 대기 |
@@ -111,5 +111,6 @@
 | 2026-04-26 | C-19, C-20 | 해시 테이블, C 최종 프로젝트 (주소록) |
 | 2026-04-27 | C++-01, C++-02 | C++ 기초 입출력, 문자열 & 네임스페이스 |
 | 2026-04-28 | C++-03, C++-04 | 제어 흐름, 함수 & 오버로딩 |
-   114|| 2026-04-29 | C++-05, C++-06 | 배열 & 벡터, 포인터 & 참조 |
-   115|| 2026-04-30 | C++-07, C++-08 | OOP - 클래스, 생성자 & 소멸자 |
+| 2026-04-29 | C++-05, C++-06 | 배열 & 벡터, 포인터 & 참조 |
+| 2026-04-30 | C++-07, C++-08 | OOP - 클래스, 생성자 & 소멸자 |
+| 2026-05-01 | C++-09, C++-10 | 상속 & 다형성, 연산자 오버로딩 |
