@@ -73,8 +73,8 @@
 | 08 | 생성자 & 소멸자 (Constructors & Destructors) | ✅ 완료 |
 | 09 | 상속 & 다형성 (Inheritance & Polymorphism) | ✅ 완료 |
 | 10 | 연산자 오버로딩 (Operator Overloading) | ✅ 완료 |
-| 11 | 템플릿 (Templates) | ⬜ 대기 |
-| 12 | STL 컨테이너 (STL Containers) | ⬜ 대기 |
+| 11 | 템플릿 (Templates) | ✅ 완료 |
+| 12 | STL 컨테이너 (STL Containers) | ✅ 완료 |
 | 13 | STL 알고리즘 (STL Algorithms) | ⬜ 대기 |
 | 14 | 예외 처리 (Exception Handling) | ⬜ 대기 |
 | 15 | 파일 I/O & 스트림 (File I/O & Streams) | ⬜ 대기 |
@@ -114,3 +114,4 @@
 | 2026-04-29 | C++-05, C++-06 | 배열 & 벡터, 포인터 & 참조 |
 | 2026-04-30 | C++-07, C++-08 | OOP - 클래스, 생성자 & 소멸자 |
 | 2026-05-01 | C++-09, C++-10 | 상속 & 다형성, 연산자 오버로딩 |
+| 2026-05-02 | C++-11, C++-12 | 템플릿, STL 컨테이너 |
