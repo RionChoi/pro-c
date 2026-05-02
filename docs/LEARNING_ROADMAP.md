@@ -75,8 +75,8 @@
 | 10 | 연산자 오버로딩 (Operator Overloading) | ✅ 완료 |
 | 11 | 템플릿 (Templates) | ✅ 완료 |
 | 12 | STL 컨테이너 (STL Containers) | ✅ 완료 |
-| 13 | STL 알고리즘 (STL Algorithms) | ⬜ 대기 |
-| 14 | 예외 처리 (Exception Handling) | ⬜ 대기 |
+| 13 | STL 알고리즘 (STL Algorithms) | ✅ 완료 |
+| 14 | 예외 처리 (Exception Handling) | ✅ 완료 |
 | 15 | 파일 I/O & 스트림 (File I/O & Streams) | ⬜ 대기 |
 | 16 | 람다 & 함수 객체 (Lambda & Functors) | ⬜ 대기 |
 | 17 | 스마트 포인터 & 이동 시맨틱 (Smart Pointers & Move) | ⬜ 대기 |
@@ -115,3 +115,4 @@
 | 2026-04-30 | C++-07, C++-08 | OOP - 클래스, 생성자 & 소멸자 |
 | 2026-05-01 | C++-09, C++-10 | 상속 & 다형성, 연산자 오버로딩 |
 | 2026-05-02 | C++-11, C++-12 | 템플릿, STL 컨테이너 |
+| 2026-05-03 | C++-13, C++-14 | STL 알고리즘, 예외 처리 |
