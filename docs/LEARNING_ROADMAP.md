@@ -77,8 +77,8 @@
 | 12 | STL 컨테이너 (STL Containers) | ✅ 완료 |
 | 13 | STL 알고리즘 (STL Algorithms) | ✅ 완료 |
 | 14 | 예외 처리 (Exception Handling) | ✅ 완료 |
-| 15 | 파일 I/O & 스트림 (File I/O & Streams) | ⬜ 대기 |
-| 16 | 람다 & 함수 객체 (Lambda & Functors) | ⬜ 대기 |
+| 15 | 파일 I/O & 스트림 (File I/O & Streams) | ✅ 완료 |
+| 16 | 람다 & 함수 객체 (Lambda & Functors) | ✅ 완료 |
 | 17 | 스마트 포인터 & 이동 시맨틱 (Smart Pointers & Move) | ⬜ 대기 |
 | 18 | 멀티스레딩 기초 (Multithreading Basics) | ⬜ 대기 |
 | 19 | 디자인 패턴 (Design Patterns) | ⬜ 대기 |
@@ -116,3 +116,4 @@
 | 2026-05-01 | C++-09, C++-10 | 상속 & 다형성, 연산자 오버로딩 |
 | 2026-05-02 | C++-11, C++-12 | 템플릿, STL 컨테이너 |
 | 2026-05-03 | C++-13, C++-14 | STL 알고리즘, 예외 처리 |
+| 2026-05-04 | C++-15, C++-16 | 파일 I/O & 스트림, 람다 & 함수 객체 |
