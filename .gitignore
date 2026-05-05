@@ -50,7 +50,6 @@ infra/k8s/**/*-plain.yaml
 .claude/settings.local.json
 
 # External projects
-notebooklm-py/
 
 # Graphify cache
 graphify-out/cache/
