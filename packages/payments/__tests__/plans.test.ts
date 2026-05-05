@@ -1,11 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { PLAN_CONFIG, getPlanConfig } from "../src/plans";
-import type { Plan } from "@repo/db";
 
 describe("plans", () => {
   describe("PLAN_CONFIG", () => {
     it("should have all 4 plans defined", () => {
-      const plans: Plan[] = ["FREE", "STARTER", "PRO", "ENTERPRISE"];
+      const plans = ["FREE", "STARTER", "PRO", "ENTERPRISE"] as const;
       for (const plan of plans) {
         expect(PLAN_CONFIG[plan]).toBeDefined();
       }
