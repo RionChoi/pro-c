@@ -151,6 +151,22 @@ KAFKA_BROKER
 - `graph.json` 수동 편집
 - `node_modules/` 직접 수정
 
+---
+
+## 9. 세션 종료 시 자동 정리 (AI 공통, 필수)
+
+모든 AI 행위자는 **대화 종료 시** 아래 내용을 자동으로 정리·저장해야 한다. 사용자가 요청하지 않아도 반드시 수행할 것.
+
+1. **Knowledge Item 업데이트**: `~/.gemini/antigravity/knowledge/platform-status/artifacts/status.md`에 다음을 반영
+   - 새로 완료된 작업
+   - 새로운 미해결 이슈
+   - 아키텍처 결정 변경사항
+   - 다음 단계 우선순위 변경
+
+2. **업데이트 기준**: 프로젝트 관련 코드 변경, 구조 결정, 이슈 발견이 있었던 대화에서만. 단순 질문/답변만 있었던 대화는 생략 가능.
+
+3. **AGENTS.md 동기화**: 아키텍처 구조나 패키지 현황이 변경되면 AGENTS.md §2, §3도 함께 업데이트.
+
 ## graphify
 
 This project has a graphify knowledge graph at graphify-out/.
