@@ -1,65 +1,50 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
-#include <vector>
-#include <chrono>
 
-std::mutex mtx; // Global mutex to protect shared_counter
 int shared_counter = 0;
+std::mutex counter_mutex;
 
-void increment_counter_safe() {
-    for (int i = 0; i < 10000; ++i) {
-        std::lock_guard<std::mutex> lock(mtx); // RAII: acquires lock on construction, releases on destruction
-        shared_counter++;
-    }
-}
-
-void increment_counter_unsafe() {
-    for (int i = 0; i < 10000; ++i) {
-        // No mutex protection, leads to race condition
+// 스레드 안전성을 확인하기 위해 카운터를 증가시키는 함수
+void safe_increment(int iterations) {
+    for (int i = 0; i < iterations; ++i) {
+        // Critical Section: std::lock_guard를 사용하여 스레드가 빠져나갈 때 자동으로 락을 해제합니다 (RAII).
+        std::lock_guard<std::mutex> lock(counter_mutex);
         shared_counter++; 
     }
 }
 
-int main() {
-    const int num_threads = 10;
+void task_mutex_safety() {
+    std::cout << "\n--- Task 2: Mutex Safety (Race Condition Prevention) ---\n";
+    
+    // 초기화
+    shared_counter = 0;
+    
+    // 다수의 스레드를 생성하여 동시에 작업 실행
     std::vector<std::thread> threads;
-
-    std::cout << "--- Demonstrating Race Condition (Unsafe) ---\n";
-    shared_counter = 0; // Reset counter
-    threads.clear();
-
-    // Create threads to increment counter unsafely
+    int num_threads = 10;
+    int iterations_per_thread = 10000;
+    
     for (int i = 0; i < num_threads; ++i) {
-        threads.emplace_back(increment_counter_unsafe);
+        threads.emplace_back(safe_increment, iterations_per_thread);
     }
 
-    // Join all threads
+    // 모든 스레드가 끝날 때까지 대기합니다. 이 과정이 안전한 최종 결과 보장을 합니다.
     for (auto& t : threads) {
         t.join();
     }
 
-    std::cout << "Unsafe final shared_counter value: " << shared_counter << " (Expected: " << (num_threads * 10000) << ")\n";
-    std::cout << "Note: The 'Unsafe' value will likely be less than expected due to race conditions.\n";
-
-    std::cout << "\n--- Demonstrating Mutex and Lock_Guard (Safe) ---\n";
-    shared_counter = 0; // Reset counter
-    threads.clear();
-
-    // Create threads to increment counter safely with mutex and lock_guard
-    for (int i = 0; i < num_threads; ++i) {
-        threads.emplace_back(increment_counter_safe);
+    int expected = num_threads * iterations_per_thread;
+    std::cout << "Expected count: " << expected << "\n";
+    std::cout << "Actual counter value: " << shared_counter << "\n";
+    if (shared_counter == expected) {
+        std::cout << "✅ SUCCESS: Mutex가 정상적으로 작동하여 카운터 무결성이 유지되었습니다.\n";
+    } else {
+        std::cout << "❌ FAIL: 카운터 불일치. 동기화에 실패했습니다.\n";
     }
+}
 
-    // Join all threads
-    for (auto& t : threads) {
-        t.join();
-    }
-
-    std::cout << "Safe final shared_counter value: " << shared_counter << " (Expected: " << (num_threads * 10000) << ")\n";
-    std::cout << "Note: The 'Safe' value should be exactly the expected value.\n";
-
-    std::cout << "\nExiting main.\n";
-
+int main() {
+    task_mutex_safety();
     return 0;
 }

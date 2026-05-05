@@ -1,143 +1,35 @@
 #include <iostream>
-#include <vector>
+#include <memory>
 #include <string>
-#include <algorithm> // For std::swap
 
-class MyVector {
-private:
-    int* data;
-    size_t size;
-
+class SharedResource {
 public:
-    // Default constructor
-    MyVector() : data(nullptr), size(0) {
-        std::cout << "Default constructor called.\n";
-    }
-
-    // Constructor with size
-    explicit MyVector(size_t s) : size(s) {
-        data = new int[size];
-        for (size_t i = 0; i < size; ++i) {
-            data[i] = static_cast<int>(i);
-        }
-        std::cout << "Constructor(size) called. Size: " << size << ". Address: " << data << "\n";
-    }
-
-    // Destructor
-    ~MyVector() {
-        std::cout << "Destructor called. Size: " << size << ". Address: " << data << "\n";
-        delete[] data;
-        data = nullptr; // Prevent dangling pointer
-        size = 0;
-    }
-
-    // Copy constructor
-    MyVector(const MyVector& other) : size(other.size) {
-        data = new int[size];
-        std::copy(other.data, other.data + other.size, data);
-        std::cout << "Copy constructor called. Size: " << size << ". Address: " << data << " (Copied from " << other.data << ")\n";
-    }
-
-    // Copy assignment operator
-    MyVector& operator=(const MyVector& other) {
-        std::cout << "Copy assignment operator called. Current Size: " << size << ". New Size: " << other.size << "\n";
-        if (this == &other) { // Self-assignment check
-            return *this;
-        }
-        // Free existing resources
-        delete[] data;
-        // Allocate new resources and copy
-        size = other.size;
-        data = new int[size];
-        std::copy(other.data, other.data + other.size, data);
-        std::cout << "Copy assignment finished. Address: " << data << "\n";
-        return *this;
-    }
-
-    // Move constructor
-    MyVector(MyVector&& other) noexcept : data(other.data), size(other.size) {
-        other.data = nullptr;
-        other.size = 0;
-        std::cout << "Move constructor called. Size: " << size << ". Address: " << data << " (Moved from " << other.data << " -> original was nullptr)\n";
-    }
-
-    // Move assignment operator
-    MyVector& operator=(MyVector&& other) noexcept {
-        std::cout << "Move assignment operator called. Current Size: " << size << ". New Size: " << other.size << "\n";
-        if (this == &other) { // Self-assignment check for move
-            return *this;
-        }
-        delete[] data; // Free existing resources
-
-        data = other.data;
-        size = other.size;
-
-        other.data = nullptr;
-        other.size = 0;
-
-        std::cout << "Move assignment finished. Address: " << data << "\n";
-        return *this;
-    }
-
-    // Getter for size
-    size_t getSize() const {
-        return size;
-    }
-
-    // Print elements
-    void printElements() const {
-        std::cout << "Elements: [";
-        for (size_t i = 0; i < size; ++i) {
-            std::cout << data[i] << (i == size - 1 ? "" : ", ");
-        }
-        std::cout << "]\n";
-    }
+    int id;
+    SharedResource(int i) : id(i) { std::cout << "SharedResource " << id << " created.\n"; }
+    ~SharedResource() { std::cout << "SharedResource " << id << " destroyed.\n"; }
 };
 
-MyVector createMyVector(size_t s) {
-    std::cout << "Inside createMyVector function.\n";
-    MyVector temp(s);
-    std::cout << "Returning from createMyVector.\n";
-    return temp; // RVO/NRVO or move constructor will be used here
+// 과제 2: std::shared_ptr을 사용하여 두 개 이상의 포인터가 하나의 자원을 공유하게 하고, 참조 카운트가 0이 될 때 파괴되는지 확인하세요.
+void task_shared_ptr() {
+    std::cout << "\n--- Task 2: shared_ptr ---\n";
+    std::shared_ptr<SharedResource> ptr1 = std::make_shared<SharedResource>(202);
+    std::cout << "Initial count: " << ptr1.use_count() << "\n";
+    
+    std::shared_ptr<SharedResource> ptr2 = ptr1; // Count increases
+    std::cout << "After copy, count: " << ptr1.use_count() << "\n";
+    
+    // ptr1 범위를 벗어나도 ptr2가 살아있기 때문에 파괴되지 않습니다.
+    {
+        std::shared_ptr<SharedResource> ptr3 = ptr1; // Count increases again
+        std::cout << "Inside scope, count: " << ptr1.use_count() << "\n";
+    } // ptr3 is destroyed, count decreases
+    
+    std::cout << "After inner scope, count: " << ptr1.use_count() << "\n";
+    
 }
 
 int main() {
-    std::cout << "--- Demonstrating Copy Semantics ---\n";
-    MyVector v1(5);
-    MyVector v2 = v1; // Copy constructor
-    v1.printElements();
-    v2.printElements();
-
-    MyVector v3(2);
-    v3 = v1; // Copy assignment operator
-    v3.printElements();
-
-    std::cout << "\n--- Demonstrating Move Semantics ---\n";
-    MyVector v4;
-    std::cout << "Assigning temporary object to v4 (move assignment expected)...\n";
-    v4 = createMyVector(7); // Move assignment operator (or RVO/NRVO)
-    v4.printElements();
-
-    MyVector v5 = createMyVector(3); // Move constructor (or RVO/NRVO)
-    v5.printElements();
-
-    MyVector v6(10);
-    std::cout << "Moving v6 to v7 (move constructor expected)...\n";
-    MyVector v7 = std::move(v6);
-    if (v6.getSize() == 0) {
-        std::cout << "v6 is now in a valid but unspecified state (moved-from state).\n";
-    }
-    v7.printElements();
-
-    MyVector v8(1);
-    std::cout << "Moving v7 to v8 (move assignment expected)...\n";
-    v8 = std::move(v7);
-    v8.printElements();
-    if (v7.getSize() == 0) {
-        std::cout << "v7 is now in a valid but unspecified state (moved-from state).\n";
-    }
-
-    std::cout << "\nExiting main. Objects will be destroyed.\n";
-
+    task_shared_ptr();
+    std::cout << "\nProgram finished. shared_ptr handles cleanup safely.\n";
     return 0;
 }
