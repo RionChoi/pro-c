@@ -81,7 +81,7 @@
 | 16 | 람다 & 함수 객체 (Lambda & Functors) | ✅ 완료 |
 | 17 | 스마트 포인터 & 이동 시맨틱 (Smart Pointers & Move) | ✅ 완료 |
 | 18 | 멀티스레딩 기초 (Multithreading Basics) | ✅ 완료 |
-| 19 | 디자인 패턴 (Design Patterns) | ⬜ 대기 |
+| 19 | 디자인 패턴 (Design Patterns) | ✅ 완료 |
 | 20 | C++ 최종 프로젝트 (Final Project) | ⬜ 대기 |
 
 ---
@@ -119,3 +119,4 @@
 | 2026-05-03 | C++-13, C++-14 | STL 알고리즘, 예외 처리 |
 | 2026-05-04 | C++-15, C++-16 | 파일 I/O & 스트림, 람다 & 함수 객체 |
 | 2026-05-05 | C++-17, C++-18 | 스마트 포인터 & 이동 시맨틱, 멀티스레딩 기초 |
+| 2026-05-07 | C++-19 | 디자인 패턴 (Singleton, Observer, Strategy) |
