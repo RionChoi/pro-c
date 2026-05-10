@@ -2853,8 +2853,6 @@
 10. `issueBillingKey()` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `createShape()` --calls--> `runGame()`  [INFERRED]
-  /Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp → /Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp
 - `issueBillingKey()` --calls--> `POST()`  [INFERRED]
   /Users/choi/platform/packages/payments/src/toss.ts → /Users/choi/platform/apps/web-main/app/api/billing/route.ts
 - `createSubscription()` --calls--> `POST()`  [INFERRED]
@@ -2863,6 +2861,8 @@
   /Users/choi/platform/packages/shared-types/src/events.ts → /Users/choi/platform/apps/web-main/lib/tenant.ts
 - `requireRole()` --calls--> `GET()`  [INFERRED]
   /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/users/route.ts
+- `requireRole()` --calls--> `PATCH()`  [INFERRED]
+  /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/users/[id]/role/route.ts
 
 ## Communities
 
@@ -2872,35 +2872,35 @@ Nodes (9): confirmOtpSetupAction(), verifyOtpAction(), decryptSecret(), encryptS
 
 ### Community 1 - "Community 1"
 Cohesion: 0.14
-Nodes (6): proxy(), hasRole(), requireRole(), DELETE(), PATCH(), POST()
+Nodes (8): inviteMemberAction(), register(), handleTenantCreated(), handleUserCreated(), startKafkaConsumer(), createConsumer(), sendInviteEmail(), sendMail()
 
 ### Community 2 - "Community 2"
-Cohesion: 0.16
-Nodes (9): Circle, main(), MockNetworkModule, MockStorageModule, Rectangle, runGame(), ServiceManager, Shape (+1 more)
+Cohesion: 0.14
+Nodes (6): proxy(), hasRole(), requireRole(), DELETE(), PATCH(), POST()
 
 ### Community 3 - "Community 3"
-Cohesion: 0.16
-Nodes (7): register(), handleTenantCreated(), handleUserCreated(), startKafkaConsumer(), createConsumer(), sendInviteEmail(), sendMail()
-
-### Community 4 - "Community 4"
 Cohesion: 0.21
 Nodes (9): BillingSuccessPage(), getPlanConfig(), checkPlanLimit(), createSubscription(), cancelPayment(), chargeBilling(), getAuthHeader(), issueBillingKey() (+1 more)
 
+### Community 4 - "Community 4"
+Cohesion: 0.17
+Nodes (8): Circle, main(), MockNetworkModule, MockStorageModule, Rectangle, ServiceManager, Shape, simulateGame()
+
 ### Community 5 - "Community 5"
-Cohesion: 0.2
-Nodes (4): createTenantAction(), createDomainEvent(), buildTenantSchemaName(), createTenant()
+Cohesion: 0.18
+Nodes (7): runGame(), Circle, createShape(), main(), Rectangle, Shape, TransactionPipeline
 
 ### Community 6 - "Community 6"
 Cohesion: 0.2
-Nodes (6): Circle, createShape(), main(), Rectangle, Shape, TransactionPipeline
+Nodes (6): AbstractModule, Logger, main(), NetworkModule, ServiceManager, StorageModule
 
 ### Community 7 - "Community 7"
 Cohesion: 0.2
-Nodes (3): inviteMemberAction(), selectTenantAction(), GET()
+Nodes (3): createTenantAction(), selectTenantAction(), GET()
 
 ### Community 8 - "Community 8"
-Cohesion: 0.2
-Nodes (6): AbstractModule, Logger, main(), NetworkModule, ServiceManager, StorageModule
+Cohesion: 0.25
+Nodes (3): createDomainEvent(), buildTenantSchemaName(), createTenant()
 
 ### Community 9 - "Community 9"
 Cohesion: 0.4
@@ -2911,12 +2911,12 @@ Cohesion: 0.5
 Nodes (1): RootLayout()
 
 ### Community 11 - "Community 11"
-Cohesion: 0.67
-Nodes (0): 
-
-### Community 12 - "Community 12"
 Cohesion: 1.0
 Nodes (2): safeParse(), validate()
+
+### Community 12 - "Community 12"
+Cohesion: 0.67
+Nodes (0): 
 
 ### Community 13 - "Community 13"
 Cohesion: 1.0
@@ -14185,27 +14185,27 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Knowledge Gaps
 - **2758 isolated node(s):** `TransactionPipeline`, `ServiceManager`, `MockStorageModule`, `MockNetworkModule`, `StorageModule` (+2753 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 13`** (2 nodes): `HomePage()`, `page.tsx`
+- **Thin community `Community 13`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 14`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 15`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (2 nodes): `PartnerHomePage()`, `page.tsx`
+- **Thin community `Community 16`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (2 nodes): `Card()`, `card.tsx`
+- **Thin community `Community 17`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 18`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `loadToss()`, `toss.test.ts`
+- **Thin community `Community 19`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (2 nodes): `utils.ts`, `cn()`
+- **Thin community `Community 20`** (2 nodes): `PartnerHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (2 nodes): `AdminHomePage()`, `page.tsx`
+- **Thin community `Community 21`** (2 nodes): `DashboardPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (2 nodes): `DashboardPage()`, `page.tsx`
+- **Thin community `Community 22`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 23`** (2 nodes): `loadToss()`, `toss.test.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 24`** (1 nodes): `vitest.config.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -19821,11 +19821,11 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GET()` connect `Community 7` to `Community 0`, `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **Why does `requireRole()` connect `Community 1` to `Community 7`?**
+- **Why does `GET()` connect `Community 7` to `Community 0`, `Community 1`, `Community 2`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `inviteMemberAction()` connect `Community 7` to `Community 3`?**
+- **Why does `verifyOtpAction()` connect `Community 0` to `Community 7`?**
+  _High betweenness centrality (0.000) - this node is a cross-community bridge._
+- **Why does `requireRole()` connect `Community 2` to `Community 7`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `GET()` (e.g. with `verifyOtpAction()` and `confirmOtpSetupAction()`) actually correct?**
   _`GET()` has 6 INFERRED edges - model-reasoned connections that need verification._

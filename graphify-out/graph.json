@@ -27,7 +27,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_19_design_patterns_homework2_cpp",
-      "community": 6,
+      "community": 5,
       "norm_label": "homework2.cpp"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L7",
       "id": "homework2_shape",
-      "community": 6,
+      "community": 5,
       "norm_label": "shape"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L9",
       "id": "homework2_shape_shape",
-      "community": 6,
+      "community": 5,
       "norm_label": ".shape()"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L15",
       "id": "homework2_circle",
-      "community": 6,
+      "community": 5,
       "norm_label": "circle"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L19",
       "id": "homework2_circle_circle",
-      "community": 6,
+      "community": 5,
       "norm_label": ".circle()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L24",
       "id": "homework2_rectangle",
-      "community": 6,
+      "community": 5,
       "norm_label": "rectangle"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L29",
       "id": "homework2_rectangle_rectangle",
-      "community": 6,
+      "community": 5,
       "norm_label": ".rectangle()"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework2.cpp",
       "source_location": "L35",
       "id": "homework2_createshape",
-      "community": 6,
+      "community": 5,
       "norm_label": "createshape()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework2.cpp",
       "source_location": "L95",
       "id": "homework2_main",
-      "community": 6,
+      "community": 5,
       "norm_label": "main()"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_19_design_patterns_game1_cpp",
-      "community": 2,
+      "community": 4,
       "norm_label": "game1.cpp"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L8",
       "id": "game1_shape",
-      "community": 2,
+      "community": 4,
       "norm_label": "shape"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L13",
       "id": "game1_shape_shape",
-      "community": 2,
+      "community": 4,
       "norm_label": ".shape()"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L19",
       "id": "game1_circle",
-      "community": 2,
+      "community": 4,
       "norm_label": "circle"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L23",
       "id": "game1_circle_circle",
-      "community": 2,
+      "community": 4,
       "norm_label": ".circle()"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L28",
       "id": "game1_rectangle",
-      "community": 2,
+      "community": 4,
       "norm_label": "rectangle"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L33",
       "id": "game1_rectangle_rectangle",
-      "community": 2,
+      "community": 4,
       "norm_label": ".rectangle()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/game1.cpp",
       "source_location": "L39",
       "id": "game1_rungame",
-      "community": 2,
+      "community": 5,
       "norm_label": "rungame()"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L38",
       "id": "game1_main",
-      "community": 2,
+      "community": 4,
       "norm_label": "main()"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_19_design_patterns_homework_cpp",
-      "community": 8,
+      "community": 6,
       "norm_label": "homework.cpp"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework.cpp",
       "source_location": "L5",
       "id": "homework_logger",
-      "community": 8,
+      "community": 6,
       "norm_label": "logger"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/19-design-patterns/homework.cpp",
       "source_location": "L8",
       "id": "homework_logger_logger",
-      "community": 8,
+      "community": 6,
       "norm_label": ".logger()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L63",
       "id": "homework_main",
-      "community": 8,
+      "community": 6,
       "norm_label": "main()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework2.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_20_final_project_homework2_cpp",
-      "community": 6,
+      "community": 5,
       "norm_label": "homework2.cpp"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework2.cpp",
       "source_location": "L21",
       "id": "homework2_transactionpipeline",
-      "community": 6,
+      "community": 5,
       "norm_label": "transactionpipeline"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_20_final_project_game1_cpp",
-      "community": 2,
+      "community": 4,
       "norm_label": "game1.cpp"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L10",
       "id": "game1_servicemanager",
-      "community": 2,
+      "community": 4,
       "norm_label": "servicemanager"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L13",
       "id": "game1_mockstoragemodule",
-      "community": 2,
+      "community": 4,
       "norm_label": "mockstoragemodule"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L19",
       "id": "game1_mocknetworkmodule",
-      "community": 2,
+      "community": 4,
       "norm_label": "mocknetworkmodule"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/game1.cpp",
       "source_location": "L27",
       "id": "game1_simulategame",
-      "community": 2,
+      "community": 4,
       "norm_label": "simulategame()"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L1",
       "id": "users_choi_platform_cpp_lang_20_final_project_homework_cpp",
-      "community": 8,
+      "community": 6,
       "norm_label": "homework.cpp"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L7",
       "id": "homework_abstractmodule",
-      "community": 8,
+      "community": 6,
       "norm_label": "abstractmodule"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L9",
       "id": "homework_abstractmodule_abstractmodule",
-      "community": 8,
+      "community": 6,
       "norm_label": ".abstractmodule()"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L14",
       "id": "homework_storagemodule",
-      "community": 8,
+      "community": 6,
       "norm_label": "storagemodule"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L24",
       "id": "homework_networkmodule",
-      "community": 8,
+      "community": 6,
       "norm_label": "networkmodule"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "/Users/choi/platform/cpp-lang/20-final-project/homework.cpp",
       "source_location": "L35",
       "id": "homework_servicemanager",
-      "community": 8,
+      "community": 6,
       "norm_label": "servicemanager"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/card.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_packages_ui_src_card_tsx",
-      "community": 17,
+      "community": 13,
       "norm_label": "card.tsx"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/card.tsx",
       "source_location": "L3",
       "id": "card_card",
-      "community": 17,
+      "community": 13,
       "norm_label": "card()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/button.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_packages_ui_src_button_tsx",
-      "community": 15,
+      "community": 22,
       "norm_label": "button.tsx"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/button.tsx",
       "source_location": "L11",
       "id": "button_button",
-      "community": 15,
+      "community": 22,
       "norm_label": "button()"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/lib/utils.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_ui_src_lib_utils_ts",
-      "community": 20,
+      "community": 19,
       "norm_label": "utils.ts"
     },
     {
@@ -459,7 +459,7 @@
       "source_file": "/Users/choi/platform/packages/ui/src/lib/utils.ts",
       "source_location": "L4",
       "id": "utils_cn",
-      "community": 20,
+      "community": 19,
       "norm_label": "cn()"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "/Users/choi/platform/packages/payments/__tests__/toss.test.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_payments_tests_toss_test_ts",
-      "community": 19,
+      "community": 23,
       "norm_label": "toss.test.ts"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "/Users/choi/platform/packages/payments/__tests__/toss.test.ts",
       "source_location": "L16",
       "id": "toss_test_loadtoss",
-      "community": 19,
+      "community": 23,
       "norm_label": "loadtoss()"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_payments_src_toss_ts",
-      "community": 4,
+      "community": 3,
       "norm_label": "toss.ts"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L3",
       "id": "toss_getauthheader",
-      "community": 4,
+      "community": 3,
       "norm_label": "getauthheader()"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L9",
       "id": "toss_tossrequest",
-      "community": 4,
+      "community": 3,
       "norm_label": "tossrequest()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L42",
       "id": "toss_issuebillingkey",
-      "community": 4,
+      "community": 3,
       "norm_label": "issuebillingkey()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L53",
       "id": "toss_chargebilling",
-      "community": 4,
+      "community": 3,
       "norm_label": "chargebilling()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/toss.ts",
       "source_location": "L79",
       "id": "toss_cancelpayment",
-      "community": 4,
+      "community": 3,
       "norm_label": "cancelpayment()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/plans.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_payments_src_plans_ts",
-      "community": 4,
+      "community": 3,
       "norm_label": "plans.ts"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/plans.ts",
       "source_location": "L37",
       "id": "plans_getplanconfig",
-      "community": 4,
+      "community": 3,
       "norm_label": "getplanconfig()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/subscription.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_payments_src_subscription_ts",
-      "community": 4,
+      "community": 3,
       "norm_label": "subscription.ts"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/subscription.ts",
       "source_location": "L8",
       "id": "subscription_createsubscription",
-      "community": 4,
+      "community": 3,
       "norm_label": "createsubscription()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/subscription.ts",
       "source_location": "L87",
       "id": "subscription_cancelsubscription",
-      "community": 4,
+      "community": 3,
       "norm_label": "cancelsubscription()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "/Users/choi/platform/packages/payments/src/subscription.ts",
       "source_location": "L95",
       "id": "subscription_checkplanlimit",
-      "community": 4,
+      "community": 3,
       "norm_label": "checkplanlimit()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/events.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_shared_types_src_events_ts",
-      "community": 5,
+      "community": 8,
       "norm_label": "events.ts"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/events.ts",
       "source_location": "L156",
       "id": "events_istenantevent",
-      "community": 5,
+      "community": 8,
       "norm_label": "istenantevent()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/events.ts",
       "source_location": "L160",
       "id": "events_isuserevent",
-      "community": 5,
+      "community": 8,
       "norm_label": "isuserevent()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/events.ts",
       "source_location": "L164",
       "id": "events_issubscriptionevent",
-      "community": 5,
+      "community": 8,
       "norm_label": "issubscriptionevent()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/events.ts",
       "source_location": "L181",
       "id": "events_createdomainevent",
-      "community": 5,
+      "community": 8,
       "norm_label": "createdomainevent()"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/validators/user.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_shared_types_src_validators_user_ts",
-      "community": 12,
+      "community": 11,
       "norm_label": "user.ts"
     },
     {
@@ -729,7 +729,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/validators/user.ts",
       "source_location": "L138",
       "id": "user_safeparse",
-      "community": 12,
+      "community": 11,
       "norm_label": "safeparse()"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "/Users/choi/platform/packages/shared-types/src/validators/user.ts",
       "source_location": "L153",
       "id": "user_validate",
-      "community": 12,
+      "community": 11,
       "norm_label": "validate()"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "/Users/choi/platform/packages/auth/src/require-role.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_auth_src_require_role_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "require-role.ts"
     },
     {
@@ -774,7 +774,7 @@
       "source_file": "/Users/choi/platform/packages/auth/src/require-role.ts",
       "source_location": "L9",
       "id": "require_role_requirerole",
-      "community": 1,
+      "community": 2,
       "norm_label": "requirerole()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "/Users/choi/platform/packages/auth/src/rbac.ts",
       "source_location": "L1",
       "id": "users_choi_platform_packages_auth_src_rbac_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "rbac.ts"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "/Users/choi/platform/packages/auth/src/rbac.ts",
       "source_location": "L4",
       "id": "rbac_hasrole",
-      "community": 1,
+      "community": 2,
       "norm_label": "hasrole()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "/Users/choi/platform/apps/web-admin/proxy.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_admin_proxy_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "proxy.ts"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/proxy.ts",
       "source_location": "L5",
       "id": "proxy_proxy",
-      "community": 1,
+      "community": 2,
       "norm_label": "proxy()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "/Users/choi/platform/apps/web-admin/app/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_admin_app_page_tsx",
-      "community": 21,
+      "community": 15,
       "norm_label": "page.tsx"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "/Users/choi/platform/apps/web-admin/app/page.tsx",
       "source_location": "L3",
       "id": "page_adminhomepage",
-      "community": 21,
+      "community": 15,
       "norm_label": "adminhomepage()"
     },
     {
@@ -1206,7 +1206,7 @@
       "source_file": "/Users/choi/platform/apps/web-partner/proxy.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_partner_proxy_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "proxy.ts"
     },
     {
@@ -1242,7 +1242,7 @@
       "source_file": "/Users/choi/platform/apps/web-partner/app/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_partner_app_page_tsx",
-      "community": 16,
+      "community": 20,
       "norm_label": "page.tsx"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "/Users/choi/platform/apps/web-partner/app/page.tsx",
       "source_location": "L4",
       "id": "page_partnerhomepage",
-      "community": 16,
+      "community": 20,
       "norm_label": "partnerhomepage()"
     },
     {
@@ -1377,7 +1377,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/proxy.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_proxy_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "proxy.ts"
     },
     {
@@ -1395,7 +1395,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/instrumentation.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_instrumentation_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "instrumentation.ts"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/instrumentation.ts",
       "source_location": "L1",
       "id": "instrumentation_register",
-      "community": 3,
+      "community": 1,
       "norm_label": "register()"
     },
     {
@@ -1431,7 +1431,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_page_tsx",
-      "community": 13,
+      "community": 16,
       "norm_label": "page.tsx"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/page.tsx",
       "source_location": "L3",
       "id": "page_homepage",
-      "community": 13,
+      "community": 16,
       "norm_label": "homepage()"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_dashboard_page_tsx",
-      "community": 22,
+      "community": 21,
       "norm_label": "page.tsx"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/page.tsx",
       "source_location": "L6",
       "id": "page_dashboardpage",
-      "community": 22,
+      "community": 21,
       "norm_label": "dashboardpage()"
     },
     {
@@ -1494,7 +1494,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/settings/billing/BillingWidget.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_dashboard_settings_billing_billingwidget_tsx",
-      "community": 11,
+      "community": 12,
       "norm_label": "billingwidget.tsx"
     },
     {
@@ -1503,7 +1503,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/settings/billing/BillingWidget.tsx",
       "source_location": "L42",
       "id": "billingwidget_handleupgrade",
-      "community": 11,
+      "community": 12,
       "norm_label": "handleupgrade()"
     },
     {
@@ -1512,7 +1512,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/settings/billing/BillingWidget.tsx",
       "source_location": "L61",
       "id": "billingwidget_handlecancel",
-      "community": 11,
+      "community": 12,
       "norm_label": "handlecancel()"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/settings/billing/success/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_dashboard_settings_billing_success_page_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "page.tsx"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/settings/billing/success/page.tsx",
       "source_location": "L13",
       "id": "page_billingsuccesspage",
-      "community": 4,
+      "community": 3,
       "norm_label": "billingsuccesspage()"
     },
     {
@@ -1548,7 +1548,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/members/actions.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_dashboard_members_actions_ts",
-      "community": 7,
+      "community": 1,
       "norm_label": "actions.ts"
     },
     {
@@ -1557,7 +1557,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/dashboard/members/actions.ts",
       "source_location": "L9",
       "id": "actions_invitememberaction",
-      "community": 7,
+      "community": 1,
       "norm_label": "invitememberaction()"
     },
     {
@@ -1593,7 +1593,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/tenants/route.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_api_tenants_route_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -1602,7 +1602,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/billing/route.ts",
       "source_location": "L12",
       "id": "route_post",
-      "community": 1,
+      "community": 2,
       "norm_label": "post()"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/users/[id]/role/route.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_api_users_id_role_route_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/users/[id]/role/route.ts",
       "source_location": "L9",
       "id": "route_patch",
-      "community": 1,
+      "community": 2,
       "norm_label": "patch()"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/webhooks/toss/route.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_api_webhooks_toss_route_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/billing/route.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_api_billing_route_ts",
-      "community": 1,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/api/billing/route.ts",
       "source_location": "L51",
       "id": "route_delete",
-      "community": 1,
+      "community": 2,
       "norm_label": "delete()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/login/page.tsx",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_login_page_tsx",
-      "community": 23,
+      "community": 17,
       "norm_label": "page.tsx"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/login/page.tsx",
       "source_location": "L3",
       "id": "page_loginpage",
-      "community": 23,
+      "community": 17,
       "norm_label": "loginpage()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/onboarding/actions.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_app_onboarding_actions_ts",
-      "community": 5,
+      "community": 7,
       "norm_label": "actions.ts"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/app/onboarding/actions.ts",
       "source_location": "L8",
       "id": "actions_createtenantaction",
-      "community": 5,
+      "community": 7,
       "norm_label": "createtenantaction()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_lib_kafka_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "kafka.ts"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka.ts",
       "source_location": "L22",
       "id": "kafka_createconsumer",
-      "community": 3,
+      "community": 1,
       "norm_label": "createconsumer()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_lib_kafka_consumer_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "kafka-consumer.ts"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L14",
       "id": "kafka_consumer_handletenantcreated",
-      "community": 3,
+      "community": 1,
       "norm_label": "handletenantcreated()"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L26",
       "id": "kafka_consumer_handleusercreated",
-      "community": 3,
+      "community": 1,
       "norm_label": "handleusercreated()"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L38",
       "id": "kafka_consumer_handleuserrolechanged",
-      "community": 3,
+      "community": 1,
       "norm_label": "handleuserrolechanged()"
     },
     {
@@ -1773,7 +1773,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L46",
       "id": "kafka_consumer_parsemessage",
-      "community": 3,
+      "community": 1,
       "norm_label": "parsemessage()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L55",
       "id": "kafka_consumer_startkafkaconsumer",
-      "community": 3,
+      "community": 1,
       "norm_label": "startkafkaconsumer()"
     },
     {
@@ -1791,7 +1791,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/kafka-consumer.ts",
       "source_location": "L97",
       "id": "kafka_consumer_stopkafkaconsumer",
-      "community": 3,
+      "community": 1,
       "norm_label": "stopkafkaconsumer()"
     },
     {
@@ -1800,7 +1800,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/tenant.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_lib_tenant_ts",
-      "community": 5,
+      "community": 8,
       "norm_label": "tenant.ts"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/tenant.ts",
       "source_location": "L9",
       "id": "tenant_buildtenantschemaname",
-      "community": 5,
+      "community": 8,
       "norm_label": "buildtenantschemaname()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/tenant.ts",
       "source_location": "L29",
       "id": "tenant_createtenantschema",
-      "community": 5,
+      "community": 8,
       "norm_label": "createtenantschema()"
     },
     {
@@ -1827,7 +1827,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/tenant.ts",
       "source_location": "L46",
       "id": "tenant_createtenant",
-      "community": 5,
+      "community": 8,
       "norm_label": "createtenant()"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/mail.ts",
       "source_location": "L1",
       "id": "users_choi_platform_apps_web_main_lib_mail_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "mail.ts"
     },
     {
@@ -1845,7 +1845,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/mail.ts",
       "source_location": "L15",
       "id": "mail_sendmail",
-      "community": 3,
+      "community": 1,
       "norm_label": "sendmail()"
     },
     {
@@ -1854,7 +1854,7 @@
       "source_file": "/Users/choi/platform/apps/web-main/lib/mail.ts",
       "source_location": "L41",
       "id": "mail_sendinviteemail",
-      "community": 3,
+      "community": 1,
       "norm_label": "sendinviteemail()"
     },
     {
