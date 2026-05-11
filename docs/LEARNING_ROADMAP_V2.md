@@ -20,8 +20,8 @@
 
 | 세션 | 주제 | 핵심 개념 | 상태 |
 |------|------|-----------|------|
-| 01 | Python 핵심 특성 | 동적 타입, f-string, comprehension, type hint | ⬜ |
-| 02 | 함수 고급 패턴 | decorator, generator, *args/**kwargs, functools | ⬜ |
+| 01 | Python 핵심 특성 | 동적 타입, f-string, comprehension, type hint | ✅ |
+| 02 | 함수 고급 패턴 | decorator, generator, *args/**kwargs, functools | ✅ |
 | 03 | 자료구조 심화 | dict/set 고급 활용, collections, itertools | ⬜ |
 | 04 | Python OOP | dataclass, dunder 메서드, property, ABC | ⬜ |
 | 05 | 모듈 & 패키지 | pip, venv, pyproject.toml, 패키지 구조 | ⬜ |
@@ -121,3 +121,5 @@ pro-c/
 | 날짜 | 완료 세션 | 비고 |
 |------|-----------|------|
 | 2026-05-09 | 로드맵 V2 작성 | Phase 3~7 계획 수립 |
+| 2026-05-09 | Python-01 | 핵심 특성 (동적 타입, f-string, comprehension) |
+| 2026-05-10 | Python-02 | 함수 고급 패턴 (decorator, generator, functools) |
