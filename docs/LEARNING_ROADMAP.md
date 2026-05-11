@@ -89,7 +89,7 @@ pro-c/
 |------|------|-----------|------|
 | 01 | Python 핵심 특성 | 동적 타입, f-string, comprehension, type hint | ✅ |
 | 02 | 함수 고급 패턴 | decorator, generator, *args/**kwargs, functools | ✅ |
-| 03 | 자료구조 심화 | dict/set 고급 활용, collections, itertools | ⬜ |
+| 03 | 자료구조 심화 | dict/set 고급 활용, collections, itertools | ✅ |
 | 04 | Python OOP | dataclass, dunder 메서드, property, ABC | ⬜ |
 | 05 | 모듈 & 패키지 | pip, venv, pyproject.toml, 패키지 구조 | ⬜ |
 | 06 | 비동기 프로그래밍 | asyncio, async/await, aiohttp, 동시성 | ⬜ |
@@ -194,3 +194,4 @@ pro-c/
 | 2026-05-08 | C++-20 | C++ 최종 프로젝트 — 도서관 관리 시스템 |
 | 2026-05-09 | Python-01 | 핵심 특성 (동적 타입, f-string, comprehension) |
 | 2026-05-10 | Python-02 | 함수 고급 패턴 (decorator, generator, functools) |
+| 2026-05-11 | Python-03 | 자료구조 심화 (collections, itertools) |
