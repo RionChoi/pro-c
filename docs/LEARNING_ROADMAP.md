@@ -90,9 +90,9 @@ pro-c/
 | 01 | Python 핵심 특성 | 동적 타입, f-string, comprehension, type hint | ✅ |
 | 02 | 함수 고급 패턴 | decorator, generator, *args/**kwargs, functools | ✅ |
 | 03 | 자료구조 심화 | dict/set 고급 활용, collections, itertools | ✅ |
-| 04 | Python OOP | dataclass, dunder 메서드, property, ABC | ⬜ |
+| 04 | Python OOP 고유 특성 | dataclass, dunder 메서드, property, ABC (C++ OOP 중복 제외) | ✅ |
 | 05 | 모듈 & 패키지 | pip, venv, pyproject.toml, 패키지 구조 | ⬜ |
-| 06 | 비동기 프로그래밍 | asyncio, async/await, aiohttp, 동시성 | ⬜ |
+| 06 | 비동기 프로그래밍 | asyncio 이벤트 루프, async/await, aiohttp (스레드/락 중복 제외) | ⬜ |
 | 07 | FastAPI 기초 | 라우팅, Pydantic, 의존성 주입, OpenAPI | ⬜ |
 | 08 | FastAPI + DB | SQLAlchemy 2.0, Alembic, 비동기 ORM | ⬜ |
 | 09 | FastAPI 인증 | JWT, OAuth2, 미들웨어, 보안 | ⬜ |
@@ -195,3 +195,4 @@ pro-c/
 | 2026-05-09 | Python-01 | 핵심 특성 (동적 타입, f-string, comprehension) |
 | 2026-05-10 | Python-02 | 함수 고급 패턴 (decorator, generator, functools) |
 | 2026-05-11 | Python-03 | 자료구조 심화 (collections, itertools) |
+| 2026-05-12 | Python-04 | Python OOP 고유 특성 (dataclass, property, ABC, Protocol, slots) |
