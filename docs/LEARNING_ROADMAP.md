@@ -93,7 +93,7 @@ pro-c/
 | 21 | Concepts & Ranges (C++20) | ✅ |
 | 22 | Coroutines (C++20) | ✅ |
 | 23 | C++23 신기능 | ✅ |
-| 24 | ECS 아키텍처 | ⬜ |
+| 24 | ECS 아키텍처 | ✅ |
 | 25 | 메모리 최적화 & 캐시 | ⬜ |
 | 26 | CRTP & 정적 다형성 | ⬜ |
 | 27 | 원자 연산 & Lock-free | ⬜ |
@@ -130,3 +130,4 @@ pro-c/
 | 2026-05-14 | C++-21 | Concepts & Ranges (C++20) |
 | 2026-05-15 | C++-22 | Coroutines (C++20) |
 | 2026-05-16 | C++-23 | C++23 신기능 (expected, zip, enumerate, if consteval) |
+| 2026-05-17 | C++-24 | ECS 아키텍처 (Entity-Component-System) |
