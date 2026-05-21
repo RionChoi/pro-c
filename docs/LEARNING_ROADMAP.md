@@ -96,7 +96,7 @@ pro-c/
 | 24 | ECS 아키텍처 | ✅ |
 | 25 | 메모리 최적화 & 캐시 | ✅ |
 | 26 | CRTP & 정적 다형성 | ✅ |
-| 27 | 원자 연산 & Lock-free | ⬜ |
+| 27 | 원자 연산 & Lock-free | ✅ |
 | 28 | 소켓 네트워크 프로그래밍 | ⬜ |
 | 29 | 임베디드 C++ | ⬜ |
 | 30 | WebAssembly (Emscripten) | ⬜ |
@@ -133,3 +133,4 @@ pro-c/
 | 2026-05-17 | C++-24 | ECS 아키텍처 (Entity-Component-System) |
 | 2026-05-18 | C++-25 | 메모리 최적화 & 캐시 (구조체 패딩, 메모리 풀, False Sharing) |
 | 2026-05-20 | C++-26 | CRTP & 정적 다형성 (Mixin, 정책 기반 설계, Singleton, Clone) |
+| 2026-05-21 | C++-27 | 원자 연산 & Lock-free (Treiber Stack, SPSC Queue, atomic_flag) |
