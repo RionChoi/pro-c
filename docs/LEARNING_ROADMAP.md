@@ -82,11 +82,11 @@ pro-c/
 
 ---
 
-## 🎉 Phase 1 & 2 완료! (2026-05-08) — Phase 3 진행 중 🔄
+## 🎉 Phase 1, 2 & 3 완료! (2026-05-25)
 
 ---
 
-## Phase 3: C++ 고급/모던 (cpp-lang/ 세션 21~30) — 진행 중 🔄
+## Phase 3: C++ 고급/모던 (cpp-lang/ 세션 21~30) ✅
 
 | 세션 | 주제 | 상태 |
 |------|------|------|
@@ -99,7 +99,7 @@ pro-c/
 | 27 | 원자 연산 & Lock-free | ✅ |
 | 28 | 소켓 네트워크 프로그래밍 | ✅ |
 | 29 | 임베디드 C++ | ✅ |
-| 30 | WebAssembly (Emscripten) | ⬜ |
+| 30 | WebAssembly (Emscripten) | ✅ |
 
 ---
 
@@ -136,3 +136,4 @@ pro-c/
 | 2026-05-21 | C++-27 | 원자 연산 & Lock-free (Treiber Stack, SPSC Queue, atomic_flag) |
 | 2026-05-23 | C++-28 | 소켓 네트워크 프로그래밍 (TCP 에코 서버, UDP 채팅, 숫자 맞히기 게임) |
 | 2026-05-24 | C++-29 | 임베디드 C++ (GPIO 레지스터, 고정소수점, RAII 임계 구역, 신호등 상태 머신) |
+| 2026-05-25 | C++-30 | WebAssembly — extern "C", keepalive, 선형 메모리, emscripten_set_main_loop |
