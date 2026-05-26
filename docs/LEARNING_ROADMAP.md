@@ -23,7 +23,7 @@
 ```
 pro-c/
 ├── c-lang/     # Phase 1 완료 ✅
-└── cpp-lang/   # Phase 2 완료 ✅, Phase 3 진행 중 🔄
+└── cpp-lang/   # Phase 2 & 3 완료 ✅, Phase 4 진행 중 🔄
 ```
 
 ---
@@ -82,10 +82,6 @@ pro-c/
 
 ---
 
-## 🎉 Phase 1, 2 & 3 완료! (2026-05-25)
-
----
-
 ## Phase 3: C++ 고급/모던 (cpp-lang/ 세션 21~30) ✅
 
 | 세션 | 주제 | 상태 |
@@ -100,6 +96,23 @@ pro-c/
 | 28 | 소켓 네트워크 프로그래밍 | ✅ |
 | 29 | 임베디드 C++ | ✅ |
 | 30 | WebAssembly (Emscripten) | ✅ |
+
+---
+
+## Phase 4: C++ 전문가 과정 (cpp-lang/ 세션 31~40) 🔄
+
+| 세션 | 주제 | 상태 |
+|------|------|------|
+| 31 | std::variant & 타입 소거 (Type Erasure) | ✅ |
+| 32 | C++20 모듈 시스템 (Modules) | ⬜ |
+| 33 | constexpr·consteval 심화 & 컴파일 타임 프로그래밍 | ⬜ |
+| 34 | 커스텀 할당자 & std::pmr | ⬜ |
+| 35 | 표현식 템플릿 (Expression Templates) | ⬜ |
+| 36 | 직렬화 & 이진 프로토콜 (Serialization) | ⬜ |
+| 37 | 정적 리플렉션 & 고급 메타프로그래밍 | ⬜ |
+| 38 | SIMD & 컴파일러 인트린직 | ⬜ |
+| 39 | C++ DSL 설계 (Fluent Interface & Builder) | ⬜ |
+| 40 | 최종 마스터 프로젝트 (Master Final Project) | ⬜ |
 
 ---
 
@@ -137,3 +150,4 @@ pro-c/
 | 2026-05-23 | C++-28 | 소켓 네트워크 프로그래밍 (TCP 에코 서버, UDP 채팅, 숫자 맞히기 게임) |
 | 2026-05-24 | C++-29 | 임베디드 C++ (GPIO 레지스터, 고정소수점, RAII 임계 구역, 신호등 상태 머신) |
 | 2026-05-25 | C++-30 | WebAssembly — extern "C", keepalive, 선형 메모리, emscripten_set_main_loop |
+| 2026-05-26 | C++-31 | std::variant & 타입 소거 — AreaVisitor, Result<T,E> 패턴, 상태 머신 RPG |
