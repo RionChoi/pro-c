@@ -17,5 +17,8 @@ Info.plist
 *.dSYM/
 Helloworl
 
+# C++20 module cache
+gcm.cache/
+
 # macOS
 .DS_Store
