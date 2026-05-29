@@ -105,7 +105,7 @@ pro-c/
 |------|------|------|
 | 31 | std::variant & 타입 소거 (Type Erasure) | ✅ |
 | 32 | C++20 모듈 시스템 (Modules) | ✅ |
-| 33 | constexpr·consteval 심화 & 컴파일 타임 프로그래밍 | ⬜ |
+| 33 | constexpr·consteval 심화 & 컴파일 타임 프로그래밍 | ✅ |
 | 34 | 커스텀 할당자 & std::pmr | ⬜ |
 | 35 | 표현식 템플릿 (Expression Templates) | ⬜ |
 | 36 | 직렬화 & 이진 프로토콜 (Serialization) | ⬜ |
@@ -152,3 +152,4 @@ pro-c/
 | 2026-05-25 | C++-30 | WebAssembly — extern "C", keepalive, 선형 메모리, emscripten_set_main_loop |
 | 2026-05-26 | C++-31 | std::variant & 타입 소거 — AreaVisitor, Result<T,E> 패턴, 상태 머신 RPG |
 | 2026-05-27 | C++-32 | C++20 모듈 시스템 — statistics 모듈, 성적 분석기, 주사위 통계 게임 |
+| 2026-05-29 | C++-33 | constexpr·consteval 심화 — FNV-1a 해시, 소수 체, 정책 기반 누산기, 수학 퀴즈 게임 |
