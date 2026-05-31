@@ -1,169 +1,145 @@
 #include <iostream>
 #include <vector>
-#include <cstring>
+#include <cmath>
+#include <iomanip>
 
-const int SIZE = 1000;
-int alloc_count = 0;
-
-template <typename T>
-class Vector {
+// 표현식 템플릿을 위한 기본 클래스 (CRTP)
+template<typename E>
+class VecExpr {
 public:
-    T* data;
-    int size;
-
-    Vector(int n = 0) : size(n) {
-        data = new T[n]();
-        ++alloc_count;
+    double operator[](std::size_t i) const {
+        return static_cast<const E &>(*this)[i];
     }
 
-    ~Vector() {
-        delete[] data;
-    }
-
-    Vector(const Vector& other) : size(other.size) {
-        data = new T[size];
-        std::copy(other.data, other.data + size, data);
-        ++alloc_count;
-    }
-
-    Vector& operator=(const Vector& other) {
-        if (this != &other) {
-            delete[] data;
-            size = other.size;
-            data = new T[size];
-            std::copy(other.data, other.data + size, data);
-            ++alloc_count;
-        }
-        return *this;
-    }
-
-    T& operator[](int i) { return data[i]; }
-    const T& operator[](int i) const { return data[i]; }
-    int get_size() const { return size; }
-};
-
-template <typename T>
-Vector<T> operator+(const Vector<T>& a, const Vector<T>& b) {
-    Vector<T> result(a.get_size());
-    for (int i = 0; i < a.get_size(); ++i) {
-        result[i] = a[i] + b[i];
-    }
-    return result;
-}
-
-template <typename T, typename E>
-class VectorExpr {
-public:
-    const E& expr;
-
-    VectorExpr(const E& e) : expr(e) {}
-
-    T operator[](int i) const {
-        return expr[i];
-    }
-
-    int get_size() const {
-        return expr.get_size();
+    std::size_t size() const {
+        return static_cast<const E &>(*this).size();
     }
 };
 
-template <typename T, typename L, typename R>
-class BinaryOp {
+// 실제 벡터 (리프 노드)
+class Vec : public VecExpr<Vec> {
+private:
+    std::vector<double> data;
+
 public:
-    L left;
-    R right;
+    Vec() = default;
 
-    BinaryOp(const L& l, const R& r) : left(l), right(r) {}
+    Vec(std::size_t n) : data(n) {}
 
-    T operator[](int i) const {
-        return left[i] + right[i];
-    }
+    Vec(std::initializer_list<double> init) : data(init) {}
 
-    int get_size() const {
-        return left.get_size();
-    }
-};
-
-template <typename T>
-class ExprVector {
-public:
-    T* data;
-    int size;
-
-    ExprVector(int n = 0) : size(n) {
-        data = new T[n]();
-        ++alloc_count;
-    }
-
-    ~ExprVector() {
-        delete[] data;
-    }
-
-    template <typename E>
-    ExprVector(const VectorExpr<T, E>& expr) : size(expr.get_size()) {
-        data = new T[size];
-        ++alloc_count;
-        for (int i = 0; i < size; ++i) {
+    template<typename E>
+    Vec(const VecExpr<E> &expr) : data(expr.size()) {
+        for (std::size_t i = 0; i < expr.size(); ++i) {
             data[i] = expr[i];
         }
     }
 
-    ExprVector(const ExprVector& other) : size(other.size) {
-        data = new T[size];
-        std::copy(other.data, other.data + size, data);
-        ++alloc_count;
+    template<typename E>
+    Vec &operator=(const VecExpr<E> &expr) {
+        data.resize(expr.size());
+        for (std::size_t i = 0; i < expr.size(); ++i) {
+            data[i] = expr[i];
+        }
+        return *this;
     }
 
-    T& operator[](int i) { return data[i]; }
-    const T& operator[](int i) const { return data[i]; }
-    int get_size() const { return size; }
+    double operator[](std::size_t i) const { return data[i]; }
+    double &operator[](std::size_t i) { return data[i]; }
+    std::size_t size() const { return data.size(); }
+
+    void print() const {
+        std::cout << "[";
+        for (std::size_t i = 0; i < data.size(); ++i) {
+            std::cout << std::fixed << std::setprecision(2) << data[i];
+            if (i + 1 < data.size()) std::cout << " ";
+        }
+        std::cout << "]\n";
+    }
 };
 
-template <typename T>
-ExprVector<T> operator+(
-    const ExprVector<T>& l,
-    const ExprVector<T>& r) {
-    ExprVector<T> result(l.get_size());
-    for (int i = 0; i < l.get_size(); ++i) {
-        result[i] = l[i] + r[i];
+// 벡터 덧셈 표현식
+template<typename E1, typename E2>
+class VecAdd : public VecExpr<VecAdd<E1, E2>> {
+private:
+    const E1 &lhs;
+    const E2 &rhs;
+
+public:
+    VecAdd(const E1 &a, const E2 &b) : lhs(a), rhs(b) {}
+
+    double operator[](std::size_t i) const {
+        return lhs[i] + rhs[i];
     }
-    return result;
+
+    std::size_t size() const { return lhs.size(); }
+};
+
+// 벡터-스칼라 곱셈 표현식
+template<typename E>
+class VecScale : public VecExpr<VecScale<E>> {
+private:
+    const E &v;
+    double scalar;
+
+public:
+    VecScale(const E &vec, double s) : v(vec), scalar(s) {}
+
+    double operator[](std::size_t i) const {
+        return v[i] * scalar;
+    }
+
+    std::size_t size() const { return v.size(); }
+};
+
+// 연산자 오버로딩
+template<typename E1, typename E2>
+VecAdd<E1, E2> operator+(const VecExpr<E1> &a, const VecExpr<E2> &b) {
+    return VecAdd<E1, E2>(static_cast<const E1 &>(a), static_cast<const E2 &>(b));
+}
+
+template<typename E>
+VecScale<E> operator*(const VecExpr<E> &v, double s) {
+    return VecScale<E>(static_cast<const E &>(v), s);
+}
+
+template<typename E>
+VecScale<E> operator*(double s, const VecExpr<E> &v) {
+    return VecScale<E>(static_cast<const E &>(v), s);
 }
 
 int main() {
-    std::cout << "=== 나이브 벡터 (일반 연산) ===\n";
-    alloc_count = 0;
-    {
-        Vector<double> a(SIZE), b(SIZE), c(SIZE);
-        for (int i = 0; i < SIZE; ++i) {
-            a[i] = i * 1.0;
-            b[i] = i * 2.0;
-            c[i] = i * 3.0;
-        }
+    std::cout << "=== 표현식 템플릿 (벡터 연산) ===\n\n";
 
-        Vector<double> result = a + b + c;
-        std::cout << "result[0] = " << result[0]
-                  << ", result[SIZE-1] = " << result[SIZE - 1] << "\n";
-    }
-    std::cout << "메모리 할당 횟수: " << alloc_count << "\n";
-    std::cout << "a, b, c 생성(3) + (a+b) 임시(1) + ((a+b)+c) 임시(1) + result(1) = 6회\n\n";
+    std::cout << "1️⃣  기본 벡터:\n";
+    Vec a = {1.0, 2.0, 3.0};
+    Vec b = {4.0, 5.0, 6.0};
+    std::cout << "a = ";
+    a.print();
+    std::cout << "b = ";
+    b.print();
 
-    std::cout << "=== 표현식 템플릿 벡터 (최적화) ===\n";
-    alloc_count = 0;
-    {
-        ExprVector<double> a(SIZE), b(SIZE), c(SIZE);
-        for (int i = 0; i < SIZE; ++i) {
-            a[i] = i * 1.0;
-            b[i] = i * 2.0;
-            c[i] = i * 3.0;
-        }
+    std::cout << "\n2️⃣  덧셈 (a + b):\n";
+    Vec c = a + b;
+    std::cout << "c = ";
+    c.print();
 
-        ExprVector<double> result = a + b + c;
-        std::cout << "result[0] = " << result[0]
-                  << ", result[SIZE-1] = " << result[SIZE - 1] << "\n";
-    }
-    std::cout << "메모리 할당 횟수: " << alloc_count << "\n";
-    std::cout << "a, b, c 생성(3) + result(1) = 4회 (임시 객체 제거!)\n";
+    std::cout << "\n3️⃣  스칼라 곱셈 (a * 2.0):\n";
+    Vec d = a * 2.0;
+    std::cout << "d = ";
+    d.print();
+
+    std::cout << "\n4️⃣  복합 표현식 (a + b) * 2.0:\n";
+    Vec e = (a + b) * 2.0;
+    std::cout << "e = ";
+    e.print();
+
+    std::cout << "\n5️⃣  더 복잡한 식: a * 3.0 + b * 2.0:\n";
+    Vec f = a * 3.0 + b * 2.0;
+    std::cout << "f = ";
+    f.print();
+
+    std::cout << "\n✨ 임시 객체 생성 없이 표현식이 계산됩니다!\n";
 
     return 0;
 }
