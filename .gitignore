@@ -16,6 +16,12 @@ Info.plist
 *.out
 *.dSYM/
 Helloworl
+hw*
+game*
+
+# Generated data files
+*.dat
+*.bin
 
 # C++20 module cache
 gcm.cache/
