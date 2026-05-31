@@ -106,8 +106,8 @@ pro-c/
 | 31 | std::variant & 타입 소거 (Type Erasure) | ✅ |
 | 32 | C++20 모듈 시스템 (Modules) | ✅ |
 | 33 | constexpr·consteval 심화 & 컴파일 타임 프로그래밍 | ✅ |
-| 34 | 커스텀 할당자 & std::pmr | ⬜ |
-| 35 | 표현식 템플릿 (Expression Templates) | ⬜ |
+| 34 | 커스텀 할당자 & std::pmr | ✅ |
+| 35 | 표현식 템플릿 (Expression Templates) | ✅ |
 | 36 | 직렬화 & 이진 프로토콜 (Serialization) | ⬜ |
 | 37 | 정적 리플렉션 & 고급 메타프로그래밍 | ⬜ |
 | 38 | SIMD & 컴파일러 인트린직 | ⬜ |
