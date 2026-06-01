@@ -108,8 +108,8 @@ pro-c/
 | 33 | constexpr·consteval 심화 & 컴파일 타임 프로그래밍 | ✅ |
 | 34 | 커스텀 할당자 & std::pmr | ✅ |
 | 35 | 표현식 템플릿 (Expression Templates) | ✅ |
-| 36 | 직렬화 & 이진 프로토콜 (Serialization) | ⬜ |
-| 37 | 정적 리플렉션 & 고급 메타프로그래밍 | ⬜ |
+| 36 | 직렬화 & 이진 프로토콜 (Serialization) | ✅ |
+| 37 | 정적 리플렉션 & 고급 메타프로그래밍 | ✅ |
 | 38 | SIMD & 컴파일러 인트린직 | ⬜ |
 | 39 | C++ DSL 설계 (Fluent Interface & Builder) | ⬜ |
 | 40 | 최종 마스터 프로젝트 (Master Final Project) | ⬜ |
