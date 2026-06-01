@@ -17,6 +17,14 @@ Info.plist
 *.dSYM/
 Helloworl
 
+# Executables (test runs)
+homework_*
+homework2_*
+game1_*
+hw*
+people.bin
+*.bin
+
 # C++20 module cache
 gcm.cache/
 
