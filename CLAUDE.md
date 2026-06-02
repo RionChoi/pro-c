@@ -123,11 +123,27 @@ COPY packages/payments/package.json ./packages/payments/   ← 2026-04-30 추가
 
 ---
 
-## 5. Graphify 사용
+## 5. Graphify & Hermes Automation
 
+### 5.1 자동 재빌드 파이프라인 (Hermes 담당)
+
+**주간 스케줄:**
+- 매주 월요일 03:00 KST (12:00 UTC) → `npx graphify . --full` 자동 실행
+- PR 머지 후 자동 → `npx graphify . --incremental` 자동 실행
+- 수동 필요 시 → GitHub Actions `workflow_dispatch` 클릭
+
+**Claude Code의 역할:**
+- 재빌드 명령은 Hermes에게 위임 (자동 실행됨)
 - 파일/함수 검색 전 `graphify-out/graph.json` 먼저 확인
-- 재빌드 명령은 Hermes에게 위임 (`npx graphify . --incremental`)
-- 재빌드 필요 판단만 Claude Code가 수행
+- 비정기적 작업(스키마 변경, 패키지 추가) 시 GitHub Issue로 Hermes의 ask-claude 응답
+
+### 5.2 Hermes Cooperation Protocol (GitHub Actions)
+
+`.github/workflows/hermes-cooperation-protocol.yml` 트리거:
+1. 비정기적 작업 감지 (수동 또는 규칙 기반)
+2. GitHub Issue 자동 생성 (hermes-inquiry 레이블)
+3. Claude Code 검토 후 댓글 승인
+4. Hermes 자동 진행
 
 ---
 
@@ -209,3 +225,69 @@ Rules:
 - Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
 - If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
 - After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
+
+# CLAUDE.md
+
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

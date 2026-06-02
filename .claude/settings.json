@@ -38,6 +38,17 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p ~/.claude/skills/saas-platform-setup/session-log && cat >> ~/.claude/skills/saas-platform-setup/session-log/$(date +\\%Y-\\%m-\\%d).md << 'LOGEOF'\n\n## Session End — $(date -u +%Y-%m-%dT%H:%M:%SZ)\n- Agent: $(echo $CLAUDE_AGENT_ID | cut -c1-8)\n- Duration: $(echo $CLAUDE_SESSION_DURATION | cut -d. -f1)s\n- Status: Complete\n\nLOGEOF\n"
+          }
+        ]
+      }
     ]
   }
 }

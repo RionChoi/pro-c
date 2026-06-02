@@ -1,0 +1,45 @@
+name: Incremental Graphify on PR Merge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/**'
+      - 'packages/**'
+      - '!graphify-out/**'
+
+jobs:
+  graphify-incremental:
+    name: Incremental Graphify Update
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.0.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Graphify incremental update
+        run: npx graphify . --incremental
+
+      - name: Commit if changed
+        run: |
+          git config user.name "hermes-bot"
+          git config user.email "hermes@platform.local"
+          git add graphify-out/
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: incremental graphify update after PR merge [skip ci]"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

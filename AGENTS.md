@@ -110,13 +110,34 @@ KAFKA_BROKER
 
 ---
 
-## 5. Graphify Management
+## 5. Graphify Management & Hermes Automation
 
-- **실행 주체**: Hermes (실행) / Claude Code (전략 판단)
-- **출력 경로**: `graphify-out/` — Git에 포함, 수동 편집 금지
-- **재빌드 트리거**: 매주 월요일 03:00 (cron), PR 머지 직후, packages/ 구조 변경
+### 5.1 자동 재빌드 파이프라인
+
+| 트리거 | 주기 | 워크플로우 | 동작 |
+|---|---|---|---|
+| 매주 월요일 03:00 | cron | `.github/workflows/graphify-weekly.yml` | Full rebuild → main에 자동 커밋 |
+| PR 머지 직후 | on:push | `.github/workflows/graphify-on-pr-merge.yml` | Incremental → main에 자동 커밋 |
+| 수동 트리거 | 필요 시 | 동일 워크플로우 | `workflow_dispatch` 사용 |
+
+### 5.2 Hermes Cooperation Protocol
+
+모든 비정기적 작업(스키마 변경, 패키지 추가, 배포 등)은 다음 순서를 따른다:
+
+```
+1. Hermes: 작업 필요성 감지
+2. GitHub Actions: hermes-cooperation-protocol.yml 트리거
+3. GitHub Issue 자동 생성 (hermes-inquiry 레이블)
+4. Claude Code: Issue 검토 및 승인/거부 댓글
+5. Hermes: 승인 시 작업 진행
+```
+
+### 5.3 제약
+
+- **Full rebuild**: 하루 3회 이내 (API 토큰 절약)
+- **자동 커밋**: `[skip ci]` 태그 → CI 재실행 방지
 - **파일 검색 전에 `graphify-out/graph.json` 먼저 참조할 것**
-- Full rebuild 하루 3회 이내
+- 수동 편집 절대 금지
 
 ---
 

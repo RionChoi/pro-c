@@ -1,0 +1,100 @@
+name: Hermes Cooperation Protocol
+
+# Triggers when Hermes needs Claude Code guidance before major operations
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: 'Operation type (graphify_full, schema_change, deploy_staging, etc)'
+        required: true
+        type: choice
+        options:
+          - graphify_full
+          - schema_change
+          - package_addition
+          - deploy_staging
+          - other
+      details:
+        description: 'Operation details (markdown)'
+        required: false
+
+jobs:
+  ask-claude:
+    name: Ask Claude Code for Guidance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9.0.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare context
+        id: context
+        run: |
+          OPERATION="${{ github.event.inputs.operation }}"
+          DETAILS="${{ github.event.inputs.details }}"
+
+          # Generate context file for Claude Code
+          cat > /tmp/hermes-context.md << EOF
+          # Hermes → Claude Code
+
+          Operation: $OPERATION
+          Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          ## Details
+          $DETAILS
+
+          ## Current State
+          - Graph exists: $([ -f graphify-out/graph.json ] && echo "yes" || echo "no")
+          - Dirty working tree: $(git diff --quiet || echo "yes" || echo "no")
+
+          ## Request
+          Please review this operation and provide guidance via PR comment or Slack.
+          EOF
+
+          cat /tmp/hermes-context.md
+          echo "context_file=/tmp/hermes-context.md" >> $GITHUB_OUTPUT
+
+      - name: Log to session for Claude Code
+        run: |
+          mkdir -p ~/.claude/skills/saas-platform-setup/session-log
+          SESSION_FILE="~/.claude/skills/saas-platform-setup/session-log/$(date +%Y-%m-%d).md"
+
+          cat >> "$SESSION_FILE" << EOF
+
+          ## [Hermes] Cooperation Protocol Triggered
+          - Operation: ${{ github.event.inputs.operation }}
+          - Time: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          - Awaiting Claude Code guidance...
+          EOF
+
+      - name: Create issue for tracking
+        id: create-issue
+        run: |
+          ISSUE_BODY="$(cat /tmp/hermes-context.md)"
+
+          gh issue create \
+            --title "Hermes: Guidance needed for ${{ github.event.inputs.operation }}" \
+            --body "$ISSUE_BODY" \
+            --label "hermes-inquiry" \
+            --assignee @me
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify
+        run: |
+          echo "🤖 Hermes asking Claude Code for guidance..."
+          echo "Issue: ${{ steps.create-issue.outputs.number }}"
+          echo "Please review at: https://github.com/${{ github.repository }}/issues/${{ steps.create-issue.outputs.number }}"
