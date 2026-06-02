@@ -110,8 +110,8 @@ pro-c/
 | 35 | 표현식 템플릿 (Expression Templates) | ✅ |
 | 36 | 직렬화 & 이진 프로토콜 (Serialization) | ✅ |
 | 37 | 정적 리플렉션 & 고급 메타프로그래밍 | ✅ |
-| 38 | SIMD & 컴파일러 인트린직 | ⬜ |
-| 39 | C++ DSL 설계 (Fluent Interface & Builder) | ⬜ |
+| 38 | SIMD & 컴파일러 인트린직 | ✅ |
+| 39 | C++ DSL 설계 (Fluent Interface & Builder) | ✅ |
 | 40 | 최종 마스터 프로젝트 (Master Final Project) | ⬜ |
 
 ---
@@ -154,3 +154,5 @@ pro-c/
 | 2026-05-27 | C++-32 | C++20 모듈 시스템 — statistics 모듈, 성적 분석기, 주사위 통계 게임 |
 | 2026-05-29 | C++-33 | constexpr·consteval 심화 — FNV-1a 해시, 소수 체, 정책 기반 누산기, 수학 퀴즈 게임 |
 | 2026-05-30 | C++-34, C++-35 | 커스텀 할당자 & std::pmr, 표현식 템플릿 |
+| 2026-06-02 | C++-38 | SIMD 인트린직 (SSE, AVX, 이미지 처리, 행렬 연산) |
+| 2026-06-02 | C++-39 | C++ DSL 설계 (Fluent Interface, Builder 패턴, SQL 쿼리 빌더) |
