@@ -1,6 +1,6 @@
-# CLAUDE.md — pro-c Repository Guide
+# AGENTS.md — pro-c Repository Guide
 
-This file describes the structure, conventions, and development workflow for the **pro-c** repository. It is intended for AI assistants (such as Claude) to understand the codebase and contribute effectively.
+This file describes the structure, conventions, and development workflow for the **pro-c** repository. It is intended for AI assistants (such as Codex) to understand the codebase and contribute effectively.
 
 ---
 
@@ -18,7 +18,7 @@ The learner is **RionChoi**. Documentation is primarily written in Korean.
 
 ```
 pro-c/
-├── CLAUDE.md                          # This file
+├── AGENTS.md                          # This file
 ├── README.md                          # Korean-language project summary
 ├── Helloworl.c                        # Initial Hello World program
 ├── docs/
