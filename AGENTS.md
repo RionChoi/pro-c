@@ -73,6 +73,7 @@
 | PostgreSQL | schema-per-tenant, pgvector Hybrid RAG는 Month 3+ | ADR-005 |
 | 3-앱 구조 | web-main / web-admin / web-partner 분리 (apps/api 불필요) | ADR-006 |
 | packages/db·auth 중앙화 | Prisma + NextAuth 공유 패키지 완료 (2026-04-18) | ADR-007 |
+| Prod 배포 전략 | deploy/prod 브랜치 분리, ArgoCD 수동 sync, GitHub Environment 이중 게이트 | ADR-008 |
 
 ---
 

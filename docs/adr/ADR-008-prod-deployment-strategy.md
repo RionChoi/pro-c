@@ -1,4 +1,4 @@
-# ADR-001: Production 배포 전략 및 게이트 구조
+# ADR-008: Production 배포 전략 및 게이트 구조
 
 **Status:** Proposed
 **Date:** 2026-05-10
