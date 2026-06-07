@@ -22,7 +22,7 @@ pro-c C/C++ 자동 학습 세션을 실행합니다.
 작업 디렉토리: /Users/choi/Movies/workspeace/github_ekko68/pro-c
 
 1. docs/LEARNING_ROADMAP.md를 읽고 현재 진행 상태를 확인합니다.
-2. 다음 미완료 2세션을 코딩합니다.
+2. 다음 미완료 2세션을 코딩합니다. 미완료 세션이 없으면 작업을 종료합니다.
    - C 세션 미완료 시: c-lang/ 폴더에 작성
    - C 완료 후: cpp-lang/ 폴더에 작성
 3. 각 세션별로 다음 파일을 생성합니다:
@@ -56,6 +56,7 @@ pro-c C/C++ 자동 학습 세션을 실행합니다.
 ### 방법 2: Chat 명령어
 ```
 /cron add "0 22 * * *" "pro-c C/C++ 자동 학습 세션을 실행합니다. 작업 디렉토리: /Users/choi/Movies/workspeace/github_ekko68/pro-c. 1) docs/LEARNING_ROADMAP.md를 읽고 현재 진행 상태를 확인. 2) 다음 미완료 2세션을 코딩. 3) 각 세션별 README.md, homework, homework2, game1 파일 생성. 4) 컴파일 검증. 5) 코드 컨벤션 준수. 6) LEARNING_ROADMAP.md 업데이트. 7) git add, commit, push. 8) 28세션 완료 시 프로젝트 종료."
+/cron add "0 22 * * *" "pro-c C/C++ 자동 학습 세션을 실행합니다. 작업 디렉토리: /Users/choi/Movies/workspeace/github_ekko68/pro-c. 1) docs/LEARNING_ROADMAP.md를 읽고 현재 진행 상태를 확인. 2) 다음 미완료 2세션을 코딩. 미완료 세션이 없으면 작업을 종료. 3) 각 세션별 README.md, homework, homework2, game1 파일 생성. 4) 컴파일 검증. 5) 코드 컨벤션 준수. 6) LEARNING_ROADMAP.md 업데이트. 7) git add, commit, push. 8) 40세션 완료 시 프로젝트 종료."
 ```
 
 ### 방법 3: CLI

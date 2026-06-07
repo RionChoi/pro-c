@@ -22,7 +22,7 @@ pro-c/
 ├── README.md                          # Korean-language project summary
 ├── Helloworl.c                        # Initial Hello World program
 ├── docs/
-│   ├── LEARNING_ROADMAP.md            # Full 28-session roadmap and progress
+│   ├── LEARNING_ROADMAP.md            # Full 40-session roadmap and progress
 │   ├── CODE_REVIEW.md                 # Code review standards
 │   └── SCHEDULE.md                    # Hermes Agent cron job configuration
 ├── c-lang/                            # C language sessions (01-20)
@@ -257,14 +257,14 @@ When adding new sessions, follow this pattern.
 
 ---
 
-## Current Progress (as of 2026-04-19)
+## Current Progress (as of 2026-06-07)
 
 | Phase | Sessions | Status |
 |---|---|---|
-| C Language (c-lang/) | 01-06 completed, 07-20 pending | In progress |
-| C++ (cpp-lang/) | All pending | Not started |
+| C Language (c-lang/) | 01-20 completed | Complete |
+| C++ (cpp-lang/) | 01-40 completed | Complete |
 
-Total: 6/40 sessions completed.
+Total: 40/40 sessions completed.
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
@@ -276,8 +276,8 @@ See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
 The project runs on automatic schedule:
 1. Every day at 07:00 KST, Hermes Agent triggers the cron job.
-2. It reads `LEARNING_ROADMAP.md` to find the next incomplete sessions.
-3. It codes 2 sessions with all required files.
+2. It reads `LEARNING_ROADMAP.md` to confirm the current status and find any remaining incomplete sessions.
+3. It codes 2 sessions with all required files when unfinished work exists.
 4. It compiles and verifies each file.
 5. It updates the roadmap and commits/pushes to GitHub.
 
