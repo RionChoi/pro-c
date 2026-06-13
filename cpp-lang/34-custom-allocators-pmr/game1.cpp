@@ -1,163 +1,171 @@
+// game1.cpp — 메모리 던전
+// 각 던전 층이 독립적인 monotonic_buffer_resource 아레나를 소유한다.
+// 층을 클리어하면 DungeonFloor 객체가 소멸되어 아레나 전체가 O(1)로 해제된다.
+// 플레이어는 아이템을 수거하며 골드를 쌓는다.
+
 #include <iostream>
+#include <memory_resource>
 #include <vector>
-#include <memory>
-#include <cmath>
-#include <cstdlib>
-#include <ctime>
+#include <string>
+#include <array>
+#include <string_view>
+#include <limits>
+#include <cstddef>
 
-template <typename T>
-class ObjectPool {
-    std::vector<T> objects;
-    std::vector<bool> active;
-    std::size_t nextFreeIndex = 0;
-    std::size_t allocationCount = 0;
+// 아이템: PMR string 과 int 값으로 구성
+struct Item {
+    std::pmr::string name;
+    int              gold;
 
+    Item(std::string_view n, int g, std::pmr::memory_resource* res)
+        : name(n, res), gold(g) {}
+
+    // 이 타입은 move 전용으로 사용 (arena 내 string 소유권 보존)
+    Item(const Item&)            = delete;
+    Item& operator=(const Item&) = delete;
+    Item(Item&&)                 = default;
+    Item& operator=(Item&&)      = default;
+};
+
+// 던전 한 층 — 아레나 소유, 아이템/몬스터를 PMR 컨테이너로 관리
+class DungeonFloor {
 public:
-    explicit ObjectPool(std::size_t initialSize = 100)
-        : objects(initialSize), active(initialSize, false) {}
+    static constexpr std::size_t ARENA_BYTES = 1024;
 
-    T* allocate() {
-        for (std::size_t i = 0; i < active.size(); ++i) {
-            if (!active[i]) {
-                active[i] = true;
-                allocationCount++;
-                return &objects[i];
-            }
+    explicit DungeonFloor(int floor_num)
+        : floor_(floor_num)
+        , buf_{}
+        , arena_(buf_.data(), ARENA_BYTES, std::pmr::null_memory_resource())
+        , items_(&arena_)
+        , monster_("", &arena_)
+    {
+        populate();
+    }
+
+    // 아레나 내 포인터를 보유하므로 복사·이동 모두 금지
+    DungeonFloor(const DungeonFloor&)            = delete;
+    DungeonFloor& operator=(const DungeonFloor&) = delete;
+    DungeonFloor(DungeonFloor&&)                 = delete;
+    DungeonFloor& operator=(DungeonFloor&&)      = delete;
+
+    int  floor_number() const noexcept { return floor_; }
+    bool has_items()    const noexcept { return !items_.empty(); }
+
+    const std::pmr::string& monster_name() const noexcept { return monster_; }
+
+    void show_items() const {
+        if (items_.empty()) {
+            std::cout << "  (아이템 없음)\n";
+            return;
         }
-
-        objects.push_back(T());
-        active.push_back(true);
-        allocationCount++;
-        return &objects.back();
+        for (std::size_t i = 0; i < items_.size(); ++i)
+            std::cout << "  [" << i + 1 << "] "
+                      << items_[i].name << "  (" << items_[i].gold << " 골드)\n";
     }
 
-    void deallocate(T* ptr) {
-        if (!ptr) return;
-        for (std::size_t i = 0; i < objects.size(); ++i) {
-            if (&objects[i] == ptr) {
-                active[i] = false;
-                return;
-            }
-        }
+    int collect_all() {
+        int total = 0;
+        for (const auto& it : items_) total += it.gold;
+        items_.clear();
+        return total;
     }
 
-    std::size_t getActiveCount() const {
-        std::size_t count = 0;
-        for (bool a : active) {
-            if (a) count++;
-        }
-        return count;
+    static constexpr std::size_t arena_size() noexcept { return ARENA_BYTES; }
+
+private:
+    void populate() {
+        struct Entry { std::string_view name; int gold; };
+
+        static const Entry TABLE[5][4] = {
+            {{"낡은 검",10},{"동전",5},{"빵",2},{"횃불",3}},
+            {{"마법 지팡이",50},{"포션",20},{"실크 망토",40},{"금화",25}},
+            {{"드래곤 비늘",200},{"보석",150},{"고대 유물",300},{"비밀 지도",80}},
+            {{"신성한 검",500},{"천상의 갑옷",400},{"엘릭서",350},{"왕관",800}},
+            {{"전설의 반지",1000},{"마스터 지팡이",900},{"고대 주문서",750},{"궁극의 갑옷",1200}},
+        };
+        static const char* const MONSTERS[5] = {
+            "슬라임", "오크 전사", "드래곤", "천사 전사", "마신왕"
+        };
+
+        const std::size_t idx = static_cast<std::size_t>((floor_ - 1) % 5);
+        monster_ = MONSTERS[idx];
+        for (std::size_t i = 0; i < 4; ++i)
+            items_.emplace_back(TABLE[idx][i].name, TABLE[idx][i].gold, &arena_);
     }
 
-    std::size_t getAllocationCount() const {
-        return allocationCount;
-    }
-
-    std::vector<T*> getActive() {
-        std::vector<T*> result;
-        for (std::size_t i = 0; i < objects.size(); ++i) {
-            if (active[i]) {
-                result.push_back(&objects[i]);
-            }
-        }
-        return result;
-    }
+    int                                        floor_;
+    std::array<std::byte, ARENA_BYTES>         buf_;
+    std::pmr::monotonic_buffer_resource        arena_;
+    std::pmr::vector<Item>                     items_;
+    std::pmr::string                           monster_;
 };
 
-struct Particle {
-    double x, y;
-    double vx, vy;
-    int lifetime;
-    bool alive;
+// ---- 게임 루프 -----------------------------------------------------------
 
-    Particle() : x(0), y(0), vx(0), vy(0), lifetime(0), alive(false) {}
+static void clear_input() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
-    void init(double startX, double startY) {
-        x = startX;
-        y = startY;
-        vx = (rand() % 100 - 50) * 0.01;
-        vy = (rand() % 100 - 50) * 0.01 - 0.05;
-        lifetime = 30 + (rand() % 20);
-        alive = true;
+static int prompt_choice(int lo, int hi) {
+    int ch = 0;
+    while (!(std::cin >> ch) || ch < lo || ch > hi) {
+        clear_input();
+        std::cout << lo << "~" << hi << " 중 선택: ";
     }
-
-    void update() {
-        if (!alive) return;
-        x += vx;
-        y += vy;
-        vy -= 0.001;
-        lifetime--;
-        if (lifetime <= 0) {
-            alive = false;
-        }
-    }
-
-    char getChar() const {
-        if (lifetime > 25) return '*';
-        if (lifetime > 15) return '+';
-        if (lifetime > 5) return '.';
-        return '`';
-    }
-};
+    clear_input();
+    return ch;
+}
 
 int main() {
-    std::srand(std::time(nullptr));
-    ObjectPool<Particle> pool(50);
+    std::cout << "================================================\n";
+    std::cout << "    메모리 던전 — PMR 아레나 탐험 게임\n";
+    std::cout << "================================================\n";
+    std::cout << "각 층은 " << DungeonFloor::arena_size()
+              << " 바이트 아레나를 독립적으로 소유합니다.\n";
+    std::cout << "층을 벗어나면 아레나 전체가 즉시 해제됩니다.\n\n";
 
-    std::cout << "=== 파티클 시뮬레이션 (객체 풀 사용) ===\n\n";
-    std::cout << "5초간 파티클 생성 및 시뮬레이션\n\n";
+    int  gold    = 0;
+    int  floor_n = 1;
+    bool playing = true;
 
-    int tick = 0;
-    int maxTicks = 50;
+    while (playing) {
+        std::cout << "════ " << floor_n << "층 ════\n";
 
-    while (tick < maxTicks) {
-        if (tick % 5 == 0) {
-            for (int i = 0; i < 3; ++i) {
-                Particle* p = pool.allocate();
-                p->init(25.0, 10.0);
+        // 블록을 벗어나면 DungeonFloor 소멸 → arena_ 소멸 → buf_ 스택 해제
+        {
+            DungeonFloor floor(floor_n);
+
+            std::cout << "몬스터: " << floor.monster_name() << "\n";
+            std::cout << "발견된 아이템:\n";
+            floor.show_items();
+
+            std::cout << "\n[1] 아이템 전부 수거  [2] 그냥 통과  [3] 던전 탈출\n";
+            std::cout << "선택: ";
+            const int ch = prompt_choice(1, 3);
+
+            if (ch == 1) {
+                const int earned = floor.collect_all();
+                gold += earned;
+                std::cout << "+" << earned << " 골드 획득!  (누적 " << gold << " 골드)\n";
+                std::cout << "[" << DungeonFloor::arena_size()
+                          << " 바이트 아레나가 블록 탈출 시 소멸됩니다]\n";
+                ++floor_n;
+            } else if (ch == 2) {
+                std::cout << "[아이템 없이 다음 층으로 이동]\n";
+                ++floor_n;
+            } else {
+                playing = false;
             }
-        }
-
-        auto particles = pool.getActive();
-        for (auto p : particles) {
-            p->update();
-        }
-
-        if (tick % 10 == 0) {
-            std::cout << "Frame " << tick / 10 << ":\n";
-
-            const int width = 50;
-            const int height = 15;
-            std::vector<std::vector<char>> canvas(height, std::vector<char>(width, ' '));
-
-            for (auto p : particles) {
-                if (p->alive) {
-                    int ix = static_cast<int>(p->x);
-                    int iy = static_cast<int>(p->y);
-                    if (ix >= 0 && ix < width && iy >= 0 && iy < height) {
-                        canvas[height - 1 - iy][ix] = p->getChar();
-                    }
-                }
-            }
-
-            for (const auto& row : canvas) {
-                std::cout << "  |";
-                for (char c : row) {
-                    std::cout << c;
-                }
-                std::cout << "|\n";
-            }
-
-            std::cout << "  활성 파티클: " << pool.getActiveCount() << "\n\n";
-        }
-
-        tick++;
+        } // ← DungeonFloor 소멸: monster_, items_, arena_, buf_ 순서로 정리
+        std::cout << "\n";
     }
 
-    std::cout << "시뮬레이션 완료!\n";
-    std::cout << "총 할당: " << pool.getAllocationCount() << "\n";
-    std::cout << "최종 활성 파티클: " << pool.getActiveCount() << "\n";
-    std::cout << "\n객체 풀을 통한 효율적 메모리 관리 성공!\n";
+    std::cout << "══════════════════════════\n";
+    std::cout << " 게임 종료!\n";
+    std::cout << " 탐험 층수:  " << (floor_n - 1) << " 층\n";
+    std::cout << " 획득 골드:  " << gold           << " G\n";
+    std::cout << "══════════════════════════\n";
 
     return 0;
 }
