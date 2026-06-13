@@ -24,7 +24,7 @@ allowed-tools: Bash, Read, Write, Edit, WebSearch, mcp__github__create_pull_requ
 위 로드맵에서 상태가 `⬜` 인 **가장 첫 번째 세션**을 찾는다.
 
 **모든 세션이 ✅ 완료 상태라면**:
-1. WebSearch로 `"popular modern C++ advanced topics 2026 game systems networking"` 검색
+1. WebSearch로 `"advanced C++ topics 2026 modern standards coroutines concurrency metaprogramming"` 검색
 2. 이미 완료된 세션 주제와 중복되지 않는 새 주제 10개 선정
 3. `docs/LEARNING_ROADMAP.md`에 새 Phase를 추가 (세션 번호는 이전 마지막 번호 + 1부터)
 4. 오늘은 새 Phase의 첫 번째 세션을 진행한다
