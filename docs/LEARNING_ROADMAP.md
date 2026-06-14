@@ -23,7 +23,7 @@
 ```
 pro-c/
 ├── c-lang/     # Phase 1 완료 ✅
-└── cpp-lang/   # Phase 2 & 3 & 4 완료 ✅
+└── cpp-lang/   # Phase 2~4 완료, Phase 5 진행 중
 ```
 
 ---
@@ -121,8 +121,8 @@ pro-c/
 | 세션 | 주제 | 상태 |
 |------|------|------|
 | 41 | C++20 Concepts 심화 — 중첩 제약, requires-expression, 커스텀 Concept 라이브러리 | ✅ |
-| 42 | C++20 Coroutines 심화 — Generator, Task, 커스텀 promise_type, 비동기 파이프라인 | ⬜ |
-| 43 | C++23 표준 라이브러리 신기능 — std::expected, std::flat_map, std::mdspan, std::print | ⬜ |
+| 42 | C++20 Coroutines 심화 — Generator, Task, 커스텀 promise_type, 비동기 파이프라인 | ✅ |
+| 43 | C++23 표준 라이브러리 신기능 — std::expected, std::flat_map, std::mdspan, std::print | ✅ |
 | 44 | C++20 Ranges 심화 — 커스텀 View, range adaptor, lazy evaluation, 파이프라인 최적화 | ⬜ |
 | 45 | 컴파일 타임 정규 표현식 & 파서 — CTRE, constexpr FSM, 템플릿 기반 파서 컴비네이터 | ⬜ |
 | 46 | 고성능 메모리 아레나 & 풀 — 선형 할당자, 슬랩 할당자, jemalloc 패턴, PMR 확장 | ⬜ |
@@ -173,6 +173,7 @@ pro-c/
 | 2026-05-30 | C++-34, C++-35 | 커스텀 할당자 & std::pmr, 표현식 템플릿 |
 | 2026-06-03 | C++-40 | 최종 마스터 프로젝트 완료 — ECS 게임 엔진, 타입 안전 컨테이너, 수치 계산 엔진 |
 | 2026-06-13 | C++-41 | C++20 Concepts 심화 — requires-expression 4형태, 커스텀 Concept 라이브러리, RPG 아이템 시스템 |
+| 2026-06-14 | C++-42, C++-43 | Coroutines 심화, C++23 표준 라이브러리 신기능 |
 
 ---
 
@@ -182,5 +183,5 @@ pro-c/
 |----------|--------|------|
 | C (Phase 1) | 20 | ✅ 완료 |
 | C++ 기초~고급 (Phase 2~4) | 20 | ✅ 완료 |
-| C++ 최신 표준 심화 (Phase 5) | 10 | 🔄 진행 중 (1/10) |
-| **합계** | **50** | **41/50** |
+| C++ 최신 표준 심화 (Phase 5) | 10 | 🔄 진행 중 (3/10) |
+| **합계** | **50** | **43/50** |
