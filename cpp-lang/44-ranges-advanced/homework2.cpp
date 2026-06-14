@@ -1,10 +1,10 @@
 // Session 44: Ranges 심화 — 커스텀 무한 Generator View & 파이프라인 최적화
 #include <ranges>
+#include <algorithm>
 #include <vector>
 #include <iostream>
 #include <numeric>
 #include <cmath>
-#include <optional>
 
 // ─────────────────────────────────────────────
 // 커스텀 무한 Generator View (소수 생성기)
@@ -118,7 +118,7 @@ public:
 };
 
 template <int W>
-struct WindowAdaptor {
+struct WindowAdaptor : std::ranges::range_adaptor_closure<WindowAdaptor<W>> {
     template <std::ranges::viewable_range R>
     auto operator()(R&& r) const {
         return WindowView<std::views::all_t<R>, W>(std::views::all(std::forward<R>(r)));

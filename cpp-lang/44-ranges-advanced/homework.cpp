@@ -127,9 +127,12 @@ public:
     auto end()   { return std::default_sentinel; }
 };
 
-// range adaptor closure
-struct StridedAdaptorClosure {
-    std::ptrdiff_t stride;
+// range adaptor closure — | 파이프라인 지원
+struct StridedAdaptorClosure
+    : std::ranges::range_adaptor_closure<StridedAdaptorClosure> {
+    std::ptrdiff_t stride{};
+
+    explicit StridedAdaptorClosure(std::ptrdiff_t s) : stride(s) {}
 
     template <std::ranges::viewable_range R>
     auto operator()(R&& r) const {
