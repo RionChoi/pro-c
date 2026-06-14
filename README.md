@@ -106,12 +106,12 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 
 ### 전체 요약
 
-| 단계 | 세션 수 | 상태 |
-|------|--------|------|
-| C (Phase 1) | 20 | ✅ 완료 |
-| C++ 기초~고급 (Phase 2~4) | 20 | ✅ 완료 |
-| C++ 최신 표준 심화 (Phase 5) | 10 | 진행 중 (3/10) |
-| **합계** | **50** | **43/50** |
+| 단계 | 세션 범위 | 세션 수 | 상태 |
+|------|----------|--------|------|
+| C (Phase 1) | C 01~20 | 20 | ✅ 완료 (20/20) |
+| C++ 기초~고급 (Phase 2~4) | C++ 01~40 | 40 | ✅ 완료 (40/40) |
+| C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10 | 🔄 진행 중 (3/10) |
+| **합계** | — | **70** | **63/70** |
 
 ## 세션별 파일 구성
 
@@ -136,7 +136,7 @@ pro-c/
 │   ├── 01-variables-io/
 │   ├── ...
 │   └── 20-final-project/
-└── cpp-lang/                # C++ 30세션
+└── cpp-lang/                # C++ 50세션 (Phase 2~5)
     ├── 01-cpp-basics-iostream/
     ├── ...
     └── 50-distributed-kv-store/
@@ -157,6 +157,9 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework
 ```
 
 ## 자동화
-- **Hermes Agent** cron job으로 매일 아침 7시(KST) 자동 실행해 세션을 생성
-- 총 50세션으로 확장되었으며, 현재 Phase 5 진행 중
-- 상세 설정: [`docs/SCHEDULE.md`](docs/SCHEDULE.md)
+- **`/daily-session` 슬래시 커맨드**(현재 방식): 로드맵에서 다음 미완료 세션을 찾아
+  파일 생성 → 컴파일 검증 → 커밋/푸시/PR/머지까지 자동 진행
+  (`.claude/commands/daily-session.md`)
+- **Hermes Agent** cron job(레거시): 과거 매일 아침 7시(KST) 자동 실행 방식 — 상세 설정은
+  [`docs/SCHEDULE.md`](docs/SCHEDULE.md) 참고
+- 총 70세션(C 20 + C++ 50) 구성, 현재 Phase 5 진행 중 (63/70)

@@ -1,5 +1,9 @@
 # Hermes Agent 스케줄 설정 — pro-c 자동 학습
 
+> ⚠️ **레거시 문서**: 현재는 `/daily-session` 슬래시 커맨드(`.claude/commands/daily-session.md`)가
+> 주 진행 방식입니다. 아래 Hermes Agent cron 설정은 과거 방식의 기록이며, 작업 경로 등
+> 일부 값은 현재 저장소(`/home/user/pro-c`)와 다를 수 있습니다.
+
 ## 개요
 매일 아침 7시(KST)에 C/C++ 학습 세션 2개를 자동으로 코딩하고 GitHub에 올립니다.
 

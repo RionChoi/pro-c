@@ -36,7 +36,7 @@ pro-c/
 │   ├── 04-pointers-strings/
 │   ├── 05-structs/
 │   ├── 06-enum-typedef/
-│   ├── 07-memory-allocation/          # Sessions 07-20: auto-generated
+│   ├── 07-dynamic-memory/
 │   └── ... (up to 20-final-project/)
 └── cpp-lang/                          # C++ sessions (01-50)
     ├── 01-cpp-basics-iostream/
@@ -264,7 +264,7 @@ When adding new sessions, follow this pattern.
 | C Language (c-lang/) | 01-20 completed | Complete |
 | C++ (cpp-lang/) | 01-43 completed, 44-50 pending | Phase 5 in progress |
 
-Total: 43/50 sessions completed.
+Total: 63/70 sessions completed (C: 20/20, C++: 43/50).
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
@@ -272,14 +272,19 @@ See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
 ## Development Workflow
 
-### Automated daily sessions (Hermes Agent)
+### Automated daily sessions (`/daily-session` slash command — current)
 
-The project runs on automatic schedule:
-1. Every day at 07:00 KST, Hermes Agent triggers the cron job.
-2. It reads `LEARNING_ROADMAP.md` to confirm the current status and find any remaining incomplete sessions.
-3. It codes 2 sessions with all required files when unfinished work exists.
-4. It compiles and verifies each file.
-5. It updates the roadmap and commits/pushes to GitHub.
+The primary workflow is the `/daily-session` slash command (`.claude/commands/daily-session.md`):
+1. It reads `LEARNING_ROADMAP.md` to find the first incomplete (⬜) session.
+2. It generates the session directory with `README.md`, `homework.cpp`, `homework2.cpp`, `game1.cpp`.
+3. It compiles and verifies each file with strict flags until warning-free.
+4. It updates the roadmap, then commits/pushes and creates + merges a PR.
+5. When all sessions are complete, it runs a web search to propose the next Phase.
+
+### Legacy automation (Hermes Agent cron)
+
+Earlier the project ran on a daily cron at 07:00 KST. See `docs/SCHEDULE.md` for the
+historical configuration; it has been superseded by `/daily-session`.
 
 ### Adding a new session manually
 
@@ -323,12 +328,12 @@ Examples:
 
 ## Scheduling
 
-The project uses **Hermes Agent** for automatic daily execution.
-See `docs/SCHEDULE.md` for cron job configuration details.
+The current workflow is the `/daily-session` slash command (run manually per session).
+**Hermes Agent** cron is the legacy method; see `docs/SCHEDULE.md` for its historical config.
 
-- Schedule: `0 22 * * *` (UTC) = 07:00 KST
-- Job name: `pro-c-daily-learning`
-- Completion: auto-removes cron job when all 50 sessions are done.
+- Legacy schedule: `0 22 * * *` (UTC) = 07:00 KST
+- Legacy job name: `pro-c-daily-learning`
+- Completion: when all 50 C++ sessions are done, `/daily-session` proposes the next Phase.
 
 ---
 
