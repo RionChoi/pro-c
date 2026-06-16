@@ -290,10 +290,10 @@ int main() {
     std::cout << "=== 파싱 성공 — 쿼리 테스트 ===\n";
     auto queries = {
         std::pair<std::string_view, std::string_view>
-        {"server.host",               "localhost"},
+        {"server.host",               "\"localhost\""},
         {"server.port",               "8080"},
         {"server.debug",              "true"},
-        {"database.name",             "mydb"},
+        {"database.name",             "\"mydb\""},
         {"database.max_conn",         "20"},
         {"database.replicas.0",       "\"replica1\""},
         {"database.replicas.2",       "\"replica3\""},
