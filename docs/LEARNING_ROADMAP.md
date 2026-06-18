@@ -126,7 +126,7 @@ pro-c/
 | 44 | C++20 Ranges 심화 — 커스텀 View, range adaptor, lazy evaluation, 파이프라인 최적화 | ✅ |
 | 45 | 컴파일 타임 정규 표현식 & 파서 — CTRE, constexpr FSM, 템플릿 기반 파서 컴비네이터 | ✅ |
 | 46 | 고성능 메모리 아레나 & 풀 — 선형 할당자, 슬랩 할당자, jemalloc 패턴, PMR 확장 | ✅ |
-| 47 | Lock-Free 자료구조 심화 — 해저드 포인터, RCU, 멀티-프로듀서 큐, ABA 방지 | ⬜ |
+| 47 | Lock-Free 자료구조 심화 — 해저드 포인터, RCU, 멀티-프로듀서 큐, ABA 방지 | ✅ |
 | 48 | C++ 그래픽스 & GPU 컴퓨팅 — GPGPU 패턴, 셰이더 컴파일 타임 검증, Vulkan 기초 추상화 | ⬜ |
 | 49 | C++ 네트워크 & Proactor 패턴 — Asio 패턴 직접 구현, HTTP/2 프레이밍, 코루틴 I/O | ⬜ |
 | 50 | Phase 5 최종 프로젝트 — 고성능 분산 키-값 스토어 (코루틴 + Lock-free + Arena Allocator + 네트워크) | ⬜ |
@@ -177,14 +177,15 @@ pro-c/
 | 2026-06-14 | C++-44 | C++20 Ranges 심화 — StridedView, WindowView, 무한 Generator, 파이프라인 텍스트 게임 |
 | 2026-06-16 | C++-45 | 컴파일 타임 정규 표현식 & 파서 — constexpr FSM, ParseResult<T>, 파서 컴비네이터, JSON-lite 파서 |
 | 2026-06-16 | C++-46 | 고성능 메모리 아레나 & 풀 — LinearArena, StackArena, SlabAllocator, PMR(ArenaResource), 게임 프레임 시뮬레이터 |
+| 2026-06-16 | C++-47 | Lock-Free 자료구조 심화 — Treiber Stack, ABA/Tagged Pointer, Michael-Scott Queue, 해저드 포인터, MPSC 큐 |
 
 ---
 
-## 🎉 진행 현황 — Phase 1~4 완료, Phase 5 진행 중 (6/10)
+## 🎉 진행 현황 — Phase 1~4 완료, Phase 5 진행 중 (7/10)
 
 | 언어/단계 | 세션 범위 | 세션 수 | 상태 |
 |----------|----------|--------|------|
 | C (Phase 1) | C 01~20 | 20 | ✅ 완료 (20/20) |
 | C++ 기초~고급 (Phase 2~4) | C++ 01~40 | 40 | ✅ 완료 (40/40) |
-| C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10 | 🔄 진행 중 (6/10) |
-| **합계** | — | **70** | **66/70** |
+| C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10 | 🔄 진행 중 (7/10) |
+| **합계** | — | **70** | **67/70** |
