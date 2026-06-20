@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[74674,["/_next/static/chunks/0jg-4pdl8r10l.js","/_next/static/chunks/09f5hm7wbpr.5.js","/_next/static/chunks/0mvwb6025eb_b.js","/_next/static/chunks/169l200k3g6gr.js"],"ViewportBoundary"]
+3:I[74674,["/_next/static/chunks/0jg-4pdl8r10l.js","/_next/static/chunks/09f5hm7wbpr.5.js","/_next/static/chunks/0mvwb6025eb_b.js","/_next/static/chunks/169l200k3g6gr.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mr. Resume | Professional Portfolio"}],["$","meta","1",{"name":"description","content":"Swiss International Style Portfolio"}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"doRGMhSneMhJ2YuZy-H7s"}
