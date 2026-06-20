@@ -257,14 +257,14 @@ When adding new sessions, follow this pattern.
 
 ---
 
-## Current Progress (as of 2026-06-14)
+## Current Progress (as of 2026-06-19)
 
 | Phase | Sessions | Status |
 |---|---|---|
 | C Language (c-lang/) | 01-20 completed | Complete |
-| C++ (cpp-lang/) | 01-43 completed, 44-50 pending | Phase 5 in progress |
+| C++ (cpp-lang/) | 01-49 completed, 50 pending | Phase 5 in progress |
 
-Total: 63/70 sessions completed (C: 20/20, C++: 43/50).
+Total: 69/70 sessions completed (C: 20/20, C++: 49/50).
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
