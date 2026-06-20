@@ -3,7 +3,7 @@
 C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심화까지 진행하는 학습 프로젝트입니다.
 로드맵 기준으로 Phase 1~4는 완료되었고, Phase 5는 진행 중입니다.
 
-## 참조 강좌.
+## 참조 강좌
 
 - **C**: [Bro Code — C Programming Full Course](https://youtube.com/watch?v=87SH2Cn0s9A)
 - **C++**: [Bro Code — C++ Full Course](https://youtube.com/watch?v=uhFpPlMsLzY)
