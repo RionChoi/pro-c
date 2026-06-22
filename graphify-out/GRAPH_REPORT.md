@@ -2847,30 +2847,30 @@
 10. `decryptSecret()` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `issueBillingKey()` --calls--> `POST()`  [INFERRED]
-  /Users/choi/platform/packages/payments/src/toss.ts → /Users/choi/platform/apps/web-main/app/api/billing/route.ts
-- `createSubscription()` --calls--> `POST()`  [INFERRED]
-  /Users/choi/platform/packages/payments/src/subscription.ts → /Users/choi/platform/apps/web-main/app/api/billing/route.ts
 - `createDomainEvent()` --calls--> `createTenant()`  [INFERRED]
   /Users/choi/platform/packages/shared-types/src/events.ts → /Users/choi/platform/apps/web-main/lib/tenant.ts
-- `requireRole()` --calls--> `hasRole()`  [INFERRED]
-  /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/packages/auth/src/rbac.ts
 - `requireRole()` --calls--> `GET()`  [INFERRED]
   /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/users/route.ts
+- `requireRole()` --calls--> `POST()`  [INFERRED]
+  /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/billing/route.ts
+- `requireRole()` --calls--> `PATCH()`  [INFERRED]
+  /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/users/[id]/role/route.ts
+- `requireRole()` --calls--> `DELETE()`  [INFERRED]
+  /Users/choi/platform/packages/auth/src/require-role.ts → /Users/choi/platform/apps/web-main/app/api/billing/route.ts
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.16
-Nodes (9): confirmOtpSetupAction(), verifyOtpAction(), decryptSecret(), encryptSecret(), getKey(), isOtpLocked(), nextLockoutState(), verifyRawTotpToken() (+1 more)
+Cohesion: 0.17
+Nodes (10): BillingSuccessPage(), getPlanConfig(), POST(), checkPlanLimit(), createSubscription(), cancelPayment(), chargeBilling(), getAuthHeader() (+2 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.21
-Nodes (9): BillingSuccessPage(), getPlanConfig(), checkPlanLimit(), createSubscription(), cancelPayment(), chargeBilling(), getAuthHeader(), issueBillingKey() (+1 more)
-
-### Community 2 - "Community 2"
 Cohesion: 0.16
 Nodes (7): register(), handleTenantCreated(), handleUserCreated(), startKafkaConsumer(), createConsumer(), sendInviteEmail(), sendMail()
+
+### Community 2 - "Community 2"
+Cohesion: 0.22
+Nodes (7): verifyOtpAction(), decryptSecret(), encryptSecret(), getKey(), isOtpLocked(), nextLockoutState(), verifyTotpToken()
 
 ### Community 3 - "Community 3"
 Cohesion: 0.2
@@ -2881,12 +2881,12 @@ Cohesion: 0.2
 Nodes (3): inviteMemberAction(), selectTenantAction(), GET()
 
 ### Community 5 - "Community 5"
-Cohesion: 0.25
-Nodes (4): requireRole(), DELETE(), PATCH(), POST()
+Cohesion: 0.2
+Nodes (4): proxy(), hasRole(), requireRole(), PATCH()
 
 ### Community 6 - "Community 6"
 Cohesion: 0.33
-Nodes (2): proxy(), hasRole()
+Nodes (3): confirmOtpSetupAction(), DELETE(), verifyRawTotpToken()
 
 ### Community 7 - "Community 7"
 Cohesion: 0.4
@@ -2897,12 +2897,12 @@ Cohesion: 0.5
 Nodes (1): RootLayout()
 
 ### Community 9 - "Community 9"
-Cohesion: 0.67
-Nodes (0): 
-
-### Community 10 - "Community 10"
 Cohesion: 1.0
 Nodes (2): safeParse(), validate()
+
+### Community 10 - "Community 10"
+Cohesion: 0.67
+Nodes (0): 
 
 ### Community 11 - "Community 11"
 Cohesion: 1.0
@@ -14155,29 +14155,29 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Knowledge Gaps
 - **2751 isolated node(s):** `E2E test fixtures and configuration.`, `Register custom markers and configure test environment.`, `Sample Playwright storage state with valid cookies.`, `Sample NotebookLM homepage HTML with tokens.`, `Factory for building RPC responses.      Args:         rpc_id: Either an RPCMeth` (+2746 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 11`** (2 nodes): `LoginPage()`, `page.tsx`
+- **Thin community `Community 11`** (2 nodes): `loadToss()`, `toss.test.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 12`** (2 nodes): `loadToss()`, `toss.test.ts`
+- **Thin community `Community 12`** (2 nodes): `AdminHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 13`** (2 nodes): `Card()`, `card.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (2 nodes): `test_day18_api_load()`, `test_day18.py`
+- **Thin community `Community 14`** (2 nodes): `createAuthConfig()`, `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (2 nodes): `HomePage()`, `page.tsx`
+- **Thin community `Community 15`** (2 nodes): `utils.ts`, `cn()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (2 nodes): `Code()`, `code.tsx`
+- **Thin community `Community 16`** (2 nodes): `Button()`, `button.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (2 nodes): `utils.ts`, `cn()`
+- **Thin community `Community 17`** (2 nodes): `PartnerHomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (2 nodes): `createAuthConfig()`, `index.ts`
+- **Thin community `Community 18`** (2 nodes): `HomePage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `PartnerHomePage()`, `page.tsx`
+- **Thin community `Community 19`** (2 nodes): `Code()`, `code.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (2 nodes): `DashboardPage()`, `page.tsx`
+- **Thin community `Community 20`** (2 nodes): `test_day18_api_load()`, `test_day18.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (2 nodes): `Button()`, `button.tsx`
+- **Thin community `Community 21`** (2 nodes): `DashboardPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (2 nodes): `AdminHomePage()`, `page.tsx`
+- **Thin community `Community 22`** (2 nodes): `LoginPage()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 23`** (1 nodes): `vitest.config.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -19783,11 +19783,11 @@ Nodes (1): Build URL query parameters for batchexecute request.      Args:      
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GET()` connect `Community 4` to `Community 0`, `Community 3`, `Community 5`?**
+- **Why does `GET()` connect `Community 4` to `Community 0`, `Community 2`, `Community 3`, `Community 5`, `Community 6`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **Why does `verifyOtpAction()` connect `Community 0` to `Community 4`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **Why does `requireRole()` connect `Community 5` to `Community 4`, `Community 6`?**
+- **Why does `createTenant()` connect `Community 3` to `Community 0`?**
+  _High betweenness centrality (0.000) - this node is a cross-community bridge._
+- **Why does `POST()` connect `Community 0` to `Community 3`, `Community 5`, `Community 6`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `GET()` (e.g. with `verifyOtpAction()` and `confirmOtpSetupAction()`) actually correct?**
   _`GET()` has 6 INFERRED edges - model-reasoned connections that need verification._
