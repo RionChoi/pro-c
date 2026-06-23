@@ -31,11 +31,10 @@
 
 ## 진행 방식
 
-1. 첫 PR에서는 이 문서를 리뷰하고 Phase 6 범위를 확정한다.
-2. 범위 확정 후 `docs/LEARNING_ROADMAP.md`에 Phase 6 섹션을 추가한다.
-3. 각 세션은 기존 패턴처럼 `README.md`, `homework.cpp`, `homework2.cpp`, `game1.cpp`를 둔다.
-4. C++26 기능은 컴파일러 지원 여부에 따라 `#if` 또는 fallback 설명을 함께 둔다.
-5. 실험 기능은 “표준 채택 여부”와 “현재 컴파일러 지원 여부”를 분리해서 기록한다.
+1. `docs/LEARNING_ROADMAP.md`의 Phase 6 섹션을 공식 진행 기준으로 사용한다.
+2. 각 세션은 기존 패턴처럼 `README.md`, `homework.cpp`, `homework2.cpp`, `game1.cpp`를 둔다.
+3. C++26 기능은 컴파일러 지원 여부에 따라 `#if` 또는 fallback 설명을 함께 둔다.
+4. 실험 기능은 “표준 채택 여부”와 “현재 컴파일러 지원 여부”를 분리해서 기록한다.
 
 ## 참고 자료
 

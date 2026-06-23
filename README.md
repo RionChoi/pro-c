@@ -105,6 +105,23 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 | 49   | C++ 네트워크 & Proactor 패턴   | ✅   |
 | 50   | Phase 5 최종 프로젝트          | ✅   |
 
+### 다음 확장 일정: Phase 6 (`cpp-lang/`) — 10세션 예정
+
+상세 후보안은 [`docs/NEXT_PHASE_PLAN.md`](docs/NEXT_PHASE_PLAN.md)를 참고합니다.
+
+| 세션 | 주제                                      | 상태 |
+| ---- | ----------------------------------------- | ---- |
+| 51   | C++26 표준 현황 점검                      | ⬜   |
+| 52   | Static Reflection 실험                    | ⬜   |
+| 53   | Contracts 기반 방어적 설계                | ⬜   |
+| 54   | std::execution와 Senders/Receivers        | ⬜   |
+| 55   | Safe Reclamation과 동시성 안전성          | ⬜   |
+| 56   | Modules와 import std 재검토               | ⬜   |
+| 57   | Sanitizer 기반 품질 점검                  | ⬜   |
+| 58   | 벤치마크와 성능 회귀 관리                 | ⬜   |
+| 59   | 라이브러리 API 안정화                     | ⬜   |
+| 60   | Phase 6 최종 프로젝트                     | ⬜   |
+
 ### 전체 요약
 
 | 단계                         | 세션 범위 | 세션 수 | 상태              |
@@ -113,6 +130,7 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 | C++ 기초~고급 (Phase 2~4)    | C++ 01~40 | 40      | ✅ 완료 (40/40)   |
 | C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10      | ✅ 완료 (10/10)  |
 | **합계**                     | —         | **70**  | **70/70**         |
+| C++26 확장 예정 (Phase 6)    | C++ 51~60 | 10      | ⬜ 예정 (0/10)    |
 
 ## 세션별 파일 구성
 
@@ -131,13 +149,14 @@ pro-c/
 ├── CLAUDE.md
 ├── docs/
 │   ├── LEARNING_ROADMAP.md
+│   ├── NEXT_PHASE_PLAN.md
 │   ├── CODE_REVIEW.md
 │   └── SCHEDULE.md
 ├── c-lang/                  # C 20세션
 │   ├── 01-variables-io/
 │   ├── ...
 │   └── 20-final-project/
-└── cpp-lang/                # C++ 50세션 (Phase 2~5)
+└── cpp-lang/                # C++ 50세션 완료, 10세션 확장 예정
     ├── 01-cpp-basics-iostream/
     ├── ...
     └── 50-distributed-kv-store/
@@ -167,3 +186,4 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework
 - **Hermes Agent** cron job(레거시): 과거 매일 아침 7시(KST) 자동 실행 방식 — 상세 설정은
   [`docs/SCHEDULE.md`](docs/SCHEDULE.md) 참고
 - 총 70세션(C 20 + C++ 50) 구성, 전체 과정 완료 (70/70)
+- Phase 6 확장 과정은 C++ 51~60 총 10세션 예정 (0/10)
