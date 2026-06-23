@@ -1,7 +1,7 @@
 # pro-c — C / C++ 학습 프로젝트
 
 C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심화까지 완료한 학습 프로젝트입니다.
-로드맵 기준으로 Phase 1~5 전체 70세션이 완료되었습니다.
+로드맵 기준으로 Phase 1~5 전체 70세션을 완료했고, Phase 6 확장 과정을 진행 중입니다.
 
 ## 참조 강좌
 
@@ -105,13 +105,13 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 | 49   | C++ 네트워크 & Proactor 패턴   | ✅   |
 | 50   | Phase 5 최종 프로젝트          | ✅   |
 
-### 다음 확장 일정: Phase 6 (`cpp-lang/`) — 10세션 예정
+### Phase 6 (`cpp-lang/`) — 10세션 진행 중
 
-상세 후보안은 [`docs/NEXT_PHASE_PLAN.md`](docs/NEXT_PHASE_PLAN.md)를 참고합니다.
+상세 진행 계획은 [`docs/NEXT_PHASE_PLAN.md`](docs/NEXT_PHASE_PLAN.md)를 참고합니다.
 
 | 세션 | 주제                                      | 상태 |
 | ---- | ----------------------------------------- | ---- |
-| 51   | C++26 표준 현황 점검                      | ⬜   |
+| 51   | C++26 표준 현황 점검                      | ✅   |
 | 52   | Static Reflection 실험                    | ⬜   |
 | 53   | Contracts 기반 방어적 설계                | ⬜   |
 | 54   | std::execution와 Senders/Receivers        | ⬜   |
@@ -130,7 +130,12 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 | C++ 기초~고급 (Phase 2~4)    | C++ 01~40 | 40      | ✅ 완료 (40/40)   |
 | C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10      | ✅ 완료 (10/10)  |
 | **합계**                     | —         | **70**  | **70/70**         |
-| C++26 확장 예정 (Phase 6)    | C++ 51~60 | 10      | ⬜ 예정 (0/10)    |
+
+### 확장 과정
+
+| 단계                      | 세션 범위 | 세션 수 | 상태             |
+| ------------------------- | --------- | ------- | ---------------- |
+| C++26 확장 과정 (Phase 6) | C++ 51~60 | 10      | 🔄 진행 중 (1/10) |
 
 ## 세션별 파일 구성
 
@@ -156,10 +161,11 @@ pro-c/
 │   ├── 01-variables-io/
 │   ├── ...
 │   └── 20-final-project/
-└── cpp-lang/                # C++ 50세션 완료, 10세션 확장 예정
+└── cpp-lang/                # C++ 50세션 완료, Phase 6 진행 중
     ├── 01-cpp-basics-iostream/
     ├── ...
-    └── 50-distributed-kv-store/
+    ├── 50-distributed-kv-store/
+    └── 51-cpp26-status/
 ```
 
 ## 실행 방법
@@ -178,6 +184,9 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework
 ./hw
 ```
 
+C++20/C++23 세션은 각 세션 README의 표준 플래그를 사용합니다. Phase 6의 C++26
+실험은 GCC에서 `-std=c++26`, Clang/Apple Clang에서 `-std=c++2c`를 사용합니다.
+
 ## 자동화
 
 - **`/daily-session` 슬래시 커맨드**(현재 방식): 로드맵에서 다음 미완료 세션을 찾아
@@ -186,4 +195,4 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic cpp-lang/01-cpp-basics-iostream/homework
 - **Hermes Agent** cron job(레거시): 과거 매일 아침 7시(KST) 자동 실행 방식 — 상세 설정은
   [`docs/SCHEDULE.md`](docs/SCHEDULE.md) 참고
 - 총 70세션(C 20 + C++ 50) 구성, 전체 과정 완료 (70/70)
-- Phase 6 확장 과정은 C++ 51~60 총 10세션 예정 (0/10)
+- Phase 6 확장 과정은 C++ 51~60 총 10세션 진행 중 (1/10)

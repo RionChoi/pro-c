@@ -6,7 +6,7 @@ This file describes the structure, conventions, and development workflow for the
 
 ## Project Overview
 
-**pro-c** is a structured C and C++ language learning project. The core track contains 70 completed sessions: 20 sessions of C followed by 50 sessions of C++. Phase 6 is planned as 10 additional C++26 and production C++ sessions. Each session contains exercises and a practical mini-project. C code uses C11, foundational C++ sessions use C++17, advanced standard sessions use C++20/C++23, and Phase 6 may use C++26 feature experiments where compiler support allows, with no external dependencies.
+**pro-c** is a structured C and C++ language learning project. The core track contains 70 completed sessions: 20 sessions of C followed by 50 sessions of C++. Phase 6 is underway as 10 additional C++26 and production C++ sessions. Each session contains exercises and a practical mini-project. C code uses C11, foundational C++ sessions use C++17, advanced standard sessions use C++20/C++23, and Phase 6 may use C++26 feature experiments where compiler support allows, with no external dependencies.
 
 The learner is **RionChoi**. Documentation is primarily written in Korean.
 
@@ -23,7 +23,7 @@ pro-c/
 ├── Helloworl.c                        # Initial Hello World program
 ├── docs/
 │   ├── LEARNING_ROADMAP.md            # Full roadmap and progress
-│   ├── NEXT_PHASE_PLAN.md             # Phase 6 candidate plan
+│   ├── NEXT_PHASE_PLAN.md             # Phase 6 execution plan
 │   ├── CODE_REVIEW.md                 # Code review standards
 │   └── SCHEDULE.md                    # Hermes Agent cron job configuration
 ├── c-lang/                            # C language sessions (01-20)
@@ -39,13 +39,13 @@ pro-c/
 │   ├── 06-enum-typedef/
 │   ├── 07-dynamic-memory/
 │   └── ... (up to 20-final-project/)
-└── cpp-lang/                          # C++ sessions (01-50 completed, 51-60 planned)
+└── cpp-lang/                          # C++ sessions (01-51 completed, 52-60 planned)
     ├── 01-cpp-basics-iostream/
     │   ├── README.md
     │   ├── homework.cpp
     │   ├── homework2.cpp
     │   └── game1.cpp
-    └── ... (up to 50-distributed-kv-store/; 51-60 planned)
+    └── ... (up to 51-cpp26-status/; 52-60 planned)
 ```
 
 ---
@@ -77,6 +77,10 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic <file.cpp> -o <output>
 g++ -std=c++17 -Wall -Wextra -Wpedantic -Wshadow -Wconversion \
   -Wnull-dereference -Wdouble-promotion <file.cpp> -o <output>
 ```
+
+Use the language standard required by each session README. For Phase 6 C++26
+experiments, use `g++ -std=c++26` with GCC or `clang++ -std=c++2c` with
+Clang/Apple Clang, while retaining the strict warning flags above.
 
 ### Examples
 ```bash
@@ -258,16 +262,16 @@ When adding new sessions, follow this pattern.
 
 ---
 
-## Current Progress (as of 2026-06-23)
+## Current Progress (as of 2026-06-24)
 
 | Phase | Sessions | Status |
 |---|---|---|
 | C Language (c-lang/) | 01-20 completed | Complete |
 | C++ (cpp-lang/) | 01-50 completed | Complete |
-| C++ Phase 6 extension | 51-60 planned | Planned |
+| C++ Phase 6 extension | 51 completed, 52-60 planned | In progress |
 
 Core total: 70/70 sessions completed (C: 20/20, C++: 50/50).
-Phase 6 extension: 0/10 sessions completed (C++: 0/10).
+Phase 6 extension: 1/10 sessions completed (C++: 1/10).
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
