@@ -1,4 +1,4 @@
-import { Kafka } from "kafkajs";
+import { Kafka, Partitioners } from "kafkajs";
 
 const globalForKafka = globalThis as unknown as {
   kafka: Kafka | undefined;
@@ -17,7 +17,9 @@ export const kafka =
 
 if (process.env.NODE_ENV !== "production") globalForKafka.kafka = kafka;
 
-export const producer = kafka.producer();
+export const producer = kafka.producer({
+  createPartitioner: Partitioners.LegacyPartitioner,
+});
 
 export function createConsumer(groupId = "web-main-group") {
   return kafka.consumer({ groupId });
