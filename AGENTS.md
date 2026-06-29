@@ -39,13 +39,13 @@ pro-c/
 │   ├── 06-enum-typedef/
 │   ├── 07-dynamic-memory/
 │   └── ... (up to 20-final-project/)
-└── cpp-lang/                          # C++ sessions (01-54 completed, 55-60 planned)
+└── cpp-lang/                          # C++ sessions (01-55 completed, 56-60 planned)
     ├── 01-cpp-basics-iostream/
     │   ├── README.md
     │   ├── homework.cpp
     │   ├── homework2.cpp
     │   └── game1.cpp
-    └── ... (up to 54-senders-receivers/; 55-60 planned)
+    └── ... (up to 55-safe-reclamation/; 56-60 planned)
 ```
 
 ---
@@ -262,16 +262,16 @@ When adding new sessions, follow this pattern.
 
 ---
 
-## Current Progress (as of 2026-06-28)
+## Current Progress (as of 2026-06-29)
 
 | Phase | Sessions | Status |
 |---|---|---|
 | C Language (c-lang/) | 01-20 completed | Complete |
 | C++ (cpp-lang/) | 01-50 completed | Complete |
-| C++ Phase 6 extension | 51-54 completed, 55-60 planned | In progress |
+| C++ Phase 6 extension | 51-55 completed, 56-60 planned | In progress |
 
 Core total: 70/70 sessions completed (C: 20/20, C++: 50/50).
-Phase 6 extension: 4/10 sessions completed (C++: 4/10).
+Phase 6 extension: 5/10 sessions completed (C++: 5/10).
 
 See `docs/LEARNING_ROADMAP.md` for detailed progress tracking.
 
