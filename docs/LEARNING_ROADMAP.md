@@ -146,7 +146,7 @@ pro-c/
 | 54 | std::execution와 Senders/Receivers — 비동기 파이프라인 스케치와 fallback 구현 | ✅ |
 | 55 | Safe Reclamation과 동시성 안전성 — hazard pointer/RCU 계열 개념과 샘플 | ✅ |
 | 56 | Modules와 import std 재검토 — 기존 세션 일부를 모듈 구조로 재구성 | ✅ |
-| 57 | Sanitizer 기반 품질 점검 — ASan/UBSan/TSan 실행 가이드와 결함 재현 | ⬜ |
+| 57 | Sanitizer 기반 품질 점검 — ASan/UBSan/TSan 실행 가이드와 결함 재현 | ✅ |
 | 58 | 벤치마크와 성능 회귀 관리 — microbenchmark harness와 결과 기록 양식 | ⬜ |
 | 59 | 라이브러리 API 안정화 — 공개 API, 네임스페이스, 에러 모델 정리 | ⬜ |
 | 60 | Phase 6 최종 프로젝트 — C++26 기반 타입 안전 설정/직렬화 미니 프레임워크 | ⬜ |
@@ -206,6 +206,7 @@ pro-c/
 | 2026-06-28 | C++-54 | std::execution와 Senders/Receivers — mini_exec fallback, thread pool 오프로딩, 작업 보드 시뮬레이터 |
 | 2026-06-29 | C++-55 | Safe Reclamation과 동시성 안전성 — hazard stack, epoch config store, scavenger board |
 | 2026-06-30 | C++-56 | Modules와 import std 재검토 — statistics module path, header fallback, readiness report |
+| 2026-07-01 | C++-57 | Sanitizer 기반 품질 점검 — ASan/UBSan/TSan 재현기, 안전 기본 경로, 품질 점검 가이드 |
 
 ---
 
@@ -218,8 +219,8 @@ pro-c/
 | C++ 최신 표준 심화 (Phase 5) | C++ 41~50 | 10 | ✅ 완료 (10/10) |
 | **합계** | — | **70** | **70/70** |
 
-## Phase 6 진행 현황 (6/10 세션)
+## Phase 6 진행 현황 (7/10 세션)
 
 | 언어/단계 | 세션 범위 | 세션 수 | 상태 |
 |----------|----------|--------|------|
-| C++26 & 프로덕션 C++ 심화 (Phase 6) | C++ 51~60 | 10 | 🔄 진행 중 (6/10) |
+| C++26 & 프로덕션 C++ 심화 (Phase 6) | C++ 51~60 | 10 | 🔄 진행 중 (7/10) |
