@@ -117,8 +117,8 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 | 54   | std::execution와 Senders/Receivers        | ✅   |
 | 55   | Safe Reclamation과 동시성 안전성          | ✅   |
 | 56   | Modules와 import std 재검토               | ✅   |
-| 57   | Sanitizer 기반 품질 점검                  | ⬜   |
-| 58   | 벤치마크와 성능 회귀 관리                 | ⬜   |
+| 57   | Sanitizer 기반 품질 점검                  | ✅   |
+| 58   | 벤치마크와 성능 회귀 관리                 | ✅   |
 | 59   | 라이브러리 API 안정화                     | ⬜   |
 | 60   | Phase 6 최종 프로젝트                     | ⬜   |
 
@@ -135,7 +135,7 @@ C 언어 기초부터 고급까지 학습하고, 이어서 C++ 최신 표준 심
 
 | 단계                      | 세션 범위 | 세션 수 | 상태             |
 | ------------------------- | --------- | ------- | ---------------- |
-| C++26 확장 과정 (Phase 6) | C++ 51~60 | 10      | 🔄 진행 중 (6/10) |
+| C++26 확장 과정 (Phase 6) | C++ 51~60 | 10      | 🔄 진행 중 (8/10) |
 
 ## 세션별 파일 구성
 
@@ -170,7 +170,9 @@ pro-c/
     ├── 53-contracts-defensive-design/
     ├── 54-senders-receivers/
     ├── 55-safe-reclamation/
-    └── 56-modules-revisit/
+    ├── 56-modules-revisit/
+    ├── 57-sanitizers/
+    └── 58-benchmarks/
 ```
 
 ## 실행 방법
@@ -200,4 +202,4 @@ C++20/C++23 세션은 각 세션 README의 표준 플래그를 사용합니다. 
 - **Hermes Agent** cron job(레거시): 과거 매일 아침 7시(KST) 자동 실행 방식 — 상세 설정은
   [`docs/SCHEDULE.md`](docs/SCHEDULE.md) 참고
 - 총 70세션(C 20 + C++ 50) 구성, 전체 과정 완료 (70/70)
-- Phase 6 확장 과정은 C++ 51~60 총 10세션 진행 중 (6/10)
+- Phase 6 확장 과정은 C++ 51~60 총 10세션 진행 중 (8/10)
